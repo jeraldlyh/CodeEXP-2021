@@ -10,13 +10,13 @@ function ProfileScreen({ navigation }) {
 
     return (
         <View>
-            <Button labelStyle={{ color: "black", fontSize: 15 }} style={tailwind("border-gray-400 border-b bg-white")} icon="login" mode="contained" onPress={() => navigation.navigate("Login")}>
-                <Text >Login</Text>
+            <Button style={tailwind("border-b-2 border-gray-400 bg-white text-black")} labelStyle={tailwind("text-black")} icon="login" mode="contained" onPress={() => navigation.navigate("Login")}>
+                <Text style={tailwind("text-black")}>Login</Text>
             </Button>
-            <Button labelStyle={{ color: "black", fontSize: 15, borderBottomColor: "1px solid black" }} style={tailwind("border-1 border-solid border-red-500 bg-white")} icon="account-plus" mode="contained" onPress={() => navigation.navigate("Register")}>
+            <Button style={tailwind("border-b-2 border-gray-400 bg-white text-black")} labelStyle={tailwind("text-black")} icon="account-plus" mode="contained" onPress={() => navigation.navigate("Register")}>
                 <Text >Register</Text>
             </Button>
-            <Button labelStyle={{ color: "black", fontSize: 15, borderBottomColor: "1px solid black" }} style={tailwind("border-1 border-solid border-red-500 bg-white")} icon="settings" mode="contained" onPress={() => navigation.navigate("Settings")}>
+            <Button style={tailwind("border-b-2 border-gray-400 bg-white text-black")} labelStyle={tailwind("text-black")} icon="cog" mode="contained" onPress={() => navigation.navigate("Settings")}>
                 <Text >Settings</Text>
             </Button>
         </View>
@@ -31,7 +31,7 @@ function LoginScreen({ navigation }) {
     const [password, setPassword] = useState({ value: '', error: '' });
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <TextInput theme={{ colors: { primary: 'red', underlineColor: 'transparent', } }} outlineColor="white" style={{ borderBottom: "2px solid black ", marginBottom: "10px", backgroundColor: "white" }}
+            <TextInput theme={{ colors: { primary: 'red', underlineColor: 'transparent', } }} outlineColor="white" style={{  marginBottom: "10px", backgroundColor: "white" }}
                 label="Email"
                 returnKeyType="next"
                 value={email.value}
@@ -44,7 +44,7 @@ function LoginScreen({ navigation }) {
                 keyboardType="email-address"
             />
 
-            <TextInput theme={{ colors: { primary: 'red', underlineColor: 'transparent', } }} outlineColor="white" style={{ borderBottom: "2px solid black ", marginBottom: "10px", backgroundColor: "white" }}
+            <TextInput theme={{ colors: { primary: 'red', underlineColor: 'transparent', } }} outlineColor="white" style={{  marginBottom: "10px", backgroundColor: "white" }}
                 label="Password"
                 returnKeyType="done"
                 value={password.value}
@@ -87,7 +87,7 @@ function RegisterScreen({ navigation }) {
     };
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <TextInput theme={{ colors: { primary: 'red', underlineColor: 'transparent', } }} outlineColor="white" style={{ borderBottom: "2px solid black ", marginBottom: "10px", backgroundColor: "white" }}
+            <TextInput theme={{ colors: { primary: 'red', underlineColor: 'transparent', } }} outlineColor="white" style={{  marginBottom: "10px", backgroundColor: "white" }}
                 label="Name"
                 returnKeyType="next"
                 value={name.value}
@@ -96,7 +96,7 @@ function RegisterScreen({ navigation }) {
                 errorText={name.error}
             />
 
-            <TextInput theme={{ colors: { primary: 'red', underlineColor: 'transparent', } }} outlineColor="white" style={{ borderBottom: "2px solid black ", marginBottom: "10px", backgroundColor: "white" }}
+            <TextInput theme={{ colors: { primary: 'red', underlineColor: 'transparent', } }} outlineColor="white" style={{  marginBottom: "10px", backgroundColor: "white" }}
                 label="Email"
                 returnKeyType="next"
                 value={email.value}
@@ -109,7 +109,7 @@ function RegisterScreen({ navigation }) {
                 keyboardType="email-address"
             />
 
-            <TextInput theme={{ colors: { primary: 'red', underlineColor: 'transparent', } }} outlineColor="white" style={{ borderBottom: "2px solid black ", marginBottom: "10px", backgroundColor: "white" }}
+            <TextInput theme={{ colors: { primary: 'red', underlineColor: 'transparent', } }} outlineColor="white" style={{  marginBottom: "10px", backgroundColor: "white" }}
                 label="Password"
                 returnKeyType="done"
                 value={password.value}

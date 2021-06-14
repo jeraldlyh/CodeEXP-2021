@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import tailwind from 'tailwind-rn';
 import { NavigationContainer } from '@react-navigation/native';
@@ -14,9 +13,8 @@ export default function App() {
         title: "test",
         body: "haha"
     })
-    const styles = StyleSheet.create({
-        textAlign: "center"
-    })
+
+    
     const [index, setIndex] = React.useState(0);
     const [routes] = React.useState([
         { key: 'home', title: 'Home', icon: 'home' },
@@ -34,31 +32,18 @@ export default function App() {
     });
 
     return (
-        // <React.Fragment>
-            <NavigationContainer>
-                <View>
-                    <Appbar.Header style={tailwind("bg-red-500")}>
-                        <Appbar.Content titleStyle={{ textAlign: "center" }} color="white" title="RedDot" />
-                    </Appbar.Header>
+        <NavigationContainer>
+            <View>
+                <Appbar.Header style={tailwind("bg-red-500")}>
+                    <Appbar.Content titleStyle={{ textAlign: "center" }} color="white" title="RedDot" />
+                </Appbar.Header>
+            </View>
 
-
-                </View>
-                <BottomNavigation barStyle={{ backgroundColor: 'red' }}
-                    navigationState={{ index, routes }}
-                    onIndexChange={setIndex}
-                    renderScene={renderScene}
-                />
-            </NavigationContainer>
-            
-        // </React.Fragment>
+            <BottomNavigation barStyle={{ backgroundColor: 'red' }}
+                navigationState={{ index, routes }}
+                onIndexChange={setIndex}
+                renderScene={renderScene}
+            />
+        </NavigationContainer>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
