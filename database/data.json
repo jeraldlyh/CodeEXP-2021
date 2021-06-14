@@ -4,25 +4,229 @@
         "location": "cck",
         "name": "test1",
         "rating": 0,
+        "type": "Shop",
         "products": {
             "apple": {
                 "description": "apple is healthy",
                 "price": 1
             }
         },
-        "reviews": {
-            "usernum1": "this shop dam good",
-            "usernum2": "i agree leh"
-        }
+        "reviews": [
+            {"usernum1": "this shop dam good"},
+            {"usernum2": "i agree leh"}
+        ],
+        "listings": []
     },
     "shop2": {
         "description": "very nice shop",
         "location": "cck",
         "name": "test2",
         "rating": 0,
-        "products": {},
-        "reviews": {
-            "usernum2": "this shop dam good"
-        }
+        "type": "Shop",
+        "products": [],
+        "reviews": [
+            {"usernum2": "this shop dam good"}
+        ],
+        "listings": []
+    },
+    "test3": {
+        "name": "Ho Jiak Rojak",
+        "description": "-",
+        "location": "Blk 630 Yishun St 61 760630",
+        "rating": "-",
+        "type": "Hawker",
+        "reviews" : [],
+        "products": [
+            {
+                "url": "https://picsum.photos/700",
+                "name": "Rojak - Small",
+                "price": "3"
+            },
+            {
+                "url": "https://picsum.photos/700",
+                "name": "Rojak - Medium",
+                "price": "4"
+            },
+            {
+                "url": "https://picsum.photos/700",
+                "name": "Rojak - Large",
+                "price": "5"
+            }
+        ],
+        "listings": [
+            {
+                "user": "username",
+                "order": "Rojak - Small x1",
+                "price": "4"
+            },
+            {
+                "user": "username",
+                "order": "Rojak - Small x1",
+                "price": "4"
+            },
+            {
+                "user": "username",
+                "order": "Rojak - Large",
+                "price": "6.50"
+            }
+        ]
+    },
+    "test4": {
+        "name": "Northern Thai Tom Yum",
+        "description": "-",
+        "location": "166 Jln Besar #01-25 208877",
+        "rating": "-",
+        "reviews" : [],
+        "type": "Shop",
+        "products": [
+            {
+                "url": "https://picsum.photos/700",
+                "name": "Pineapple Fried Rice",
+                "price": "4"
+            },
+            {
+                "url": "https://picsum.photos/700",
+                "name": "Pad Thai",
+                "price": "4"
+            },
+            {
+                "url": "https://picsum.photos/700",
+                "name": "Tom Yum Soup",
+                "price": "5"
+            },
+            {
+                "url": "https://picsum.photos/700",
+                "name": "Tom Yum Fried Rice",
+                "price": "5"
+            },
+            {
+                "url": "https://picsum.photos/700",
+                "name": "Mango Sticky Rice",
+                "price": "5"
+            }
+        ],
+        "listings": [
+            {
+                "user": "username",
+                "order": "Pad Thai x1",
+                "price": "4.50"
+            }
+        ]
+    },
+    "test5": {
+        "name": "Moli Food Stall",
+        "description": "Bedok Snack Stall Barely Gets Customers, Auntie Still Wakes Up Early To Make & Sell Vadais. I was walking around and observing that many stalks are doing brisk business (probably due to a wet and rainy Saturday) until I spotted this lone stall - there was no one in queue. I observed that maybe one or 2 folks would walk up to the stall, take a look and walk off. I do not know why. I decided to go up to the Aunty and strike up a conversation with her. Aunty is very soft spoken. She manage this stall on her own most times and sometimes with ad hoc help. She gets up early to prepare the ingredients. She / her stall is not on any delivery platform / FB. She told me her business is so bad that she hardly makes any money. If not for the one month rental rebate from G, she hardly makes any money after deducting all the ingredients and supplies etc.",
+        "location": "16 Bedok South Road, #01-18 Singapore 460016",
+        "rating": "-",
+        "type": "Shop",
+        "reviews" : [],
+        "products": [
+            {
+                "url": "https://picsum.photos/700",
+                "name": "Vadai",
+                "price": "0.6"
+            }
+        ],
+        "listings": [
+            {
+                "user": "username",
+                "order": "Vadai x2",
+                "price": "1.50"
+            },
+            {
+                "user": "username",
+                "order": "Vadai x5",
+                "price": "5"
+            }
+        ]
+    },
+    "test6": {
+        "name": "Miami Bistro",
+        "description": "73 Year old man handling stall alone",
+        "location": "50 Punggol East #01-K34",
+        "rating": "-",
+        "type": "Hawker",
+        "reviews" : [],
+        "products": [
+            {
+                "url": "https://picsum.photos/700",
+                "name": "Fish & Chips",
+                "price": "10"
+            },
+            {
+                "url": "https://picsum.photos/700",
+                "name": "Chicken Cutlet",
+                "price": "9"
+            },
+            {
+                "url": "https://picsum.photos/700",
+                "name": "Carbonara",
+                "price": "12"
+            },
+            {
+                "url": "https://picsum.photos/700",
+                "name": "Aglio Oilo",
+                "price": "10.50"
+            },
+            {
+                "url": "https://picsum.photos/700",
+                "name": "Truffle Fries",
+                "price": "6.50"
+            },
+            {
+                "url": "https://picsum.photos/700",
+                "name": "Onion Rings",
+                "price": "6"
+            }
+        ],
+        "listings": [
+            {
+                "user": "username",
+                "order": "Carbonara x1",
+                "price": "13"
+            },
+            {
+                "user": "username",
+                "order": "Chicken Cutlet x1",
+                "price": "10"
+            }
+        ]
+    },
+    "test7": {
+        "name": "Prawn Mee",
+        "description": "-",
+        "location": "721 Clementi West Street 2 coffee shop",
+        "rating": "-",
+        "type": "Hawker",
+        "reviews" : [],
+        "products": [
+            {
+                "url": "https://picsum.photos/700",
+                "name": "Prawn Mee (Soup)",
+                "price": "3.50"
+            },
+            {
+                "url": "https://picsum.photos/700",
+                "name": "Prawn Mee (Dry)",
+                "price": "3.50"
+            }
+        ],
+        "listings": [
+            {
+                "user": "username",
+                "order": "Prawn Mee (Dry) x2",
+                "price": "8"
+            },
+            {
+                "user": "username",
+                "order": "Prawn Mee (Dry) x2",
+                "price": "8.50"
+            },
+            {
+                "user": "username",
+                "order": "Prawn Mee (Soup) x1",
+                "price": "4"
+            }
+        ]
     }
 }
