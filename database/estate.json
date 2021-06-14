@@ -1,0 +1,39 @@
+{
+    "north": [
+        "Sembawang", 
+        "Woodlands", 
+        "Yishun"
+    ],
+    "north-east": [
+        "Ang Mo Kio", 
+        "Hougang", 
+        "Punggol", 
+        "Sengkang", 
+        "Serangoon"
+    ],
+    "east": [
+        "Bedok", 
+        "Pasir Ris", 
+        "Tampines"
+    ],
+    "west": [
+        "Bukit Batok", 
+        "Bukit Panjang", 
+        "Choa Chu Kang", 
+        "Clementi", 
+        "Jurong East", 
+        "Jurong West", 
+        "Tengah"
+    ],
+    "Central": [
+        "Bishan", 
+        "Bukit Merah", 
+        "Bukit Timah", 
+        "Central Area", 
+        "Geylang", 
+        "Kallang/ Whampoa", 
+        "Marine Parade", 
+        "Queenstown", 
+        "Toa Payoh"
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "shop1": {
+        "description": "very nice shop",
+        "location": "cck",
+        "name": "test1",
+        "rating": 0,
+        "products": {
+            "apple": {
+                "description": "apple is healthy",
+                "price": 1
+            }
+        },
+        "reviews": {
+            "usernum1": "this shop dam good",
+            "usernum2": "i agree leh"
+        }
+    },
+    "shop2": {
+        "description": "very nice shop",
+        "location": "cck",
+        "name": "test2",
+        "rating": 0,
+        "products": {},
+        "reviews": {
+            "usernum2": "this shop dam good"
+        }
+    }
+}
