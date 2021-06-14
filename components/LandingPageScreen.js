@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IconButton, Colors, Searchbar } from 'react-native-paper';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import tailwind from 'tailwind-rn';
 
 
@@ -18,7 +18,6 @@ const LandingPageTabs = (props) => {
         </View>
 
         <View style={tailwind("flex flex-row justify-center")}>
-
             <View style={tailwind("text-center")}>
                 <IconButton
                     icon="food-fork-drink"
@@ -52,6 +51,7 @@ const LandingPageTabs = (props) => {
                 <Text style={tailwind("text-center")}>Neighbourhood</Text>
             </View>
         </View>
+        
 
     </View>);
 }
