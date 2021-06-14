@@ -11,7 +11,6 @@ export const getLocation = async () => {
         longitude: location.coords.longitude,
         latitude: location.coords.latitude
     }
-
     let geocode = await Location.reverseGeocodeAsync(geoLocation);
     return geocode[0].postalCode;
 }

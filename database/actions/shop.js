@@ -1,4 +1,5 @@
 import firebase from "../firebaseDB";
+import estateData from "../estate.json";
 
 export const isShopExist = (shopName) => {
     return new Promise((resolve, reject) => {
@@ -75,4 +76,10 @@ export const getShopByName = (shopName) => {
                 reject("An error occured while retrieving shop data");
             });
     })
+}
+
+export const getNearbyShops = (location) => {
+    console.log(location.toString())
+    const sectorCode = location.toString().substr(location.length - 6, location.length - 4);
+    console.log(sectorCode);
 }

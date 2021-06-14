@@ -1,12 +1,11 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import { IconButton, Colors, Searchbar } from 'react-native-paper';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import {  Text, View, Button } from 'react-native';
 import tailwind from 'tailwind-rn';
-import { addBookmark, getAllBookmarks, removeBookmark } from '../database/actions/Bookmark';
 
 
-const LandingPageTabs = (props) => {
-    const [searchQuery, setSearchQuery] = React.useState('');
+const LandingPageTabs = () => {
+    const [searchQuery, setSearchQuery] = useState('');
 
     const onChangeSearch = query => setSearchQuery(query);
     return (<View >
@@ -52,9 +51,6 @@ const LandingPageTabs = (props) => {
                 <Text style={tailwind("text-center")}>Neighbourhood</Text>
             </View>
         </View>
-        <Button title="test" onPress={() => getAllBookmarks("jerald")}/>
-        <Button title="test" onPress={() => removeBookmark("jerald", "Prawn Mee")}/>
-
     </View>);
 }
 
