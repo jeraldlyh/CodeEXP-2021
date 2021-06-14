@@ -33,7 +33,7 @@ const LandingPageTabs = (props) => {
                     color={Colors.red500}
                     size={50}
                     onPress={() => console.log('Pressed')} />
-                <Text >Shops</Text>
+                <Text style={tailwind("text-center")}>Shops</Text>
             </View>
             <View style={tailwind("text-center")}>
                 <IconButton
