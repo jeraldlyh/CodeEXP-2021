@@ -1,5 +1,6 @@
 import { firebase } from "@firebase/app"
 import "firebase/firestore"
+import "firebase/auth"
 // import firestore from "firebase/firestore"
 
 var firebaseConfig = {
@@ -12,7 +13,11 @@ var firebaseConfig = {
     measurementId: "G-FFFF4BXD18"
 }
 
-firebase.initializeApp(firebaseConfig)
-firebase.firestore()
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig)
+    firebase.firestore()
+} else {
+    firebase.app()
+}
 
 export default firebase
