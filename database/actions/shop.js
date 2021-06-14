@@ -61,17 +61,18 @@ export const updateShop = (body, shopName) => {
 }
 
 export const getShopByName = (shopName) => {
-    firebase.firestore().collection("shop").doc(shopName)
-        .get()
-        .then(doc => {
-            if (doc.exists) {
-                resolve(doc.data());
-            }
-            reject("No data found");
-        })
-        .catch(error => {
-            console.log("An error occured while retrieving shop data");
-            reject("An error occured while retrieving shop data");
-        });
-
+    return new Promise((resolve, reject) => {
+        firebase.firestore().collection("shop").doc(shopName)
+            .get()
+            .then(doc => {
+                if (doc.exists) {
+                    resolve(doc.data());
+                }
+                reject("No data found");
+            })
+            .catch(error => {
+                console.log("An error occured while retrieving shop data");
+                reject("An error occured while retrieving shop data");
+            });
+    })
 }
