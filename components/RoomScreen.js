@@ -3,11 +3,13 @@ import { StyleSheet, View, ActivityIndicator } from "react-native";
 import { IconButton } from "react-native-paper";
 import { GiftedChat, Bubble, Send } from 'react-native-gifted-chat';
 import firebase from "../database/firebaseDB";
+import Filter from "bad-words";
 
 
 function RoomScreen({ route }) {
     const [messages, setMessage] = useState([]);
     const { thread, username } = route.params;
+    const filter = new Filter();
 
     useEffect(() => {
         const unsubscribe = firebase.firestore().collection("threads")
@@ -32,17 +34,20 @@ function RoomScreen({ route }) {
     }, [])
 
     async function handleSend(messages) {
+        var text = messages[0].text;
+        text = filter.clean(text);
+
         firebase.firestore().collection("threads")
             .doc(thread)
             .collection("messages")
             .add({
-                text: messages[0].text,
+                text: text,
                 createdAt: new Date().getTime(),
                 user: {
                     _id: username
                 }
-            })
-    }
+            });
+    };
 
     function renderBubble(props) {
         return (
@@ -60,7 +65,7 @@ function RoomScreen({ route }) {
                 }}
             />
         );
-    }
+    };
 
     function renderLoading() {
         return (
@@ -68,7 +73,7 @@ function RoomScreen({ route }) {
                 <ActivityIndicator size='large' color='#6646ee' />
             </View>
         );
-    }
+    };
 
     function renderSend(props) {
         return (
@@ -78,7 +83,7 @@ function RoomScreen({ route }) {
                 </View>
             </Send>
         );
-    }
+    };
 
     function scrollToBottomComponent() {
         return (
