@@ -1,46 +1,29 @@
 import firebase from "../firebaseDB";
+import { v4 as uuidv4 } from "uuid";
 
 
-// export const hasExistingConvo = (userOne, userTwo) => {
+// export const getConversations = (username) => {
 //     return new Promise((resolve, reject) => {
-//         for (var i = 0; i < 2; i++) {
-//             const idQuery = i == 0 ? userOne + userTwo : userTwo + userOne;     // Searches for 2 combinations in collection for conversation ID
+//         firebase.firestore().collection("message")
+//             .get()
+//             .then(querySnapshot => {
+//                 const userConvo = [];
+//                 querySnapshot.forEach(doc => {
+//                     const message = doc.data();
 
-//             firebase.firestore().collection("message")
-//                 .doc(idQuery)
-//                 .get()
-//                 .then(doc => {
-//                     if (doc.exists) {
-//                         resolve(idQuery);
-//                     } else {
-//                         reject(-1);
+//                     if (message.userOne === username || message.userTwo === username) {
+//                         userConvo.push(message);
 //                     }
-//                 });
-//         }
-//     })
-// }
-export const getConversations = (username) => {
-    return new Promise((resolve, reject) => {
-        firebase.firestore().collection("message")
-            .get()
-            .then(querySnapshot => {
-                const userConvo = [];
-                querySnapshot.forEach(doc => {
-                    const message = doc.data();
-                    console.log(message)
-                    if (message.userOne === username || message.userTwo === username) {
-                        userConvo.push(message);
-                    }
-                })
-                resolve(userConvo);
-            })
-            .catch(error => {
-                console.log(error);
-                reject(error);
-            })
+//                 })
+//                 resolve(userConvo);
+//             })
+//             .catch(error => {
+//                 console.log(error);
+//                 reject(error);
+//             })
+//     });
+// };
 
-    })
-}
 
 export const addMessageToConvo = (conversationID, fromUser, text) => {
     return new Promise((resolve, reject) => {
@@ -48,6 +31,7 @@ export const addMessageToConvo = (conversationID, fromUser, text) => {
             .doc(conversationID)
             .update({
                 messages: firebase.firestore.FieldValue.arrayUnion({
+                    _id: uuidv4(),
                     from: fromUser,
                     time: firebase.firestore.Timestamp.now(),
                     text: text
@@ -59,16 +43,16 @@ export const addMessageToConvo = (conversationID, fromUser, text) => {
 };
 
 
-export const createConvo = async(userOne, userTwo) => {
+export const createConvo = (userOne, userTwo) => {
     return new Promise((resolve, reject) => {
-        firebase.firestore().collection("message")
+        firebase.firestore().collection("threads")
             .add({
                 userOne: userOne,
                 userTwo: userTwo,
-                messages: []
+                // messages: []
             })
             .then(doc => {
-                console.log(doc);
+                updateConvoUUID(doc.id)
                 resolve("Conversation has been created");
             })
             .catch(error => {
@@ -76,5 +60,12 @@ export const createConvo = async(userOne, userTwo) => {
                 reject(error);
             });
     });
-
 };
+
+export const updateConvoUUID = (conversationID) => {
+    firebase.firestore().collection("message")
+        .doc(conversationID)
+        .update({
+            uuid: conversationID
+        });
+}

@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import tailwind from 'tailwind-rn';
-import { Text, View  } from 'react-native';
+import { Text, View } from 'react-native';
 import { Icon } from "react-native-elements";
 import { Button } from 'react-native-paper';
 import moment from "moment";
@@ -13,8 +13,8 @@ export default function ProfileScreen({ navigation }) {
     const { username } = useContext(AuthContext);
 
     useEffect(() => {
+        console.log(username)
         getUserProfile(username).then(response => {
-            console.log(response)
             setUserProfile(response);
         })
     }, [])

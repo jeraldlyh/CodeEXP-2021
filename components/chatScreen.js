@@ -1,52 +1,51 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Text, View, Image } from 'react-native';
+import { View, Image } from 'react-native';
 import { List } from 'react-native-paper';
 import firebase from "../database/firebaseDB";
 import { FlatList } from 'react-native-gesture-handler';
-import { tailwind } from "tailwind-rn";
 import { AuthContext } from "../provider/AuthContext";
-import { getConversations } from "../database/actions/Message";
 
 
 const ChatScreen = ({ navigation }) => {
-    const [conversation, setConversation] = useState(null);
-    const [convoQuery, setConvoQuery] = useState("");
     const { username } = useContext(AuthContext);
+    const [threads, setThreads] = useState([]);
 
     useEffect(() => {
-        getConversations("jerald").then((response) => console.log(response))
-        
-        // const unsubscribe = firebase.firestore().collection("message")
-        //     .doc(convoQuery)
-        //     .onSnapshot(collection => {
-        //         collection.forEach(doc => {
-        //             console.log(doc.data())
-        //         })
-        //     }
-        // )
+        console.log("")
+        const unsubscribe = firebase.firestore().collection("threads")
+            .onSnapshot(collection => {
+                const userConvo = [];
 
-        // return () => unsubscribe();
+                collection.forEach(doc => {
+                    const message = doc.data();
+                    message._id = doc.id;
+                    if (message.userOne === username || message.userTwo === username) {
+                        userConvo.push(message);
+                    }
+                })
+                setThreads(userConvo)
+                console.log(userConvo)
+            })
+        return () => unsubscribe();
     }, []);
 
     return (
         <View>
             <FlatList
-                data={conversation}
+                data={threads}
+                keyExtractor={item => item._id}
                 renderItem={({ item }) => {
                     return (
                         <List.Item
-                            title={item.name}
-                            keyExtractor={item => item}
-                            description={item.location}
+                            title={item.userOne !== username ? item.userOne : item.userTwo}
                             left={() => <Image source={{ uri: 'https://picsum.photos/700' }} style={{ width: 60, height: 60, borderRadius: 100 }} />}
                             right={() => <List.Icon icon="chevron-right" />}
-                            onPress={() => navigation.navigate("Room", { ...item })}
+                            onPress={() => navigation.navigate("Room", { thread: item._id, username: username })}
                         />
                     )
                 }}
             />
         </View>
-
     );
 }
 

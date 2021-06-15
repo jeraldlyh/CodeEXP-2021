@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
+import { AuthContext } from "../provider/AuthContext";
 import ChatScreen from "../components/ChatScreen";
-import ChatInfo from "../components/ChatInfo";
+import RoomScreen from "../components/RoomScreen";
 
 const Chat = createStackNavigator();
 
 const ChatStack = () => {
+    const { username } = useContext(AuthContext);
+
     return (
         <Chat.Navigator screenOptions={{ headerShown: true }}>
             <Chat.Screen name="Chat" component={ChatScreen} />
-            <Chat.Screen name="Room" component={ChatInfo} />
+            <Chat.Screen 
+                name="Room" 
+                component={RoomScreen} 
+            />
         </Chat.Navigator>
     );
 }
