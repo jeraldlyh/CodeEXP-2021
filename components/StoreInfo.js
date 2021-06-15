@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet, Image, FlatList } from 'react-native';
-import { List, Card, Title, Paragraph, Button } from "react-native-paper";
+import { List, Card, Title, Paragraph, Button, IconButton } from "react-native-paper";
+import tailwind from 'tailwind-rn';
 
 export default function StoreInfo({ route, navigation }) {
     const [expanded, setExpanded] = React.useState(true);
@@ -57,7 +58,12 @@ export default function StoreInfo({ route, navigation }) {
                                 <List.Item
                                     title={item.order}
                                     description={item.price}
-                                    onPress
+                                    onPress right={() => <IconButton
+                                        icon="chat"
+                                        color={"red"}
+                                        size={20}
+                                        onPress={() => navigation.navigate("Room", { ...item })}
+                                      />}
                                 />
                             )
                         }}
