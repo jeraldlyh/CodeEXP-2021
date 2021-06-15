@@ -1,22 +1,54 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import tailwind from 'tailwind-rn';
 import { Text, View  } from 'react-native';
+import { Icon } from "react-native-elements";
 import { Button } from 'react-native-paper';
+import moment from "moment";
+import { AuthContext } from "../provider/AuthContext";
+import TabViewScreen from "./TabViewScreen";
+import { getUserProfile } from "../database/actions/User";
 
 export default function ProfileScreen({ navigation }) {
     const [userProfile, setUserProfile] = useState("");
+    const { username } = useContext(AuthContext);
+
+    useEffect(() => {
+        getUserProfile(username).then(response => {
+            console.log(response)
+            setUserProfile(response);
+        })
+    }, [])
+
+    const populateRating = (rating) => {
+        const stars = [];
+
+        for (var i = 0; i < rating; i++) {
+            stars.push(<Icon key={i} name="star" size={20} />);
+        };
+
+        for (var i = 0; i < 5 - rating; i++) {
+            stars.push(<Icon key={5 * i} name="star-border" />);
+        };
+
+        return stars;
+    }
+
+    const formatJoinedDate = (date) => {
+        const parsedDate = date.split("at")[0].replace(",", "");
+        return "Joined " + moment(parsedDate, "LL").fromNow()
+    }
 
     return (
-        <View>
-            <Button style={tailwind("border-b-2 border-t-2 border-gray-400 bg-white text-black")} labelStyle={tailwind("text-black")} icon="login" mode="contained" onPress={() => navigation.navigate("Login")}>
-                <Text>Login</Text>
-            </Button>
-            <Button style={tailwind("border-b-2 border-gray-400 bg-white text-black")} labelStyle={tailwind("text-black")} icon="account-plus" mode="contained" onPress={() => navigation.navigate("Register")}>
-                <Text>Register</Text>
-            </Button>
-            <Button style={tailwind("border-b-2 border-gray-400 bg-white text-black")} labelStyle={tailwind("text-black")} icon="cog" mode="contained" onPress={() => navigation.navigate("Settings")}>
-                <Text>Settings</Text>
-            </Button>
+        <View style={tailwind("flex-1")}>
+            <View style={tailwind("flex m-5")}>
+                <Text style={tailwind("font-bold text-lg")}>@jerald</Text>
+                <View style={tailwind("mt-2 flex flex-row items-center")}>
+                    <Text style={tailwind("mr-1")}>5.0</Text>
+                    {populateRating(5)}
+                    <Text style={tailwind("ml-5")}>{formatJoinedDate("June 15, 2021 at ")}</Text>
+                </View>
+            </View>
+            <TabViewScreen listing={userProfile.listing} review={userProfile.review}/>
         </View>
     );
 }

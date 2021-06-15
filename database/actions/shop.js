@@ -83,3 +83,21 @@ export const getNearbyShops = (location) => {
     const sectorCode = location.toString().substr(location.length - 6, location.length - 4);
     console.log(sectorCode);
 }
+
+export const isProductExist = (shopName, product) => {
+    return new Promise((resolve, reject) => {
+        firebase.firestore().collection("shop")
+        .doc(shopName)
+        .get()
+        .then(doc => {
+            const listing = doc.data().listings;
+            for (var key in listing) {
+                if (listing[key].order === product) {
+                    resolve(true);
+                }
+            }
+            resolve(false);
+        })
+        .catch(error => reject(error));
+    })
+}
