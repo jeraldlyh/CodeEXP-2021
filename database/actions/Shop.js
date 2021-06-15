@@ -2,6 +2,7 @@ import firebase from "../firebaseDB";
 import postalCodeData from "../postalCode.json";
 import * as Location from 'expo-location';
 import { v4 as uuidv4 } from "uuid";
+import _ from "lodash";
 
 
 export const isShopExist = (shopName) => {
@@ -19,6 +20,10 @@ export const isShopExist = (shopName) => {
 }
 
 export const addShop = (body) => {
+    body.products = body.products.map(product => {      // Manual insert of id
+        return _.merge(product, { _id: uuidv4() })
+    })
+
     return new Promise((resolve, reject) => {
         isShopExist(body.name)
             .then(response => {

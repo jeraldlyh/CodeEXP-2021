@@ -40,7 +40,7 @@ export default function StoreInfo({ route, navigation }) {
 
     useEffect(() => {
         LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
-    })
+    }, [])
 
     return (
         <Provider theme={theme}>
@@ -79,8 +79,9 @@ export default function StoreInfo({ route, navigation }) {
                                 <FlatList
                                     data={route.params.products}
                                     numColumns={2}
-                                    keyExtractor={item => item.name.toString()}
+                                    keyExtractor={item => item._id}
                                     renderItem={({ item }) => {
+                                        console.log(item._id)
                                         return (
                                             <Card style={styles.item}>
                                                 <Card.Cover source={{ uri: item.url }} />
@@ -101,7 +102,7 @@ export default function StoreInfo({ route, navigation }) {
                             >
                                 <FlatList
                                     data={route.params.listings}
-                                    keyExtractor={item => item.name.toString()}
+                                    keyExtractor={item => item._id}
                                     renderItem={({ item }) => {
                                         return (
                                             <List.Item
