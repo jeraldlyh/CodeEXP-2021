@@ -10,7 +10,7 @@ const ChatStack = () => {
     const { username } = useContext(AuthContext);
 
     return (
-        <Chat.Navigator screenOptions={{ headerShown: true }}>
+        <Chat.Navigator screenOptions={{ headerShown: true, headerStyle: { backgroundColor: "red" }, headerTintColor: "white" }}>
             <Chat.Screen name="Chat" component={ChatScreen} />
             <Chat.Screen 
                 name="Room" 
