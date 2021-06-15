@@ -7,10 +7,11 @@ const Chat = createStackNavigator();
 
 const ChatStack = () => {
     return (
-    <Chat.Navigator screenOptions={{ headerShown: true }}>
-        <Chat.Screen name="Chat" component={ChatScreen} />
-        <Chat.Screen name="Room" component={ChatInfo} />
-    </Chat.Navigator> );
+        <Chat.Navigator screenOptions={{ headerShown: true }}>
+            <Chat.Screen name="Chat" component={ChatScreen} />
+            <Chat.Screen name="Room" component={ChatInfo} />
+        </Chat.Navigator>
+    );
 }
- 
+
 export default ChatStack;
