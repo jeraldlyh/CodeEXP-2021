@@ -10,11 +10,11 @@ export const hasExistingConvo = (userOne, userTwo) => {
                 .get()
                 .then(doc => {
                     if (doc.exists) {
-                        i == 0 ? resolve(0) : resolve(1)
+                        resolve(idQuery);
                     } else {
-                        reject(-1)
+                        reject(-1);
                     }
-                })
+                });
         }
     })
     // return new Promise((resolve, reject) => {
@@ -39,9 +39,9 @@ export const createMessage = async(userOne, userTwo, text) => {
     // UserOne will be considered as from
     hasExistingConvo(userOne, userTwo)
         .then(response => {
-            if (response >= 0) {
+            if (response !== -1) {
                 firebase.firestore().collection("message")
-                    .doc(userOne + userTwo)
+                    .doc(response)
                     .update({
                         userOne: userOne,
                         userTwo: userTwo,
@@ -50,7 +50,7 @@ export const createMessage = async(userOne, userTwo, text) => {
                             time: firebase.firestore.Timestamp.now(),
                             text: text
                         })
-                    })
+                    });
             } else {
                 firebase.firestore().collection("message")
                     .doc(userOne + userTwo)
@@ -62,8 +62,7 @@ export const createMessage = async(userOne, userTwo, text) => {
                             time: firebase.firestore.Timestamp.now(),
                             text: text
                         })
-                    })
-            }
-        })
-    
+                    });
+            };
+        });
 }
