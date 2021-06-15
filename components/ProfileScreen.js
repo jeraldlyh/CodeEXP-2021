@@ -17,7 +17,7 @@ export default function ProfileScreen({ navigation }) {
         getUserProfile(username).then(response => {
             setUserProfile(response);
         })
-    }, [])
+    }, []);
 
     const populateRating = (rating) => {
         const stars = [];
@@ -31,24 +31,23 @@ export default function ProfileScreen({ navigation }) {
         };
 
         return stars;
-    }
+    };
 
     const formatJoinedDate = (date) => {
-        const parsedDate = date.split("at")[0].replace(",", "");
-        return "Joined " + moment(parsedDate, "LL").fromNow()
-    }
+        return "Joined " + moment(date).fromNow();
+    };
 
     return (
         <View style={tailwind("flex-1")}>
             <View style={tailwind("flex m-5")}>
                 <Text style={tailwind("font-bold text-lg")}>@jerald</Text>
                 <View style={tailwind("mt-2 flex flex-row items-center")}>
-                    <Text style={tailwind("mr-1")}>5.0</Text>
-                    {populateRating(5)}
-                    <Text style={tailwind("ml-5")}>{formatJoinedDate("June 15, 2021 at ")}</Text>
+                    <Text style={tailwind("mr-1")}>{userProfile.ratings}.0</Text>
+                    {populateRating(userProfile.ratings)}
+                    <Text style={tailwind("ml-5")}>{formatJoinedDate(userProfile.registeredAt)}</Text>
                 </View>
             </View>
             <TabViewScreen listing={userProfile.listing} review={userProfile.review}/>
         </View>
     );
-}
+};
