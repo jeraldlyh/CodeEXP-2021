@@ -8,9 +8,9 @@ const Landing = createStackNavigator();
 
 const LandingPageStack = () => {
   return (
-    <Landing.Navigator screenOptions={{ headerShown: false }}>
-      <Landing.Screen name="Home" component={LandingPageScreen} />
-      <Landing.Screen name="StoreInfo" component={StoreInfo} />
+    <Landing.Navigator >
+      <Landing.Screen name="Home" options={{ headerShown: false   }}component={LandingPageScreen} />
+      <Landing.Screen name="StoreInfo" component={StoreInfo}options={({ route }) => ({ title: route.params.name })}/>
       <Landing.Screen name="AddOrder" component={AddOrder} />
     </Landing.Navigator>
   );
