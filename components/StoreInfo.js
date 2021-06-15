@@ -81,7 +81,6 @@ export default function StoreInfo({ route, navigation }) {
                                     numColumns={2}
                                     keyExtractor={item => item._id}
                                     renderItem={({ item }) => {
-                                        console.log(item._id)
                                         return (
                                             <Card style={styles.item}>
                                                 <Card.Cover source={{ uri: item.url }} />
@@ -134,9 +133,11 @@ export default function StoreInfo({ route, navigation }) {
                                                 setSelectedLanguage(itemValue)
                                             }
                                         >
-                                            {route.params.products.map((item, index) => {
-                                                return (<Picker.Item label={item.name} value={item.name} />)
-                                            })}
+                                            {
+                                                route.params.products.map((item, index) => {
+                                                    return (<Picker.Item key={index} label={item.name} value={item.name} />)
+                                                })
+                                            }
                                         </Picker>
                                         <TextInput
                                             raised

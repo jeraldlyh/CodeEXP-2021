@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { IconButton, Colors, Searchbar, List } from 'react-native-paper';
-import {  Text, View, FlatList, Image } from 'react-native';
+import {  Text, View, FlatList, Image,  LogBox } from 'react-native';
 import tailwind from 'tailwind-rn';
 import firebase from "../database/firebaseDB";
 
@@ -9,6 +9,7 @@ const LandingPageScreen = ({navigation}) => {
     const [tempData, setTempData] = useState('');
     const [itemData, setItemData] = React.useState("");
     useEffect(() => {
+        LogBox.ignoreLogs(["Setting a timer"])
         const unsubscribe = firebase.firestore().collection("shop").onSnapshot((collection => {
             const shopData = collection.docs.map(doc => doc.data())
             setItemData(shopData);
