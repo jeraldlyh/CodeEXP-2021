@@ -1,6 +1,7 @@
 import firebase from "../firebaseDB";
 import postalCodeData from "../postalCode.json";
 import * as Location from 'expo-location';
+import { v4 as uuidv4 } from "uuid";
 
 
 export const isShopExist = (shopName) => {
@@ -31,7 +32,8 @@ export const addShop = (body) => {
                         listings: body.listings,
                         rating: body.rating,
                         products: body.products,
-                        reviews: body.reviews
+                        reviews: body.reviews,
+                        _id: uuidv4()
                     });
                     console.log("Shop added");
                     resolve("Shop added");
