@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { IconButton, Colors, Searchbar, List } from 'react-native-paper';
-import {  Text, View, FlatList, Image,  LogBox } from 'react-native';
+import {  Text, View, FlatList, Image,  LogBox, ScrollView } from 'react-native';
 import tailwind from 'tailwind-rn';
 import firebase from "../database/firebaseDB";
 
@@ -13,6 +13,7 @@ const LandingPageScreen = ({navigation}) => {
         const unsubscribe = firebase.firestore().collection("shop").onSnapshot((collection => {
             const shopData = collection.docs.map(doc => doc.data())
             setItemData(shopData);
+            console.log(shopData);
             setTempData(shopData);
         }))
 
@@ -40,7 +41,7 @@ const LandingPageScreen = ({navigation}) => {
         };
     }
         
-    return (<View >
+    return (<ScrollView >
         <View style={tailwind("flex my-5 items-center")}>
             <Searchbar style={tailwind("w-4/5 border-solid border-2 border-red-500")}
                 placeholder="Search"
@@ -99,7 +100,7 @@ const LandingPageScreen = ({navigation}) => {
                 }}
             />
         </View>
-    </View>);
+    </ScrollView>);
 }
 
 export default LandingPageScreen;
