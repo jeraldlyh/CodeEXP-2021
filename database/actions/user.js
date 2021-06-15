@@ -1,5 +1,4 @@
 import firebase from "../firebaseDB";
-import { isProductExist } from "./Shop";
 
 // Manual cloud function trigger
 export const createUser = (username) => {
