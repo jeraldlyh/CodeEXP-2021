@@ -1,16 +1,37 @@
 import React from 'react';
+import { Picker } from "@react-native-picker/picker";
 import { ScrollView } from 'react-native';
 import { Text, View, StyleSheet, Image, FlatList, SafeAreaView, StatusBar } from 'react-native';
-import { List, Card, Title, Paragraph, Button, IconButton } from "react-native-paper";
+import { List, Card, Title, Paragraph, Button, IconButton, Modal, Portal, Provider, TextInput, DefaultTheme } from "react-native-paper";
 import tailwind from 'tailwind-rn';
 
 export default function StoreInfo({ route, navigation }) {
-    const [expanded, setExpanded] = React.useState(true);
-    const handlePress = () => setExpanded(!expanded);
+  // Accordion
+  const [expanded, setExpanded] = React.useState(true);
+  const handlePress = () => setExpanded(!expanded);
+
+  // Modal
+  const [visible, setVisible] = React.useState(false);
+  const showModal = () => setVisible(true);
+  const hideModal = () => setVisible(false);
+  const containerStyle = { backgroundColor: "white", padding: 20 };
+  const [text, setText] = React.useState("");
+  const [selectedLanguage, setSelectedLanguage] = React.useState("");
+
+  const theme = {
+    ...DefaultTheme,
+    roundness: 2,
+    colors: {
+      ...DefaultTheme.colors,
+      primary: 'red'
+    },
+  };
 
     return (
+      <Provider theme={theme}>
         <SafeAreaView style={styles.container}>
             <ScrollView>
+              
                 <Image source={{ uri: route.params.img }} style={{
                     width: '100%',
                     height: 200
@@ -79,18 +100,64 @@ export default function StoreInfo({ route, navigation }) {
                                 )
                             }}
                         />
-                        <View style={tailwind("flex flex-row justify-around mt-5 ")}>
-                            <Button labelStyle={tailwind("text-white text-lg")} style={tailwind("border-gray-400 border-b bg-red-500 w-2/5")} mode="contained" onPress={() => navigation.navigate("AddOrder")}>
-                                <Text >Add Order</Text>
-                            </Button>
-
-                        </View>
+                        
+                          <Portal>
+                            <Modal
+                              visible={visible}
+                              onDismiss={hideModal}
+                              contentContainerStyle={containerStyle}
+                            >
+                              <Title style={{textAlign: "center", color: "black"}}>Add Order</Title>
+                              <Picker
+                                  style={{height: 50, margin: "2%"}}
+                                  mode="dropdown"
+                                  selectedValue={selectedLanguage}
+                                  onValueChange={(itemValue, itemIndex) =>
+                                    setSelectedLanguage(itemValue)
+                                  }
+                              >
+                                {route.params.products.map((item, index) => {
+                                    return (<Picker.Item label={item.name} value={item.name}/>) 
+                                })}
+                              </Picker>
+                              <TextInput
+                                raised
+                                theme={{ colors: { primary: "red", text: "black", label: "black", accent: "black" } }}
+                                style={{height: 50, margin: "2%", backgroundColor: "white", border: "1px solid black"}}
+                                placeholderTextColor="black"
+                                
+                                label="Price"
+                                placeholder="State the price you are willing to pay"
+                                value={text}
+                                onChangeText={(text) => setText(text)}
+                              />
+                              <Button
+                                style={{height: 30, margin: "2%"}}
+                                mode="contained"
+                                raised
+                                theme={{ colors: { primary: "red" } }}
+                                onPress={() => console.log("Order Submission")}
+                              >
+                                Submit Order
+                              </Button>
+                            </Modal>
+                          </Portal>
+                          <Button
+                            mode="text"
+                            raised
+                            theme={{ colors: { primary: "red" } }}
+                            onPress={showModal}
+                          >
+                            Add Order
+                          </Button>
                         
                     </List.Accordion>
                 </List.Section>
+              
             </ScrollView>
 
         </SafeAreaView>
+        </Provider>
     );
 }
 

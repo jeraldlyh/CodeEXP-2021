@@ -31,11 +31,12 @@ export default function App() {
     return (
         <AuthContextProvider>
             <NavigationContainer>
-                <View>
+                {/* <View>
                     <Appbar.Header style={tailwind("bg-red-500")}>
+                        <Appbar.BackAction onPress={() => {}} />
                         <Appbar.Content titleStyle={{ textAlign: "center" }} color="white" title="RedDot" />
                     </Appbar.Header>
-                </View>
+                </View> */}
                 <TabStack />
                 {/* <BottomNavigation barStyle={{ backgroundColor: 'red' }}
                     navigationState={{ index, routes }}
