@@ -6,24 +6,44 @@ import firebase from "../database/firebaseDB";
 
 const LandingPageScreen = ({navigation}) => {
     const [searchQuery, setSearchQuery] = useState('');
-
+    const [tempData, setTempData] = useState('');
     const [itemData, setItemData] = React.useState("");
     useEffect(() => {
         const unsubscribe = firebase.firestore().collection("shop").onSnapshot((collection => {
             const shopData = collection.docs.map(doc => doc.data())
             setItemData(shopData);
+            setTempData(shopData);
         }))
 
         return () => unsubscribe();
     }, []);
+    const searchFilterFunction = text => {
+        setSearchQuery(text);
+        console.log(text);
+        if (text != '') {
+            const newData = tempData.filter(item => {
+                const compareData = `${item.name.toUpperCase()}`;
 
-    const onChangeSearch = query => setSearchQuery(query);
+                const textData = text.toUpperCase();
+
+                return compareData.indexOf(textData) > -1;
+            });
+            setItemData(newData);
+        } else {
+            const unsubscribe = firebase.firestore().collection("shop").onSnapshot((collection => {
+                const shopData = collection.docs.map(doc => doc.data())
+                setItemData(shopData);
+            }))
+    
+            return () => unsubscribe();
+        };
+    }
+        
     return (<View >
         <View style={tailwind("flex my-5 items-center")}>
             <Searchbar style={tailwind("w-4/5 border-solid border-2 border-red-500")}
                 placeholder="Search"
-                onChangeText={onChangeSearch}
-                value={searchQuery}
+                onChangeText={text => searchFilterFunction(text)}
             />
         </View>
 
