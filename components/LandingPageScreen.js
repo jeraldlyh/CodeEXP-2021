@@ -9,11 +9,10 @@ const LandingPageScreen = ({navigation}) => {
     const [tempData, setTempData] = useState('');
     const [itemData, setItemData] = React.useState("");
     useEffect(() => {
-        LogBox.ignoreLogs(["Setting a timer"])
+        // LogBox.ignoreLogs(["Setting a timer"])
         const unsubscribe = firebase.firestore().collection("shop").onSnapshot((collection => {
             const shopData = collection.docs.map(doc => doc.data())
             setItemData(shopData);
-            console.log(shopData);
             setTempData(shopData);
         }))
 
@@ -21,15 +20,15 @@ const LandingPageScreen = ({navigation}) => {
     }, []);
     const searchFilterFunction = text => {
         setSearchQuery(text);
-        console.log(text);
         if (text != '') {
-            const newData = tempData.filter(item => {
+            var newData = tempData.filter(item => {
                 const compareData = `${item.name.toUpperCase()}`;
-
+                const compareLocationData = `${item.location.toUpperCase()}`;
                 const textData = text.toUpperCase();
 
-                return compareData.indexOf(textData) > -1;
+                return compareData.indexOf(textData) > -1 || compareLocationData.indexOf(textData) > -1;
             });
+
             setItemData(newData);
         } else {
             const unsubscribe = firebase.firestore().collection("shop").onSnapshot((collection => {
@@ -42,14 +41,21 @@ const LandingPageScreen = ({navigation}) => {
     }
         
     return (<ScrollView >
-        <View style={tailwind("flex my-5 items-center")}>
-            <Searchbar style={tailwind("w-4/5 border-solid border-2 border-red-500")}
+        <View style={tailwind("flex-row mt-8 justify-center items-center")}>
+            <Searchbar style={tailwind("ml-5 w-4/5 border-solid border-2 border-red-500")}
                 placeholder="Search"
                 onChangeText={text => searchFilterFunction(text)}
             />
+{/* <View style={tailwind("text-center")}> */}
+                <IconButton
+                    icon="near-me"
+                    color={Colors.red500}
+                    size={40}
+                    onPress={() => navigation.navigate("Nearby")} />
+            {/* </View> */}
         </View>
 
-        <View style={tailwind("flex flex-row justify-center")}>
+        <View style={tailwind("flex flex-row justify-evenly")}>
             <View style={tailwind("text-center")}>
                 <IconButton
                     icon="food-fork-drink"
@@ -66,22 +72,7 @@ const LandingPageScreen = ({navigation}) => {
                     onPress={() => console.log('Pressed')} />
                 <Text style={tailwind("text-center")}>Shops</Text>
             </View>
-            <View style={tailwind("text-center")}>
-                <IconButton
-                    icon="near-me"
-                    color={Colors.red500}
-                    size={50}
-                    onPress={() => navigation.navigate("Nearby")} />
-                <Text style={tailwind("text-center")}>Nearby</Text>
-            </View>
-            <View style={tailwind("text-center")}>
-                <IconButton style={tailwind("mx-5")}
-                    icon="home"
-                    color={Colors.red500}
-                    size={50}
-                    onPress={() => console.log('Pressed')} />
-                <Text style={tailwind("text-center")}>Neighbourhood</Text>
-            </View>
+            
         </View>
         <View>
             <FlatList
