@@ -10,12 +10,14 @@ function LoginScreen({ navigation }) {
     const [password, setPassword] = useState({ value: '', error: '' });
     const [error, setError] = useState("");
 
-    const { setUsername } = useContext(AuthContext);
+    const { setUsername, setIsLoggedIn } = useContext(AuthContext);
 
     const onLoginPressed = () => {
         loginUser(email, password)
             .then(response => {
                 setUsername(response);
+                setIsLoggedIn(true);
+                navigation.navigate("Profile", { screen: "Profile" });
             })
             .catch(error => {
                 setError(error.toString().split(":")[1].substr(1));

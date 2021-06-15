@@ -17,7 +17,7 @@ function RegisterScreen({ navigation }) {
             .then(response => {
                 setIsLoggedIn(true);
                 setUsername(response);
-                navigation.popToTop();
+                navigation.navigate("Profile", { screen: "Profile" });
             })
             .catch(error => {
                 setError(error.toString().split(":")[1].substr(1));
