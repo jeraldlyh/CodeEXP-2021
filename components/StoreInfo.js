@@ -1,60 +1,8 @@
 import React from 'react';
 import { Text, View, StyleSheet, Image, FlatList } from 'react-native';
-import { List, Card, Title, Paragraph, DataTable, Button } from "react-native-paper";
-import firebase from "../database/firebaseDB";
+import { List, Card, Title, Paragraph, Button } from "react-native-paper";
 
-const ITEMDATA = [
-  {
-    url: 'https://picsum.photos/700',
-    name: 'Item',
-    price: '100'
-  },
-  {
-    url: 'https://picsum.photos/700',
-    name: 'Item',
-    price: '100'
-  },
-  {
-    url: 'https://picsum.photos/700',
-    name: 'Item',
-    price: '100'
-  },
-  {
-    url: 'https://picsum.photos/700',
-    name: 'Item',
-    price: '100'
-  },
-  {
-    url: 'https://picsum.photos/700',
-    name: 'Item',
-    price: '100'
-  },
-  {
-    url: 'https://picsum.photos/700',
-    name: 'Item',
-    price: '100'
-  },
-];
-
-const LISTINGDATA = [
-  {
-    user: 'username',
-    order: 'ordering items + quantity',
-    price: '100'
-  },
-  {
-    user: 'username',
-    order: 'ordering items + quantity',
-    price: '100'
-  },
-  {
-    user: 'username',
-    order: 'ordering items + quantity',
-    price: '100'
-  },
-];
-
-export default function StoreInfo({route}) {
+export default function StoreInfo({route, navigation}) {
     const [expanded, setExpanded] = React.useState(true);
     const handlePress = () => setExpanded(!expanded);
 
@@ -64,21 +12,22 @@ export default function StoreInfo({route}) {
                 width: '100%',
                 height: 200
             }}/>
-            <Title>Store Name <Button icon="star" mode="text" onPress={() => console.log('Bookmark')}></Button></Title>
-            <Text>Address</Text>
+            <Title>{route.params.name}<Button icon="star" raised theme={{ colors: {primary: 'red'} }} mode="text" onPress={() => console.log('Bookmark')}></Button></Title>
+            <Text>{route.params.location}</Text>
             <Text>Opening Hours??</Text>
             <List.Section>
-                <List.Accordion
+                <List.Accordion raised theme={{ colors: {primary: 'red'} }}
                     title="Description"
                     onPress={handlePress}
                 >
-                    <Text>Info about the store</Text>
+                    <Text>{route.params.description}</Text>
                 </List.Accordion>
                 <List.Accordion
+                    raised theme={{ colors: {primary: 'red'} }}
                     title="Menu"
                 >
                     <FlatList
-                    data={ITEMDATA}
+                    data={route.params.products}
                     numColumns={2}
                     keyExtractor={(item, index) => item.id }
                     renderItem={({item}) => {
@@ -97,10 +46,11 @@ export default function StoreInfo({route}) {
                 </List.Accordion>
 
                 <List.Accordion
+                    raised theme={{ colors: {primary: 'red'} }}
                     title="Orders"
                 >
                     <FlatList
-                        data={LISTINGDATA}
+                        data={route.params.listings}
                         keyExtractor={(item, index) => item.id }
                         renderItem={({item}) => {
                             return (
@@ -112,7 +62,7 @@ export default function StoreInfo({route}) {
                             )
                         }}
                     />
-                    <Button mode="text" onPress={() => navigation.navigate("AddOrder")}>
+                    <Button mode="text" raised theme={{ colors: {primary: 'red'} }} onPress={() => navigation.navigate("AddOrder")}>
                         Add Order
                     </Button>
                 </List.Accordion>

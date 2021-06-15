@@ -10,7 +10,6 @@ const TabStack = () => {
         <Tab.Navigator>
             <Tab.Screen name="Home"  component={LandingPageStack} />
             <Tab.Screen name="Profile" component={RootProfileStack} />
-
         </Tab.Navigator>
     )
 }
