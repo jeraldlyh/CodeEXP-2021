@@ -154,13 +154,29 @@ export const isProductExist = (shopName, product) => {
         .doc(shopName)
         .get()
         .then(doc => {
-            const listing = doc.data().listings;
-            for (var key in listing) {
-                if (listing[key].order === product) {
-                    resolve(true);
-                }
+            const products = doc.data().products;
+            const productName = products.map(product => product.name);
+
+            if (productName.includes(product)) {
+                resolve(true);
             }
             resolve(false);
+        })
+        .catch(error => reject(error));
+    })
+}
+
+export const getProductByName = (shopName, productName) => {
+    return new Promise((resolve, reject) => {
+        firebase.firestore().collection("shop")
+        .doc(shopName)
+        .get()
+        .then(doc => {
+            const products = doc.data().products;
+            const productData = products.filter(function(product) {
+                return product.name === productName;
+            });
+            resolve(productData[0]);
         })
         .catch(error => reject(error));
     })

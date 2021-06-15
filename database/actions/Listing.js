@@ -1,22 +1,32 @@
 import firebase from "../firebaseDB";
+import { getProductByName, isProductExist } from "./Shop";
+import _ from "lodash";
 
 export const addListing = (username, shopName, product, quantity) => {
     return new Promise((resolve, reject) => {
-        const newListing = {
-            product: product,
+        var newListing = {
             quantity: quantity,
-            listAt: firebase.firestore.Timestamp.now()
+            listAt: new Date().getTime()
         };
-    
+
         isProductExist(shopName, product)
             .then(response => {
                 if (response) {
-                    firebase.firestore().collection("user")
-                        .doc(username)
-                        .update({
-                            listing: firebase.firestore.FieldValue.arrayUnion(newListing)
-                        });
-                        resolve("Successfully added listing");
+                    getProductByName(shopName, product)
+                        .then(data => {
+                            newListing = _.merge(newListing, data)
+                            firebase.firestore().collection("user")
+                                .doc(username)
+                                .update({
+                                    listing: firebase.firestore.FieldValue.arrayUnion(newListing)
+                                });
+                            firebase.firestore().collection("shop")
+                                .doc(shopName)
+                                .update({
+                                    listing: firebase.firestore.FieldValue.arrayUnion(_.merge(newListing, { username: username }))
+                                })
+                                resolve("Successfully added listing");
+                    })
                 } else {
                     reject("Product does not exist");
                 }
