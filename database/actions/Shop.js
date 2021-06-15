@@ -24,6 +24,10 @@ export const addShop = (body) => {
         return _.merge(product, { _id: uuidv4() })
     })
 
+    body.listings = body.listings.map(listing => {      // Manual insert of id
+        return _.merge(listing, { _id: uuidv4() })
+    })
+
     return new Promise((resolve, reject) => {
         isShopExist(body.name)
             .then(response => {
