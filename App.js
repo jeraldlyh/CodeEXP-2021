@@ -6,6 +6,8 @@ import { View } from 'react-native';
 // import RootProfileStack from './stacks/RootProfileStack';
 import AuthContextProvider from "./provider/AuthContext"
 import TabStack from './stacks/TabStack';
+import { createStackNavigator } from "@react-navigation/stack";
+import StoreInfo from "./components/StoreInfo";
 
 export default function App() {
     // const [index, setIndex] = React.useState(0);
@@ -24,6 +26,7 @@ export default function App() {
 
     // });
 
+    const Stack = createStackNavigator();
 
     return (
         <AuthContextProvider>

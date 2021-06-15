@@ -54,7 +54,7 @@ const LISTINGDATA = [
   },
 ];
 
-export default function App() {
+export default function StoreInfo({route}) {
     const [expanded, setExpanded] = React.useState(true);
     const handlePress = () => setExpanded(!expanded);
 

@@ -1,11 +1,19 @@
-import React, {useState} from 'react';
-import { IconButton, Colors, Searchbar } from 'react-native-paper';
-import {  Text, View, Button } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { IconButton, Colors, Searchbar, List } from 'react-native-paper';
+import {  Text, View, Button, FlatList, Image } from 'react-native';
 import tailwind from 'tailwind-rn';
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
+import { getAllShops } from "../database/actions/shop.js";
+import StoreInfo from "./StoreInfo";
 
-
-const LandingPageTabs = () => {
+const LandingPageScreen = ({navigation}) => {
     const [searchQuery, setSearchQuery] = useState('');
+
+    const [itemData, setItemData] = React.useState("");
+    useEffect(() => {
+        getAllShops().then(response => setItemData(response));
+    }, []);
 
     const onChangeSearch = query => setSearchQuery(query);
     return (<View >
@@ -51,7 +59,37 @@ const LandingPageTabs = () => {
                 <Text style={tailwind("text-center")}>Neighbourhood</Text>
             </View>
         </View>
+        <View>
+            <FlatList
+                data={itemData}
+                renderItem={({item}) => {
+                    return (
+                        <List.Item 
+                            title={item.name}
+                            description={item.location}
+                            left={() => <Image source={{ uri: item.img }}
+                                                style={{ width:60, height:60 }}/>}
+                            onPress={() => navigation.navigate("StoreInfo")}
+                        />
+                    )
+                }}
+            />
+        </View>
     </View>);
 }
 
-export default LandingPageTabs;
+// const Stack = createStackNavigator();
+
+// export default function App() {
+//   return (
+//     <NavigationContainer independent={true}>
+//       <Stack.Navigator>
+//         <Stack.Screen name="Home" component={LandingPageTabs} />
+//         <Stack.Screen name="Store Info" component={StoreInfo} />
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//   );
+// }
+
+
+export default LandingPageScreen;
