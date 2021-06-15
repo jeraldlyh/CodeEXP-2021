@@ -1,10 +1,13 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, Fragment } from 'react';
 import { Picker } from "@react-native-picker/picker";
 import { Text, View, StyleSheet, Image, FlatList, SafeAreaView, ScrollView, LogBox } from 'react-native';
 import { List, Card, Title, Paragraph, Button, IconButton, Modal, Portal, Provider, TextInput, DefaultTheme } from "react-native-paper";
+import { BlurView } from 'expo-blur';
 import tailwind from 'tailwind-rn';
 import { AuthContext } from '../provider/AuthContext';
 import { addBookmark } from '../database/actions/Bookmark';
+import NumericInput from 'react-native-numeric-input';
+import { addListing } from '../database/actions/Listing';
 
 export default function StoreInfo({ route, navigation }) {
     // Accordion
@@ -16,8 +19,9 @@ export default function StoreInfo({ route, navigation }) {
     const showModal = () => setVisible(true);
     const hideModal = () => setVisible(false);
     const containerStyle = { backgroundColor: "white", padding: 20 };
-    const [text, setText] = useState("");
-    const [selectedLanguage, setSelectedLanguage] = useState("");
+    const [price, setPrice] = useState("");
+    const [quantity, setQuantity] = useState(0);
+    const [product, setProduct] = useState("");
 
     const { username, isLoggedIn } = useContext(AuthContext);
 
@@ -36,6 +40,15 @@ export default function StoreInfo({ route, navigation }) {
             ...DefaultTheme.colors,
             primary: 'red'
         },
+    };
+
+    const submitOrder = () => {
+        addListing(username, route.params.name, product, quantity)
+            .then(response => {         // Reset form fields
+                setQuantity(0);
+                setPrice("")
+                hideModal();
+            });
     };
 
     useEffect(() => {
@@ -66,12 +79,15 @@ export default function StoreInfo({ route, navigation }) {
                     <View>
 
                         <List.Section>
+                            {/* DESCRIPTION */}
                             <List.Accordion style={tailwind("pl-5 border-b-2 border-red-500")} raised theme={{ colors: { primary: 'red' } }}
                                 title="Description"
                                 onPress={handlePress}
                             >
                                 <Text style={tailwind("p-5")}>{route.params.description}</Text>
                             </List.Accordion>
+
+                            {/* PRODUCTS */}
                             <List.Accordion style={tailwind("pl-5 border-b-2 border-red-500")}
                                 raised theme={{ colors: { primary: 'red' } }}
                                 title="Menu"
@@ -92,83 +108,107 @@ export default function StoreInfo({ route, navigation }) {
                                         )
                                     }}
                                 />
-
                             </List.Accordion>
 
+                            {/* LISTINGS */}
                             <List.Accordion style={tailwind("pl-5 border-b-2 border-red-500")}
                                 raised theme={{ colors: { primary: 'red' } }}
                                 title="Orders"
                             >
-                                <FlatList
-                                    data={route.params.listings}
-                                    keyExtractor={item => item._id}
-                                    renderItem={({ item }) => {
-                                        return (
-                                            <List.Item
-                                                title={item.order}
-                                                description={item.price}
-                                                onPress right={() => <IconButton
-                                                    icon="chat"
-                                                    color={"red"}
-                                                    size={20}
-                                                    onPress={() => navigation.navigate("Room", { ...item })}
-                                                />}
-                                            />
-                                        )
-                                    }}
-                                />
+                                <View style={tailwind("flex")}>
+                                    {
+                                        isLoggedIn
+                                            ? <Fragment />
+                                            : <BlurView intensity={300} style={{  height: 300, position: 'absolute', top: 0, left: 0, width: '100%', zIndex: 100 }}>
+                                                <View style={tailwind("flex flex-col justify-center items-center")}>
+                                                    <Text style={tailwind("text-center")}>Hello! I am bluring contents underneath</Text>
+                                                    <Button>test</Button>
+                                                </View>
+                                            </BlurView>
+                                    }
+                                    <FlatList
+                                        data={route.params.listings}
+                                        keyExtractor={item => item._id}
+                                        renderItem={({ item }) => {
+                                            return (
+                                                <List.Item
+                                                    title={item.order}
+                                                    description={item.price}
+                                                    onPress right={() => <IconButton
+                                                        icon="chat"
+                                                        color={"red"}
+                                                        size={20}
+                                                        onPress={() => navigation.navigate("Room", { ...item })}
+                                                    />}
+                                                />
+                                            )
+                                        }}
+                                    />
+                                    
 
-                                <Portal>
-                                    <Modal
-                                        visible={visible}
-                                        onDismiss={hideModal}
-                                        contentContainerStyle={containerStyle}
+                                    <Portal>
+                                        <Modal
+                                            visible={visible}
+                                            onDismiss={hideModal}
+                                            contentContainerStyle={containerStyle}
+                                        >
+                                            <Title style={{ textAlign: "center", color: "black" }}>Add Order</Title>
+                                            <Picker
+                                                style={{ height: 50, margin: "2%" }}
+                                                mode="dropdown"
+                                                selectedValue={product}
+                                                onValueChange={(itemValue, itemIndex) => setProduct(itemValue)}
+                                            >
+                                                {
+                                                    route.params.products.map((item, index) => {
+                                                        return (<Picker.Item key={index} label={item.name} value={item.name} />)
+                                                    })
+                                                }
+                                            </Picker>
+                                            <View style={tailwind("flex flex-row justify-between items-center")}>
+                                                <NumericInput
+                                                    initValue={quantity}
+                                                    value={quantity}
+                                                    onChange={quantity => setQuantity(quantity)}
+                                                    rounded
+                                                    totalHeight={40}
+                                                    textColor='#103900'
+                                                    iconStyle={{ color: 'white' }}
+                                                    rightButtonBackgroundColor='#EA3788'
+                                                    leftButtonBackgroundColor='#E56B70'
+                                                />
+                                                <TextInput
+                                                    raised
+                                                    theme={{ colors: { primary: "red", text: "black", label: "black", accent: "black" } }}
+                                                    style={tailwind("bg-white w-3/5")}
+                                                    placeholderTextColor="black"
+
+                                                    label="Price"
+                                                    placeholder="State the price you are willing to pay"
+                                                    value={price}
+                                                    onChangeText={(price) => setPrice(price)}
+                                                />
+                                            </View>
+                                            <Button
+                                                style={{ height: 30, margin: "2%" }}
+                                                mode="contained"
+                                                raised
+                                                theme={{ colors: { primary: "red" } }}
+                                                onPress={() => submitOrder()}
+                                            >
+                                                Submit Order
+                                            </Button>
+                                        </Modal>
+                                    </Portal>
+                                    <Button
+                                        mode="text"
+                                        raised
+                                        theme={{ colors: { primary: "red" } }}
+                                        onPress={showModal}
                                     >
-                                        <Title style={{ textAlign: "center", color: "black" }}>Add Order</Title>
-                                        <Picker
-                                            style={{ height: 50, margin: "2%" }}
-                                            mode="dropdown"
-                                            selectedValue={selectedLanguage}
-                                            onValueChange={(itemValue, itemIndex) =>
-                                                setSelectedLanguage(itemValue)
-                                            }
-                                        >
-                                            {
-                                                route.params.products.map((item, index) => {
-                                                    return (<Picker.Item key={index} label={item.name} value={item.name} />)
-                                                })
-                                            }
-                                        </Picker>
-                                        <TextInput
-                                            raised
-                                            theme={{ colors: { primary: "red", text: "black", label: "black", accent: "black" } }}
-                                            style={{ height: 50, margin: "2%", backgroundColor: "white", border: "1px solid black" }}
-                                            placeholderTextColor="black"
-
-                                            label="Price"
-                                            placeholder="State the price you are willing to pay"
-                                            value={text}
-                                            onChangeText={(text) => setText(text)}
-                                        />
-                                        <Button
-                                            style={{ height: 30, margin: "2%" }}
-                                            mode="contained"
-                                            raised
-                                            theme={{ colors: { primary: "red" } }}
-                                            onPress={() => console.log("Order Submission")}
-                                        >
-                                            Submit Order
-                                        </Button>
-                                    </Modal>
-                                </Portal>
-                                <Button
-                                    mode="text"
-                                    raised
-                                    theme={{ colors: { primary: "red" } }}
-                                    onPress={showModal}
-                                >
-                                    Add Order
-                                </Button>
+                                        Add Order
+                                    </Button>
+                                </View>
                             </List.Accordion>
                         </List.Section>
                     </View>
