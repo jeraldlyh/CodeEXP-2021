@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { IconButton, Colors, Searchbar, List } from 'react-native-paper';
-import {  Text, View, FlatList, Image,  LogBox, ScrollView } from 'react-native';
+import { Text, View, FlatList, Image, LogBox, ScrollView } from 'react-native';
 import tailwind from 'tailwind-rn';
 import firebase from "../database/firebaseDB";
 
-const LandingPageScreen = ({navigation}) => {
+const LandingPageScreen = ({ navigation }) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [tempData, setTempData] = useState('');
     const [itemData, setItemData] = React.useState("");
@@ -35,33 +35,60 @@ const LandingPageScreen = ({navigation}) => {
                 const shopData = collection.docs.map(doc => doc.data())
                 setItemData(shopData);
             }))
-    
+
             return () => unsubscribe();
         };
     }
-        
+    const shopViewFunction = () => {
+        var newData = tempData.filter(item => {
+            const compareData = `${item.type.toUpperCase()}`;
+            const textData = "Shop".toUpperCase();
+            return compareData.indexOf("SHOP") > -1;
+        });
+        setItemData(newData);
+    }
+    const hawkerViewFunction = () => {
+        var newData = tempData.filter(item => {
+            const compareData = `${item.type.toUpperCase()}`;
+            return compareData.indexOf("HAWKER") > -1;
+        });
+        console.log(newData);
+        setItemData(newData);
+    }
+    const allViewFunction = () => {
+        setItemData(tempData);
+    }
     return (<ScrollView >
+
         <View style={tailwind("flex-row mt-8 justify-center items-center")}>
             <Searchbar style={tailwind("ml-5 w-4/5 border-solid border-2 border-red-500")}
                 placeholder="Search"
                 onChangeText={text => searchFilterFunction(text)}
             />
-{/* <View style={tailwind("text-center")}> */}
-                <IconButton
-                    icon="near-me"
-                    color={Colors.red500}
-                    size={40}
-                    onPress={() => navigation.navigate("Nearby")} />
+            {/* <View style={tailwind("text-center")}> */}
+            <IconButton
+                icon="near-me"
+                color={Colors.red500}
+                size={40}
+                onPress={() => navigation.navigate("Nearby")} />
             {/* </View> */}
         </View>
 
         <View style={tailwind("flex flex-row justify-evenly")}>
             <View style={tailwind("text-center")}>
                 <IconButton
+                    icon="cart"
+                    color={Colors.red500}
+                    size={50}
+                    onPress={allViewFunction} />
+                <Text style={tailwind("text-center")}>All</Text>
+            </View>
+            <View style={tailwind("text-center")}>
+                <IconButton
                     icon="food-fork-drink"
                     color={Colors.red500}
                     size={50}
-                    onPress={() => console.log('Pressed')} />
+                    onPress={hawkerViewFunction} />
                 <Text style={tailwind("text-center")}>Hawker</Text>
             </View>
             <View style={tailwind("text-center")}>
@@ -69,23 +96,23 @@ const LandingPageScreen = ({navigation}) => {
                     icon="store"
                     color={Colors.red500}
                     size={50}
-                    onPress={() => console.log('Pressed')} />
+                    onPress={shopViewFunction} />
                 <Text style={tailwind("text-center")}>Shops</Text>
             </View>
-            
+
         </View>
         <View>
             <FlatList
                 data={itemData}
                 keyExtractor={item => item.name}
-                renderItem={({item}) => {
+                renderItem={({ item }) => {
                     return (
-                        <List.Item 
+                        <List.Item
                             title={item.name}
                             description={item.location}
                             left={() => <Image source={{ uri: item.img }}
-                                                style={{ width:60, height:60 }}/>}
-                            onPress={() => navigation.navigate("StoreInfo", {...item})}
+                                style={{ width: 60, height: 60 }} />}
+                            onPress={() => navigation.navigate("StoreInfo", { ...item })}
                         />
                     )
                 }}
