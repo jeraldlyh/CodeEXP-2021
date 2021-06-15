@@ -7,10 +7,8 @@ function NearbyScreen() {
     const [nearbyShops, setNearbyShops] = useState([]);
 
     useEffect(() => {
-        // getNearbyShops()
         getNearbyShops().then(response => setNearbyShops(response))
     }, [])
-
 
     return (
         <View>

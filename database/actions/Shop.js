@@ -83,7 +83,7 @@ export const getShopByName = (shopName) => {
 
 export const getNearbyShops = async() => {
         let { status } = await Location.requestForegroundPermissionsAsync();
-    console.log(status)
+
         if (status) {
             let { coords } = await Location.getCurrentPositionAsync({accuracy:Location.Accuracy.High});
         
@@ -93,7 +93,6 @@ export const getNearbyShops = async() => {
                     latitude,
                     longitude
                 })
-                console.log("here")
 
                 const sectorCode = response[0].postalCode.toString().substr(response[0].postalCode.length - 6, response[0].postalCode.length - 4);
                 var nearbyPostal = [];
@@ -121,7 +120,6 @@ export const getNearbyShops = async() => {
                             });
     
                             if (nearbyShops !== 0) {        // Nearby shops exist in database
-                                console.log(nearbyShops)
                                 resolve(nearbyShops);
                             } else {
                                 reject("No nearby shops found");
