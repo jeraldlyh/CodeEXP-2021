@@ -1,14 +1,17 @@
 import firebase from "../firebaseDB";
+import { isProductExist } from "./Shop";
 
 // Manual cloud function trigger
 export const createUser = (username) => {
     firebase.firestore().collection("user")
         .doc(username)
         .set({
+            registeredAt: firebase.firestore.Timestamp.now(),
             ratings: 0,
             enableNotification: false,
             trips: 0,
             listing: [],
+            review: [],
             bookmarks: []
         });
 }
@@ -57,5 +60,4 @@ export const getUserProfile = (username) => {
                 reject(error);
             })
     })
-    
 }
