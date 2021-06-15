@@ -22,6 +22,7 @@ export const addShop = (body) => {
                 if (!response) {
                     firebase.firestore().collection("shop").doc(body.name).set({
                         name: body.name,
+                        img: body.img,
                         description: body.description,
                         type: body.type,
                         location: body.location,

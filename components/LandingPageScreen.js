@@ -70,7 +70,7 @@ const LandingPageScreen = ({navigation}) => {
                         <List.Item 
                             title={item.name}
                             description={item.location}
-                            left={() => <Image source={{ uri: 'https://picsum.photos/700' }}
+                            left={() => <Image source={{ uri: item.img }}
                                                 style={{ width:60, height:60 }}/>}
                             onPress={() => navigation.navigate("StoreInfo", {...item})}
                         />

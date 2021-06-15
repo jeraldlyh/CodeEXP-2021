@@ -1,36 +1,75 @@
 {
     "shop1": {
-        "description": "very nice shop",
-        "location": "cck",
-        "name": "test1",
+        "name": "Ming Kee Porridge",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIAIWZZNRd59YjcVrp1LpfYG_FiyXO1ViH7Q&usqp=CAU",
+        "description": "-",
+        "location": "726 West coast food centre",
         "rating": 0,
-        "type": "Shop",
-        "products": {
-            "apple": {
-                "description": "apple is healthy",
-                "price": 1
+        "type": "Hawker",
+        "products": [
+            {
+                "url": "https://static.vecteezy.com/system/resources/previews/001/979/281/non_2x/rice-porridge-on-a-wood-table-free-photo.jpg",
+                "name": "Meatball Porridge",
+                "price": "3"
+            },
+            {
+                "url": "https://media.hswstatic.com/eyJidWNrZXQiOiJjb250ZW50Lmhzd3N0YXRpYy5jb20iLCJrZXkiOiJnaWZcL2NvbmdlZTEuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4Mjh9fX0=",
+                "name": "Chicken Porridge",
+                "price": "3"
+            },
+            {
+                "url": "https://media.hswstatic.com/eyJidWNrZXQiOiJjb250ZW50Lmhzd3N0YXRpYy5jb20iLCJrZXkiOiJnaWZcL2NvbmdlZTEuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4Mjh9fX0=",
+                "name": "Fish Porridge",
+                "price": "3"
+            },
+            {
+                "url": "https://image.freepik.com/free-photo/congee-rice-porridge-served-century-egg-pork-soft-ball_71919-710.jpg",
+                "name": "Century Egg Porridge",
+                "price": "4"
             }
-        },
-        "reviews": [
-            {"usernum1": "this shop dam good"},
-            {"usernum2": "i agree leh"}
         ],
-        "listings": []
+        "listings": [
+            {
+                "user": "username",
+                "order": "Chicken Porridge x1",
+                "price": "4"
+            },
+            {
+                "user": "username",
+                "order": "Century Egg Porridge x1",
+                "price": "4"
+            }
+        ],
+        "reviews": [
+        ]
     },
     "shop2": {
-        "description": "very nice shop",
-        "location": "cck",
-        "name": "test2",
+        "name": "Jin Li Satay Bee Hoon",
+        "img": "https://i.hungrygowhere.com/rnr/food/130400/48070400/711ecc4b4010a6dc28784515c2528b46_1461727451_245x0_crop_245x155_a3209913c2.jpg",
+        "description": "-",
+        "location": "#04-40 Blk144 Upper Bukit Timah Rd, Beauty World Hawker Centre 588177",
         "rating": 0,
-        "type": "Shop",
-        "products": [],
-        "reviews": [
-            {"usernum2": "this shop dam good"}
+        "type": "Hawker",
+        "products": [
+            {
+                "url": "https://burpple-3.imgix.net/foods/328fb8ad86b5d6b7031c1856700_original.?w=400&h=400&fit=crop&q=80&auto=format",
+                "name": "Satay Beehoon",
+                "price": "4"
+            }
         ],
-        "listings": []
+        "listings": [
+            {
+                "user": "username",
+                "order": "Satay Beehoone x1",
+                "price": "4.50"
+            }
+        ],
+        "reviews": [
+        ]
     },
-    "test3": {
+    "shop3": {
         "name": "Ho Jiak Rojak",
+        "img": "http://cdn.cnn.com/cnnnext/dam/assets/200817233948-singapore-rojak.jpg",
         "description": "-",
         "location": "Blk 630 Yishun St 61 760630",
         "rating": "-",
@@ -38,17 +77,17 @@
         "reviews" : [],
         "products": [
             {
-                "url": "https://picsum.photos/700",
+                "url": "http://cdn.cnn.com/cnnnext/dam/assets/200817233948-singapore-rojak.jpg",
                 "name": "Rojak - Small",
                 "price": "3"
             },
             {
-                "url": "https://picsum.photos/700",
+                "url": "http://cdn.cnn.com/cnnnext/dam/assets/200817233948-singapore-rojak.jpg",
                 "name": "Rojak - Medium",
                 "price": "4"
             },
             {
-                "url": "https://picsum.photos/700",
+                "url": "http://cdn.cnn.com/cnnnext/dam/assets/200817233948-singapore-rojak.jpg",
                 "name": "Rojak - Large",
                 "price": "5"
             }
@@ -71,8 +110,9 @@
             }
         ]
     },
-    "test4": {
+    "shop4": {
         "name": "Northern Thai Tom Yum",
+        "img": "https://sethlui.com/wp-content/uploads/2018/02/northern-thai-1-800x600.jpg",
         "description": "-",
         "location": "166 Jln Besar #01-25 208877",
         "rating": "-",
@@ -80,27 +120,27 @@
         "type": "Shop",
         "products": [
             {
-                "url": "https://picsum.photos/700",
+                "url": "https://media.istockphoto.com/photos/pineapple-fried-rice-picture-id137330511?k=6&m=137330511&s=612x612&w=0&h=ejgYmGmKXfcNnhD44eAnr1PLbn7s_qavSHMau6M2_qU=",
                 "name": "Pineapple Fried Rice",
                 "price": "4"
             },
             {
-                "url": "https://picsum.photos/700",
+                "url": "https://foodatw.com/wp-content/uploads/2020/08/Pad-thai-800x683.jpg",
                 "name": "Pad Thai",
                 "price": "4"
             },
             {
-                "url": "https://picsum.photos/700",
+                "url": "https://image.freepik.com/free-photo/tom-yum-soup-thai-food_52590-41.jpg",
                 "name": "Tom Yum Soup",
                 "price": "5"
             },
             {
-                "url": "https://picsum.photos/700",
+                "url": "https://live.staticflickr.com/7355/9570644039_9288e6287d_b.jpg",
                 "name": "Tom Yum Fried Rice",
                 "price": "5"
             },
             {
-                "url": "https://picsum.photos/700",
+                "url": "https://live.staticflickr.com/3394/4601139222_0c38cd6849_b.jpg",
                 "name": "Mango Sticky Rice",
                 "price": "5"
             }
@@ -113,8 +153,9 @@
             }
         ]
     },
-    "test5": {
+    "shop5": {
         "name": "Moli Food Stall",
+        "img": "https://mustsharenews.com/wp-content/uploads/2021/06/bedok-stall-vadais-1.jpg",
         "description": "Bedok Snack Stall Barely Gets Customers, Auntie Still Wakes Up Early To Make & Sell Vadais. I was walking around and observing that many stalks are doing brisk business (probably due to a wet and rainy Saturday) until I spotted this lone stall - there was no one in queue. I observed that maybe one or 2 folks would walk up to the stall, take a look and walk off. I do not know why. I decided to go up to the Aunty and strike up a conversation with her. Aunty is very soft spoken. She manage this stall on her own most times and sometimes with ad hoc help. She gets up early to prepare the ingredients. She / her stall is not on any delivery platform / FB. She told me her business is so bad that she hardly makes any money. If not for the one month rental rebate from G, she hardly makes any money after deducting all the ingredients and supplies etc.",
         "location": "16 Bedok South Road, #01-18 Singapore 460016",
         "rating": "-",
@@ -122,7 +163,7 @@
         "reviews" : [],
         "products": [
             {
-                "url": "https://picsum.photos/700",
+                "url": "https://live.staticflickr.com/3473/3240408483_2d6ab6f1dc_b.jpg",
                 "name": "Vadai",
                 "price": "0.6"
             }
@@ -140,8 +181,9 @@
             }
         ]
     },
-    "test6": {
+    "shop6": {
         "name": "Miami Bistro",
+        "img": "https://dlior9lx1k7r2.cloudfront.net/postphoto/1b146830-40f2-47c8-81ba-fab7de5c3f5d.jpg;preset=cover960,bgGrayf8",
         "description": "73 Year old man handling stall alone",
         "location": "50 Punggol East #01-K34",
         "rating": "-",
@@ -149,32 +191,32 @@
         "reviews" : [],
         "products": [
             {
-                "url": "https://picsum.photos/700",
+                "url": "https://media.istockphoto.com/photos/british-traditional-fish-and-chips-with-mashed-peas-tartar-sauce-and-picture-id1178035212?k=6&m=1178035212&s=612x612&w=0&h=9Q5rI8BLPxVHjdYMlLSm7F5_GrTC_mCSH3SFNW7M1E0=",
                 "name": "Fish & Chips",
                 "price": "10"
             },
             {
-                "url": "https://picsum.photos/700",
+                "url": "https://www.blondelish.com/wp-content/uploads/2019/03/Baked-Parmesan-Chicken-Cutlets-Recipe-6.jpg",
                 "name": "Chicken Cutlet",
                 "price": "9"
             },
             {
-                "url": "https://picsum.photos/700",
+                "url": "https://cdn.mos.cms.futurecdn.net/9Tr4CuSxKrYBNMe92i2uGV.jpg",
                 "name": "Carbonara",
                 "price": "12"
             },
             {
-                "url": "https://picsum.photos/700",
-                "name": "Aglio Oilo",
+                "url": "https://t4.ftcdn.net/jpg/02/45/80/71/360_F_245807176_fUyDWRIkmSY4ejhYNTI6McDHB5ARhXtC.jpg",
+                "name": "Aglio Olio",
                 "price": "10.50"
             },
             {
-                "url": "https://picsum.photos/700",
+                "url": "https://live.staticflickr.com/428/18986605972_58b23566cc.jpg",
                 "name": "Truffle Fries",
                 "price": "6.50"
             },
             {
-                "url": "https://picsum.photos/700",
+                "url": "https://www.forkknifeswoon.com/wp-content/uploads/2016/06/Fork_Knife_Swoon_Baked_Onion_Rings_01.jpg",
                 "name": "Onion Rings",
                 "price": "6"
             }
@@ -192,8 +234,9 @@
             }
         ]
     },
-    "test7": {
+    "shop7": {
         "name": "Prawn Mee",
+        "img": "https://t3.ftcdn.net/jpg/04/29/80/16/360_F_429801603_fW3YaWUlfUDkbtBXHrC2eoWZ9NwVbxU7.jpg",
         "description": "-",
         "location": "721 Clementi West Street 2 coffee shop",
         "rating": "-",
@@ -201,12 +244,12 @@
         "reviews" : [],
         "products": [
             {
-                "url": "https://picsum.photos/700",
+                "url": "https://live.staticflickr.com/1559/26187255545_b85c02901b_b.jpg",
                 "name": "Prawn Mee (Soup)",
                 "price": "3.50"
             },
             {
-                "url": "https://picsum.photos/700",
+                "url": "https://live.staticflickr.com/6097/6293945380_e72c099c7a_b.jpg",
                 "name": "Prawn Mee (Dry)",
                 "price": "3.50"
             }
@@ -227,6 +270,317 @@
                 "order": "Prawn Mee (Soup) x1",
                 "price": "4"
             }
+        ]
+    },
+    "shop8": {
+        "name": "Ah Seng (Hai Nam) Coffee",
+        "img": "",
+        "description": "This is one coffee stall I used to frequent on weekends and they enjoyed brisk business from CBD crowd or weekend cyclist in the past. But due to phase 2, their business is so bad. You might wonder, how bad can it be? I went at 11am to order 4 French toast, 2 Kaya toast,5 packets of kopi and teh and 2 soft boiled eggs for about $15. They told me I’m the 2nd or 3rd customer since 6am and others only bought one or two cups of kopi. Which means they only earned probably about $20 since 6am. Their pricing is already relatively lower than other coffee stalls so it doesn’t make sense for them to be on any delivery platform. Please please don’t let our local coffee heritage die. That one cup of $8 latte you save today can be used here to save a local business. If you happen to be at the vicinty, please patronise this mother and son shop.",
+        "location": "Amoy Street Food Centre #02-95 69111",
+        "rating": "-",
+        "type": "Hawker",
+        "reviews" : [],
+        "products": [
+            {
+                "url": "https://fastly.4sqi.net/img/general/600x600/231366_Fz06Q-yuHOtnQPDjARK-uCNdy7wHDoVjQ1JBwELe9BU.jpg",
+                "name": "Kopi",
+                "price": "1"
+            },
+            {
+                "url": "https://cdn.foodadvisor.com.sg/1/300/tccrg/2t6063t7qr84o33top001746794/ah-seng-hai-nam-coffee-amoy-street-food-centre.jpg",
+                "name": "Kopi O",
+                "price": "1"
+            },
+            {
+                "url": "https://fastly.4sqi.net/img/general/600x600/231366_Fz06Q-yuHOtnQPDjARK-uCNdy7wHDoVjQ1JBwELe9BU.jpg",
+                "name": "Kopi C",
+                "price": "1"
+            },
+            {
+                "url": "https://media-cdn.tripadvisor.com/media/photo-s/1c/12/dc/d0/coffee-served-in-porcelain.jpg",
+                "name": "Teh",
+                "price": "1"
+            },
+            {
+                "url": "https://media-cdn.tripadvisor.com/media/photo-s/1c/12/dc/d0/coffee-served-in-porcelain.jpg",
+                "name": "Teh O",
+                "price": "1"
+            },
+            {
+                "url": "https://media-cdn.tripadvisor.com/media/photo-s/1c/12/dc/d0/coffee-served-in-porcelain.jpg",
+                "name": "Teh C",
+                "price": "1"
+            },
+            {
+                "url": "https://burpple-1.imgix.net/foods/5febb7ff4d7671da8dc1896249_original.?w=400&h=400&fit=crop&q=80&auto=format",
+                "name": "Breakfast Set A",
+                "price": "2.50"
+            },
+            {
+                "url": "https://danielfooddiary.com/wp-content/uploads/2021/05/amoystreethainam1-scaled.jpg",
+                "name": "Breakfast Set B",
+                "price": "3"
+            },
+            {
+                "url": "https://tidbitsmag.com/wp-content/uploads/2018/05/Ah-Seng-Hai-Nam-Coffee.jpg",
+                "name": "Breakfast Set C",
+                "price": "4"
+            }
+        ],
+        "listings": [
+            {
+                "user": "username",
+                "order": "Breakfast Set A x1",
+                "price": "3"
+            },
+            {
+                "user": "username",
+                "order": "Kopi x1",
+                "price": "1"
+            },
+            {
+                "user": "username",
+                "order": "Breakfast Set B x1",
+                "price": "4"
+            },
+            {
+                "user": "username",
+                "order": "Kopi O x1",
+                "price": "1.50"
+            },
+            {
+                "user": "username",
+                "order": "Teh x1",
+                "price": "1.50"
+            }
+        ]
+    },
+    "shop9": {
+        "name": "Bak Chor Mee",
+        "img": "https://hawkerpedia.s3-ap-southeast-1.amazonaws.com/hawker-centre-manually/Blk+127+Toa+Payoh+Lorong+1+-+40+stalls/mushroommincedmeatnoodle_sf.jpg",
+        "description": "-",
+        "location": "127 Toa Payoh Lorong 1, #02-03",
+        "rating": "-",
+        "type": "Hawker",
+        "reviews" : [],
+        "products": [
+            {
+                "url": "https://t3.ftcdn.net/jpg/04/27/83/86/360_F_427838651_DDg65NWiqinveeSQW2jACLcwO1ICuAmx.jpg",
+                "name": "Bak Chor Mee",
+                "price": "3"
+            },
+            {
+                "url": "https://media.istockphoto.com/photos/clear-asian-soup-noodles-picture-id962464946?k=6&m=962464946&s=612x612&w=0&h=lfdT0cDKh7wBA32ohr43Xo-lP4HHIGW_18VzcxdvGMk=",
+                "name": "Fishball Noodle",
+                "price": "3"
+            },
+            {
+                "url": "https://t3.ftcdn.net/jpg/03/67/89/02/360_F_367890277_yy5FrXCVLLwXIrU4lI97Uw0MY76n0Gtp.jpg",
+                "name": "Wanton Mee",
+                "price": "3.50"
+            },
+            {
+                "url": "https://t4.ftcdn.net/jpg/01/28/34/21/360_F_128342187_IJ4MxZxUJk13Mj3Ws4EPUiQiq3pRkE1t.jpg",
+                "name": "Wanton Soup",
+                "price": "3"
+            }
+        ],
+        "listings": [
+            {
+                "user": "username",
+                "order": "Bak Chor Mee x1, Wanton Mee x2",
+                "price": "12"
+            },
+            {
+                "user": "username",
+                "order": "Bak Chor Mee x1",
+                "price": "3.50"
+            }
+        ]
+    },
+    "shop10": {
+        "name": "Ah Tee Ko Ko Mee",
+        "img": "https://farm1.staticflickr.com/794/27170823678_31daab6b5b_h.jpg",
+        "description": "Sim Ah Tee, 73, is a hawker for over 50 years Being unable to read or write, Ah Tee was at a disadvantage when the Covid-19 Circuit Breaker started last year. While eateries and hawkers scrambled to offer food delivery, Ah Tee could not keep up with the new technology. “At the age of 70 plus, he’s not agile enough to multitask anymore. He’s still using the old Nokia handphone,” his son Calvin Sim, 49, tells 8days.sg. It doesn’t help that Ah Tee (pictured above) also faces competition from the bigger, more well-known Berseh Food Centre nearby. Despite the slow business, he has continued to open his stall as usual. “He’s a committed person. He’s making a loss every day, but insisted on carrying on till now despite using his own savings [to sustain]. As I’m working, I can’t manage his calls for him,” says Calvin, who tried to help his dad drum up business by posting about the stall on Facebook foodie groups like Can Eat! Hawker Food.",
+        "location": "#01-100 Gourmet Street, Blk 27 Kelantan Court, 200027",
+        "rating": "-",
+        "type": "Hawker",
+        "reviews" : [],
+        "products": [
+            {
+                "url": "https://media.istockphoto.com/photos/clear-asian-soup-noodles-picture-id962464946?k=6&m=962464946&s=612x612&w=0&h=lfdT0cDKh7wBA32ohr43Xo-lP4HHIGW_18VzcxdvGMk=",
+                "name": "Fishball Noodle",
+                "price": "3.50"
+            },
+            {
+                "url": "https://media01.stockfood.com/largepreviews/Mzg0NjA3MzI4/12406688-Fish-ball-soup-with-pak-choi-Asia.jpg",
+                "name": "Fishball Soup",
+                "price": "3"
+            }
+        ],
+        "listings": [
+            {
+                "user": "username",
+                "order": "Fishball Noodle x2",
+                "price": "8"
+            },
+            {
+                "user": "username",
+                "order": "Fishball Noodle x1",
+                "price": "4"
+            },
+            {
+                "user": "username",
+                "order": "Fishball Soup x1",
+                "price": "4"
+            }
+        ]
+    },
+    "shop11": {
+        "name": "ABC Provision",
+        "img": "",
+        "description": "Run by an eldery couple.",
+        "location": "726 Clementi West Street 2, #01-195 120726",
+        "rating": "-",
+        "type": "Shop",
+        "reviews" : [],
+        "products": [
+            {
+                "url": "https://live.staticflickr.com/61/153391600_38a02adaac_b.jpg",
+                "name": "Snacks",
+                "price": "-"
+            },
+            {
+                "url": "https://www.tasteofhome.com/wp-content/uploads/2020/10/homemade-neopolitan-ice-cream-960337744.jpg?fit=700,700",
+                "name": "Ice Cream",
+                "price": "-"
+            },
+            {
+                "url": "https://www.mercurynews.com/wp-content/uploads/2020/10/GettyImages-145498008.jpg",
+                "name": "Drinks",
+                "price": "-"
+            },
+            {
+                "url": "https://cdn-japantimes.com/wp-content/uploads/2020/08/np_file_32392.jpeg",
+                "name": "Instant Noodle",
+                "price": "-"
+            },
+            {
+                "url": "https://sg-test-11.slatic.net/p/mdc/ada07f89b49f867f940a536a8a01d3b1.jpg",
+                "name": "Rice",
+                "price": "-"
+            },
+            {
+                "url": "https://www.thedailymeal.com/sites/default/files/2020/07/10/hero_grocery_shelf_life_getty_0.jpg",
+                "name": "Daily Necessities",
+                "price": "-"
+            }
+        ],
+        "listings": [
+            {
+                "user": "username",
+                "order": "Potato Chips x2",
+                "price": "5"
+            },
+            {
+                "user": "username",
+                "order": "Rainbow Pop Ice Cream",
+                "price": "1.50"
+            }
+        ]
+    },
+    "shop12": {
+        "name": "Teck Leong Lee Kee",
+        "img": "http://www.hawkerfood.com/wp-content/uploads/2018/05/1-shop.jpg",
+        "description": "Store that sells a large variety of childhood candies and snacks.",
+        "location": "5029 Ang Mo Kio Ind Park 2, #01-141, Singapore 569532",
+        "rating": "-",
+        "type": "Shop",
+        "reviews" : [],
+        "products": [
+            {
+                "url": "https://live.staticflickr.com/7352/9447261269_eaea46d560_b.jpg",
+                "name": "Old School Biscuits",
+                "price": "2"
+            },
+            {
+                "url": "http://www.hawkerfood.com/wp-content/uploads/2018/05/3-sweets.jpg",
+                "name": "Chocolate",
+                "price": "2"
+            },
+            {
+                "url": "https://live.staticflickr.com/8319/8042522957_a7a2e5c34c_b.jpg",
+                "name": "Old School Candies",
+                "price": "2"
+            }
+        ],
+        "listings": [
+            {
+                "user": "username",
+                "order": "Gem Icing Biscuits x2",
+                "price": "5"
+            },
+            {
+                "user": "username",
+                "order": "Chocolate Wafer Sticks x1",
+                "price": "2.50"
+            }
+        ]
+    },
+    "shop13": {
+        "name": "The Biscuit Shop",
+        "img": "https://goodyfeed.com/wp-content/uploads/2021/01/old-school-1280x720.jpg",
+        "description": "The Biscuit Shop has a large assortment of old school Singaporean biscuits which they sell in tins and in small quantities (0.5kg). You can mix and match biscuits for a tin.",
+        "location": "Tanjong Pagar Plaza #01-08/09 Singapore 081006",
+        "rating": "-",
+        "type": "Shop",
+        "reviews" : [],
+        "products": [
+            {
+                "url": "https://live.staticflickr.com/7352/9447261269_eaea46d560_b.jpg",
+                "name": "Biscuits (0.5kg)",
+                "price": "6"
+            },
+            {
+                "url": "http://media.alvinology.com/uploads/2015/08/20150730_GoogleShophouse_Gel_0010_web.jpg",
+                "name": "Biscuits (Tin)",
+                "price": "15"
+            }
+        ],
+        "listings": [
+        ]
+    },
+    "shop14": {
+        "name": "ARV Stores Pte Ltd",
+        "img": "https://thesmartlocal.com/images/easyblog_articles/5371/GCP_1266.jpg",
+        "description": "Mr Ramasamy’s been working here from 5 am to 7 pm for the past 60 years.",
+        "location": "292 Changi Road, Singapore 419770",
+        "rating": "-",
+        "type": "Shop",
+        "reviews" : [],
+        "products": [
+            {
+                "url": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F9%2F2020%2F03%2Fessential-spices-every-kitchen-should-have-FT-BLOG0320.jpg",
+                "name": "Spices",
+                "price": "-"
+            },
+            {
+                "url": "https://sg-test-11.slatic.net/p/mdc/ada07f89b49f867f940a536a8a01d3b1.jpg",
+                "name": "Rice",
+                "price": "-"
+            },
+            {
+                "url": "https://www.thehealthy.com/wp-content/uploads/2020/10/GettyImages942313992.jpg",
+                "name": "Oil",
+                "price": "-"
+            },
+            {
+                "url": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F44%2F2020%2F04%2F16%2Fcans.jpg",
+                "name": "Canned Food",
+                "price": "-"
+            }
+        ],
+        "listings": [
         ]
     }
 }

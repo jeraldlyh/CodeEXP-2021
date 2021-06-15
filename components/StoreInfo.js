@@ -9,7 +9,7 @@ export default function StoreInfo({ route, navigation }) {
 
     return (
         <View style={styles.container}>
-            <Image source={{ uri: 'https://picsum.photos/700' }} style={{
+            <Image source={{ uri: route.params.img }} style={{
                 width: '100%',
                 height: 200
             }} />
