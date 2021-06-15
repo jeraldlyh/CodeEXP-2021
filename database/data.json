@@ -4,7 +4,7 @@
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIAIWZZNRd59YjcVrp1LpfYG_FiyXO1ViH7Q&usqp=CAU",
         "description": "-",
         "location": "726 West coast food centre S120726",
-        "rating": 0,
+        "rating": "-",
         "type": "Hawker",
         "products": [
             {
@@ -48,7 +48,7 @@
         "img": "https://i.hungrygowhere.com/rnr/food/130400/48070400/711ecc4b4010a6dc28784515c2528b46_1461727451_245x0_crop_245x155_a3209913c2.jpg",
         "description": "-",
         "location": "#04-40 Blk144 Upper Bukit Timah Rd, Beauty World Hawker Centre 588177",
-        "rating": 0,
+        "rating": "-",
         "type": "Hawker",
         "products": [
             {
@@ -274,7 +274,7 @@
     },
     "shop8": {
         "name": "Ah Seng (Hai Nam) Coffee",
-        "img": "",
+        "img": "https://tidbitsmag.com/wp-content/uploads/2018/05/Ah-Seng-Hai-Nam-Coffee.jpg",
         "description": "This is one coffee stall I used to frequent on weekends and they enjoyed brisk business from CBD crowd or weekend cyclist in the past. But due to phase 2, their business is so bad. You might wonder, how bad can it be? I went at 11am to order 4 French toast, 2 Kaya toast,5 packets of kopi and teh and 2 soft boiled eggs for about $15. They told me I’m the 2nd or 3rd customer since 6am and others only bought one or two cups of kopi. Which means they only earned probably about $20 since 6am. Their pricing is already relatively lower than other coffee stalls so it doesn’t make sense for them to be on any delivery platform. Please please don’t let our local coffee heritage die. That one cup of $8 latte you save today can be used here to save a local business. If you happen to be at the vicinty, please patronise this mother and son shop.",
         "location": "Amoy Street Food Centre #02-95 69111",
         "rating": "-",
@@ -438,7 +438,7 @@
     },
     "shop11": {
         "name": "ABC Provision",
-        "img": "",
+        "img": "https://www.thedailymeal.com/sites/default/files/2020/07/10/hero_grocery_shelf_life_getty_0.jpg",
         "description": "Run by an eldery couple.",
         "location": "726 Clementi West Street 2, #01-195 120726",
         "rating": "-",
@@ -581,6 +581,395 @@
             }
         ],
         "listings": [
+        ]
+    },
+    "shop15": {
+        "name": "Jalan Besar Mutton Soup",
+        "img": "https://tableqr.io/storage/images/merchant/cover/243/QAyS0fudIG5neGCYsVEnszocgWIE90NnNx4S6yDb.jpeg",
+        "description": "Owned by a elderly couple who are not tech savvy.",
+        "location": "166 Jalan berseh #02-57 Singapore 208877",
+        "rating": "-",
+        "type": "Hawker",
+        "products": [
+            {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Mutton_soup_with_bansh.JPG",
+                "name": "Mutton Soup",
+                "price": "4"
+            }
+        ],
+        "listings": [
+            {
+                "user": "username",
+                "order": "Mutton Soup",
+                "price": "4.50"
+            }
+        ],
+        "reviews": [
+        ]
+    },
+    "shop16": {
+        "name": "Cheng Mun Chee Kee Pig Organ Soup",
+        "img": "https://thesmartlocal.com/reviews/wp-content/uploads/2012/09/cheng-mun-chee-kee-pig-organ-soup-1347716100.jpg",
+        "description": "-",
+        "location": "24 Foch Rd, Singapore 209263",
+        "rating": "-",
+        "type": "Hawker",
+        "products": [
+            {
+                "url": "https://live.staticflickr.com/898/41568922795_fc206c9650_b.jpg",
+                "name": "Pig Organ Soup (Small)",
+                "price": "4"
+            },
+            {
+                "url": "https://live.staticflickr.com/898/41568922795_fc206c9650_b.jpg",
+                "name": "Pig Organ Soup (Large)",
+                "price": "6"
+            }
+        ],
+        "listings": [
+            {
+                "user": "username",
+                "order": "Pig Organ Soup",
+                "price": "4.50"
+            },
+            {
+                "user": "username",
+                "order": "Pig Organ Soup",
+                "price": "5"
+            }
+        ],
+        "reviews": [
+        ]
+    },
+    "shop17": {
+        "name": "Sungei Road Laksa",
+        "img": "https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_450,h_300/https://danielfooddiary.com/wp-content/uploads/2020/01/sungeiroadlaksa8.jpg",
+        "description": "Their laksa is cooked in a charcoal stove, the traditional way.",
+        "location": "#01-100 Block 27 Jalan Berseh, Singapore 200027",
+        "rating": "-",
+        "type": "Hawker",
+        "products": [
+            {
+                "url": "https://images1.westend61.de/0001398932pw/high-angle-view-of-laksa-in-bowl-on-table-EYF06672.jpg",
+                "name": "Laksa",
+                "price": "3"
+            }
+        ],
+        "listings": [
+            {
+                "user": "username",
+                "order": "Laksa",
+                "price": "3.50"
+            },
+            {
+                "user": "username",
+                "order": "Laksa",
+                "price": "3.50"
+            }
+        ],
+        "reviews": [
+        ]
+    },
+    "shop18": {
+        "name": "Dajie Famous Wanton Mee",
+        "img": "https://i.hungrygowhere.com/business/61/5f/11/00/da-jie-famous-wanton-mee.jpg",
+        "description": "-",
+        "location": "209 Jln Besar, Singapore 208895",
+        "rating": "-",
+        "type": "Hawker",
+        "products": [
+            {
+                "url": "https://t3.ftcdn.net/jpg/03/67/89/02/360_F_367890277_yy5FrXCVLLwXIrU4lI97Uw0MY76n0Gtp.jpg",
+                "name": "Wanton Mee",
+                "price": "3"
+            },
+            {
+                "url": "https://sethlui.com/wp-content/uploads/2018/04/Dajie-Wanton-Mee-1.jpg?ezimgfmt=ng:webp/ngcb4",
+                "name": "Chicken Feet Noodle",
+                "price": "3"
+            }
+        ],
+        "listings": [
+            {
+                "user": "username",
+                "order": "Wanton Mee",
+                "price": "3.50"
+            },
+            {
+                "user": "username",
+                "order": "Wanton Mee",
+                "price": "3.50"
+            },
+            {
+                "user": "username",
+                "order": "Chicken Feet Noodle",
+                "price": "4"
+            }
+        ],
+        "reviews": [
+        ]
+    },
+    "shop19": {
+        "name": "Fu Zhou Poh Hwa Oyster Cake",
+        "img": "https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_450,h_300/https://danielfooddiary.com/wp-content/uploads/2020/06/bersehfoodcentre24.jpg",
+        "description": "The recipe of these oyster cakes is passed down from generations and it has both peanuts and ikan billis on the exterior with a delicious thin crispy crust that wasn’t too greasy or oily.",
+        "location": "#02-34 Jln Besar, 166 Berseh Food Centre Singapore 208877",
+        "rating": "-",
+        "type": "Hawker",
+        "products": [
+            {
+                "url": "https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_450,h_300/https://danielfooddiary.com/wp-content/uploads/2020/06/bersehfoodcentre4.jpg",
+                "name": "Oyster Cake",
+                "price": "2"
+            }
+        ],
+        "listings": [
+            {
+                "user": "username",
+                "order": "Oyster Cake",
+                "price": "2.50"
+            }
+        ],
+        "reviews": [
+        ]
+    },
+    "shop20": {
+        "name": "Lim’s Fried Oysters",
+        "img": "https://i1.wp.com/foodinsing.com/wp-content/uploads/2017/08/Lims-Fried-Oyster.jpg?fit=900%2C600&ssl=1",
+        "description": "-",
+        "location": "#01-32 Jalan Besar, 166 Berseh Food Centre Singapore 208877",
+        "rating": "-",
+        "type": "Hawker",
+        "products": [
+            {
+                "url": "https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_450,h_300/https://danielfooddiary.com/wp-content/uploads/2020/06/bersehfoodcentre4.jpg",
+                "name": "Oyster Omelette (Small)",
+                "price": "5"
+            },
+            {
+                "url": "https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_450,h_300/https://danielfooddiary.com/wp-content/uploads/2020/06/bersehfoodcentre4.jpg",
+                "name": "Oyster Omelette (Medium)",
+                "price": "8"
+            },
+            {
+                "url": "https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_450,h_300/https://danielfooddiary.com/wp-content/uploads/2020/06/bersehfoodcentre4.jpg",
+                "name": "Oyster Omelette (Large)",
+                "price": "10"
+            }
+        ],
+        "listings": [
+            {
+                "user": "username",
+                "order": "Oyster Omelette (Medium)",
+                "price": "9"
+            },
+            {
+                "user": "username",
+                "order": "Oyster Omelette (Small)",
+                "price": "5.50"
+            }
+        ],
+        "reviews": [
+        ]
+    },
+    "shop21": {
+        "name": "Self-Made Fish Balls",
+        "img": "https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_450,h_300/https://danielfooddiary.com/wp-content/uploads/2020/06/bersehfoodcentre21.jpg",
+        "description": "-",
+        "location": "#02-60 Jln Besar, 166 Berseh Food Centre Singapore 208877",
+        "rating": "-",
+        "type": "Hawker",
+        "products": [
+            {
+                "url": "https://media.istockphoto.com/photos/clear-asian-soup-noodles-picture-id962464946?k=6&m=962464946&s=612x612&w=0&h=lfdT0cDKh7wBA32ohr43Xo-lP4HHIGW_18VzcxdvGMk=",
+                "name": "Fishball Minced Meat Noodles",
+                "price": "3.50"
+            },
+            {
+                "url": "https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_450,h_300/https://danielfooddiary.com/wp-content/uploads/2020/06/bersehfoodcentre4.jpg",
+                "name": "Meat Ball Noodles",
+                "price": "3"
+            },
+            {
+                "url": "https://media01.stockfood.com/largepreviews/Mzg0NjA3MzI4/12406688-Fish-ball-soup-with-pak-choi-Asia.jpg",
+                "name": "Fishball Soup",
+                "price": "3"
+            }
+        ],
+        "listings": [
+            {
+                "user": "username",
+                "order": "Fishball Minced Meat Noodles",
+                "price": "4"
+            }
+        ],
+        "reviews": [
+        ]
+    },
+    "shop22": {
+        "name": "Hock Kee Fried Kway Teow",
+        "img": "https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_450,h_300/https://danielfooddiary.com/wp-content/uploads/2020/06/bersehfoodcentre27.jpg",
+        "description": "The portion size was of course quite generous, with cockles, fish cake, egg and Chinese sausage on a bed of noodles.",
+        "location": "#01-16 Jln Besar, 166 Berseh Food Centre Singapore 208877",
+        "rating": "-",
+        "type": "Hawker",
+        "products": [
+            {
+                "url": "https://live.staticflickr.com/5024/5643098728_dc849e34bf_b.jpg",
+                "name": "Fried Kway Teow (Small)",
+                "price": "3"
+            },
+            {
+                "url": "https://live.staticflickr.com/5024/5643098728_dc849e34bf_b.jpg",
+                "name": "Fried Kway Teow (Medium)",
+                "price": "3.50"
+            },
+            {
+                "url": "https://live.staticflickr.com/5024/5643098728_dc849e34bf_b.jpg",
+                "name": "Fried Kway Teow (Large)",
+                "price": "4"
+            }
+        ],
+        "listings": [
+            {
+                "user": "username",
+                "order": "Fried Kway Teow (Small)",
+                "price": "4"
+            },
+            {
+                "user": "username",
+                "order": "Fried Kway Teow (Small)",
+                "price": "4"
+            },
+            {
+                "user": "username",
+                "order": "Fried Kway Teow (Medium)",
+                "price": "4"
+            }
+        ],
+        "reviews": [
+        ]
+    },
+    "shop23": {
+        "name": "The Beef House",
+        "img": "https://i.hungrygowhere.com/rnr/food/review_photo/57153_800x0_crop_800x0_a9d725a6b8.jpg",
+        "description": "The Beef House sells traditional Hakka dishes at a kopitiam.",
+        "location": "217 Syed Alwi Road, Gar Lok Eating House, Singapore 207776",
+        "rating": "-",
+        "type": "Hawker",
+        "products": [
+            {
+                "url": "https://live.staticflickr.com/7016/6616368297_293bd69924_b.jpg",
+                "name": "Abacus Seeds",
+                "price": "2"
+            },
+            {
+                "url": "https://live.staticflickr.com/3212/2661021699_389d686fec_c.jpg",
+                "name": "Soon Kueh",
+                "price": "1"
+            },
+            {
+                "url": "https://live.staticflickr.com/3/4348840_0f00b41f86_z.jpg",
+                "name": "Beef Kway Teow",
+                "price": "4"
+            }
+        ],
+        "listings": [
+            {
+                "user": "username",
+                "order": "Beef Kway Teow",
+                "price": "5"
+            }
+        ],
+        "reviews": [
+        ]
+    },
+    "shop24": {
+        "name": "Johore Ye Zhi Mei Handmade Bao",
+        "img": "https://i0.wp.com/foodinsing.com/wp-content/uploads/2017/05/Xin-Shan-Ye-Zi-Mei-Shou-Gong-Bao-Dian.jpg?fit=900%2C800&ssl=1",
+        "description": "-",
+        "location": "208 Jalan Besar, Singapore 208894",
+        "rating": "-",
+        "type": "Hawker",
+        "products": [
+            {
+                "url": "https://static.vecteezy.com/system/resources/previews/000/722/047/non_2x/variety-of-dim-sum-photo.jpg",
+                "name": "Dim Sum",
+                "price": "2"
+            },
+            {
+                "url": "https://live.staticflickr.com/2276/3542214503_8c525b22fa.jpg",
+                "name": "Bao",
+                "price": "1"
+            },
+            {
+                "url": "https://www.misstamchiak.com/wp-content/uploads/2015/07/DSCF3546-1300x867.jpg",
+                "name": "Ye Zhi Mei",
+                "price": "3.20"
+            }
+        ],
+        "listings": [
+            {
+                "user": "username",
+                "order": "Dim Sum",
+                "price": "3"
+            },
+            {
+                "user": "username",
+                "order": "Dim Sum",
+                "price": "2.50"
+            },
+            {
+                "user": "username",
+                "order": "Dim Sum",
+                "price": "2.50"
+            },
+            {
+                "user": "username",
+                "order": "Bao",
+                "price": "1.50"
+            },
+            {
+                "user": "username",
+                "order": "Bao",
+                "price": "1"
+            }
+        ],
+        "reviews": [
+        ]
+    },
+    "shop25": {
+        "name": "88 Hong Kong Roast Meat Specialist",
+        "img": "http://foodchiak.com/uploads/7/3/2/1/73213063/published/img-0067_11.jpg?1535387763",
+        "description": "-",
+        "location": "153 Tyrwhitt Road, Singapore 207566",
+        "rating": "-",
+        "type": "Hawker",
+        "products": [
+            {
+                "url": "https://live.staticflickr.com/29/52456556_359fbe58a3_b.jpg",
+                "name": "Char Siew Rice",
+                "price": "4"
+            },
+            {
+                "url": "https://live.staticflickr.com/2638/3958649770_e76753ac6d_b.jpg",
+                "name": "Roast Meat Rice",
+                "price": "4"
+            }
+        ],
+        "listings": [
+            {
+                "user": "username",
+                "order": "Char Siew Rice",
+                "price": "4.50"
+            },
+            {
+                "user": "username",
+                "order": "Char Siew Rice",
+                "price": "4.50"
+            }
+        ],
+        "reviews": [
         ]
     }
 }
