@@ -69,7 +69,7 @@ const LandingPageScreen = ({navigation}) => {
                     icon="near-me"
                     color={Colors.red500}
                     size={50}
-                    onPress={() => console.log('Pressed')} />
+                    onPress={() => navigation.navigate("Nearby")} />
                 <Text style={tailwind("text-center")}>Nearby</Text>
             </View>
             <View style={tailwind("text-center")}>
