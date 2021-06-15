@@ -6,7 +6,7 @@ export const createUser = (username) => {
     firebase.firestore().collection("user")
         .doc(username)
         .set({
-            registeredAt: firebase.firestore.Timestamp.now(),
+            registeredAt: new Date().getTime(),
             ratings: 0,
             enableNotification: false,
             trips: 0,
