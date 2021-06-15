@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { IconButton, Colors, Searchbar, List } from 'react-native-paper';
 import {  Text, View, FlatList, Image } from 'react-native';
 import tailwind from 'tailwind-rn';
-import { getAllShops } from "../database/actions/shop.js";
+import { getAllShops } from "../database/actions/shop";
 
 const LandingPageScreen = ({navigation}) => {
     const [searchQuery, setSearchQuery] = useState('');

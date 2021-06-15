@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import tailwind from 'tailwind-rn';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
-import { loginUser } from "../database/actions/User";
+import { loginUser } from "../database/actions/user";
 import { AuthContext } from "../provider/AuthContext";
 
 function LoginScreen({ navigation }) {
