@@ -2,14 +2,20 @@ import React, {useState, useEffect} from 'react';
 import { IconButton, Colors, Searchbar, List } from 'react-native-paper';
 import {  Text, View, FlatList, Image } from 'react-native';
 import tailwind from 'tailwind-rn';
-import { getAllShops } from "../database/actions/shop.js";
+import firebase from "../database/firebaseDB";
+import { getConversation } from '../database/actions/Message';
 
 const LandingPageScreen = ({navigation}) => {
     const [searchQuery, setSearchQuery] = useState('');
 
     const [itemData, setItemData] = React.useState("");
     useEffect(() => {
-        getAllShops().then(response => setItemData(response));
+        const unsubscribe = firebase.firestore().collection("shop").onSnapshot((collection => {
+            const shopData = collection.docs.map(doc => doc.data())
+            setItemData(shopData);
+        }))
+
+        return () => unsubscribe();
     }, []);
 
     const onChangeSearch = query => setSearchQuery(query);
@@ -59,6 +65,7 @@ const LandingPageScreen = ({navigation}) => {
         <View>
             <FlatList
                 data={itemData}
+                keyExtractor={item => item.name}
                 renderItem={({item}) => {
                     return (
                         <List.Item 

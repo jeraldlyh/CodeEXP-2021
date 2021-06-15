@@ -34,35 +34,50 @@ export const hasExistingConvo = (userOne, userTwo) => {
     // })
 }
 
+export const getConversation = (userOne, userTwo) => {
+    return new Promise((resolve, reject) => {
+        hasExistingConvo(userOne, userTwo)
+            .then(response => {
+                firebase.firestore().collection("message")
+                    .doc(response)
+                    .onSnapshot(doc => {
+                        resolve(doc.data());
+                    })
+            })
+            .catch(error => {
+                console.log(error);
+                reject("No conversation found");
+            })
+    })
+}
 
 export const createMessage = async(userOne, userTwo, text) => {
     // UserOne will be considered as from
     hasExistingConvo(userOne, userTwo)
         .then(response => {
-            if (response !== -1) {
-                firebase.firestore().collection("message")
-                    .doc(response)
-                    .update({
-                        userOne: userOne,
-                        userTwo: userTwo,
-                        messages: firebase.firestore.FieldValue.arrayUnion({
-                            from: userOne,
-                            time: firebase.firestore.Timestamp.now(),
-                            text: text
-                        })
-                    });
-            } else {
-                firebase.firestore().collection("message")
-                    .doc(userOne + userTwo)
-                    .set({
-                        userOne: userOne,
-                        userTwo: userTwo,
-                        messages: firebase.firestore.FieldValue.arrayUnion({
-                            from: userOne,
-                            time: firebase.firestore.Timestamp.now(),
-                            text: text
-                        })
-                    });
-            };
-        });
+            firebase.firestore().collection("message")
+                .doc(response)
+                .update({
+                    userOne: userOne,
+                    userTwo: userTwo,
+                    messages: firebase.firestore.FieldValue.arrayUnion({
+                        from: userOne,
+                        time: firebase.firestore.Timestamp.now(),
+                        text: text
+                    })
+                })
+        })
+        .catch(error => {
+            firebase.firestore().collection("message")
+                .doc(userOne + userTwo)
+                .set({
+                    userOne: userOne,
+                    userTwo: userTwo,
+                    messages: firebase.firestore.FieldValue.arrayUnion({
+                        from: userOne,
+                        time: firebase.firestore.Timestamp.now(),
+                        text: text
+                    })
+                });
+        })
 }
