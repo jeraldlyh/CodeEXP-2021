@@ -37,12 +37,14 @@ const EditShopScreen = ({ route, navigation }) => {
     const [showAlert, setShowAlert] = useState(false);
     const [message, setMessage] = useState("");
 
+    const [checked, setChecked] = React.useState("");
+
     const theme = {
         ...DefaultTheme,
         roundness: 2,
         colors: {
             ...DefaultTheme.colors,
-            primary: 'red'
+            primary: '#fa3c4c'
         },
     };
     const editProduct = (item) => {
@@ -132,35 +134,38 @@ const EditShopScreen = ({ route, navigation }) => {
                             navigation.navigate("StoreInfo", { ...newShop })
                         }}
                     />
-                    <TextInput theme={{ colors: { primary: "red" } }}
+                    <TextInput theme={{ colors: { primary: "#fa3c4c" } }}
+                        style={{backgroundColor: "white"}}
                         label="Description" defaultValue={route.params.item.description}
                         onChangeText={value => setShopDescriptionData(value)}
                     />
-                    <TextInput theme={{ colors: { primary: "red" } }}
+                    <TextInput theme={{ colors: { primary: "#fa3c4c" } }}
+                        style={{backgroundColor: "white"}}
                         label="Location" defaultValue={route.params.item.location}
                         onChangeText={value => setShopLocationData(value)}
                     />
                     <RadioButton.Group
                         onValueChange={newValue => setShopTypeData(newValue)}
-                        value={route.params.item.type}
+                        value={shopTypeData}
                     >
-                        <View style={tailwind("bg-gray-200")}>
+                        <View style={tailwind("bg-white")}>
                             <View style={tailwind("flex flex-row w-full justify-around mt-3")}>
                                 <View>
                                     <Text style={tailwind("text-center text-gray-700")}>Hawker</Text>
-                                    <RadioButton value="Hawker" />
+                                    <RadioButton color="#fa3c4c" value="Hawker" status={ checked === 'Hawker' ? 'checked' : 'unchecked' } onPress={() => setChecked("Hawker")} />
                                 </View>
                                 <View>
                                     <Text style={tailwind("text-center text-gray-700")}>Shop</Text>
-                                    <RadioButton value="Shop" />
+                                    <RadioButton color="#fa3c4c" value="Shop" status={ checked === 'Shop' ? 'checked' : 'unchecked' } onPress={() => setChecked("Shop")} />
                                 </View>
                             </View>
                         </View>
                     </RadioButton.Group>
                     <Button
                         mode="text"
+                        icon="plus"
                         raised
-                        theme={{ colors: { primary: "red" } }}
+                        theme={{ colors: { primary: "#fa3c4c" } }}
                         onPress={showModal}
                     >
                         Add Product
@@ -172,19 +177,22 @@ const EditShopScreen = ({ route, navigation }) => {
                             contentContainerStyle={containerStyle}
                         >
                             <Title style={{ textAlign: "center", color: "black" }}>Add Product</Title>
-                            <TextInput theme={{ colors: { primary: "red" } }}
+                            <TextInput theme={{ colors: { primary: "#fa3c4c" } }}
+                                style={{backgroundColor: "white"}}
                                 label="Product Name"
                                 onChangeText={value => setProductName(value)}
                             />
-                            <TextInput theme={{ colors: { primary: "red" } }}
+                            <TextInput theme={{ colors: { primary: "#fa3c4c" } }}
+                                style={{backgroundColor: "white"}}
                                 label="Price"
+                                keyboardType='numeric'
                                 onChangeText={value => setProductPriceData(value)}
                             />
                             <Button
-                                style={{ height: 40, margin: "2%", padding: "1%", marginTop: "2%" }}
+                                style={{ height: 40, margin: "2%", padding: "1%", marginTop: "10%" }}
                                 mode="contained"
                                 raised
-                                theme={{ colors: { primary: "red" } }}
+                                theme={{ colors: { primary: "#fa3c4c" } }}
                                 onPress={() => addProduct()}
                             >
                                 Add Product
@@ -206,7 +214,7 @@ const EditShopScreen = ({ route, navigation }) => {
                                             style={{ height: 40, margin: "2%", padding: "1%", marginTop: "2%" }}
                                             mode="contained"
                                             raised
-                                            theme={{ colors: { primary: "red" } }}
+                                            theme={{ colors: { primary: "#fa3c4c" } }}
                                             onPress={() => showModal2()}
                                         >
                                             Edit
@@ -218,19 +226,22 @@ const EditShopScreen = ({ route, navigation }) => {
                                                 contentContainerStyle={containerStyle}
                                             >
                                                 <Title style={{ textAlign: "center", color: "black" }}>Edit Product</Title>
-                                                <TextInput theme={{ colors: { primary: "red" } }} defaultValue={item.name}
+                                                <TextInput theme={{ colors: { primary: "#fa3c4c" } }} 
+                                                style={{backgroundColor: "white"}}
+                                                defaultValue={item.name}
                                                     label="Product Name"
                                                     onChangeText={value => setProductName(value)}
                                                 />
-                                                <TextInput theme={{ colors: { primary: "red" } }}
+                                                <TextInput theme={{ colors: { primary: "#fa3c4c" } }}
+                                                style={{backgroundColor: "white"}}
                                                     label="Price" defaultValue={item.price}
                                                     onChangeText={value => setProductPriceData(value)}
                                                 />
                                                 <Button
-                                                    style={{ height: 40, margin: "2%", padding: "1%", marginTop: "2%" }}
+                                                    style={{ height: 40, margin: "2%", padding: "1%", marginTop: "10%" }}
                                                     mode="contained"
                                                     raised
-                                                    theme={{ colors: { primary: "red" } }}
+                                                    theme={{ colors: { primary: "#fa3c4c" } }}
                                                     onPress={() => editProduct(item)}
                                                 >
                                                     Edit Product
@@ -243,7 +254,7 @@ const EditShopScreen = ({ route, navigation }) => {
                         }}
                     />
                     <Button
-                        style={{ height: 40, margin: "2%", padding: "1%", marginTop: "5%" }}
+                        style={{ height: 40, margin: "2%", padding: "1%", marginTop: "10%" }}
                         mode="contained"
                         raised
                         theme={{ colors: { primary: "#fa3c4c" } }}
