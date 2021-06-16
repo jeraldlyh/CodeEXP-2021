@@ -3,6 +3,7 @@ import { TabView } from "react-native-tab-view";
 import AllScreen from "./AllScreen";
 import HawkerScreen from "./HawkerScreen";
 import ShopScreen from "./ShopScreen";
+import { useNavigation } from "@react-navigation/native";
 
 const LandingPageTab = ({ itemData }) => {
     const [index, setIndex] = useState(0);
@@ -12,14 +13,16 @@ const LandingPageTab = ({ itemData }) => {
         { key: "third", title: "Shop" },
     ]);
 
+    const navigation = useNavigation();
+
     const renderScene = ({ route }) => {
         switch (route.key) {
             case "first":
-                return <AllScreen itemData={itemData}></AllScreen>;
+                return <AllScreen navigation={navigation} itemData={itemData}></AllScreen>;
             case "second":
-                return <HawkerScreen itemData={itemData}></HawkerScreen>;
+                return <HawkerScreen navigation={navigation} itemData={itemData}></HawkerScreen>;
             case "third":
-                return <ShopScreen itemData={itemData}></ShopScreen>;
+                return <ShopScreen navigation={navigation} itemData={itemData}></ShopScreen>;
             default:
                 return null;
         }
