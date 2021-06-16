@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { IconButton, Colors, Searchbar, List } from 'react-native-paper';
+import React, { useState, useContext, useEffect } from 'react';
+import { Button, IconButton, Colors, Searchbar, List } from 'react-native-paper';
 import { Text, View, FlatList, Image, LogBox, ScrollView } from 'react-native';
 import tailwind from 'tailwind-rn';
 import firebase from "../database/firebaseDB";
 import LandingPageTab from './LandingPageTab';
+import { AuthContext } from '../provider/AuthContext';
 
 const LandingPageScreen = ({ navigation }) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [itemData, setItemData] = React.useState("");
+    const { username, isLoggedIn } = useContext(AuthContext);
 
     useEffect(() => {
         const unsubscribe = firebase.firestore().collection("shop").onSnapshot((collection => {
@@ -51,6 +53,9 @@ const LandingPageScreen = ({ navigation }) => {
                 size={40}
                 onPress={() => navigation.navigate("Nearby")} />
         </View>
+        <Button labelStyle={tailwind("text-white text-lg")} style={tailwind("border-gray-400 border-b bg-red-500 w-2/5")} mode="contained" onPress={() => navigation.navigate("AddShop")}>
+                    <Text >Add Shop</Text>
+                </Button>
         <LandingPageTab itemData={itemData}></LandingPageTab>
 
         {/* <View>
