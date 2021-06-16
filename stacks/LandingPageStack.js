@@ -14,7 +14,7 @@ const LandingPageStack = () => {
         <Landing.Navigator screenOptions={{ headerShown: true, headerStyle: { backgroundColor: "#fa3c4c" }, headerTintColor: "#ffffff" }} >
             <Landing.Screen name="Red Dot Kakis" component={LandingPageScreen} />
             <Landing.Screen name="Nearby" component={NearbyScreen} />
-            <Landing.Screen name="AddShop" component={AddShopScreen} />
+            <Landing.Screen name="Add Shop" component={AddShopScreen} />
             <Landing.Screen name="StoreInfo" component={StoreInfo} options={({ route }) => ({ title: route.params.name })} />
             <Landing.Screen name="Room" component={RoomScreen} options={({ route }) => ({ title: route.params.username })}/>
             <Landing.Screen name="Login" component={LoginScreen} />

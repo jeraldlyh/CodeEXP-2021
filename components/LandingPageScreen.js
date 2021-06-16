@@ -1,6 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Button, IconButton, Colors, Searchbar, List } from 'react-native-paper';
-import { Text, View, FlatList, Image, LogBox, ScrollView } from 'react-native';
+import React, { useState, useContext, useEffect, Fragment } from 'react';
+import { Button, IconButton, Searchbar } from 'react-native-paper';
+import { Text, View } from 'react-native';
 import tailwind from 'tailwind-rn';
 import firebase from "../database/firebaseDB";
 import LandingPageTab from './LandingPageTab';
@@ -40,29 +40,33 @@ const LandingPageScreen = ({ navigation }) => {
             return () => unsubscribe();
         };
     }
-    return (<View style={tailwind("flex-1")}>
+    return (
+        <View style={tailwind("flex-1")}>
+            <View style={tailwind("flex-row mt-6 justify-center items-center")}>
+                <Searchbar style={tailwind("ml-5 w-5/6 border-solid border border-black h-8")}
+                    placeholder="Search"
+                    onChangeText={text => searchFilterFunction(text)}
+                />
+                <IconButton
+                    icon="near-me"
+                    color="#fa3c4c"
+                    size={30}
+                    onPress={() => navigation.navigate("Nearby")} />
+            </View>
 
-        <View style={tailwind("flex-row mt-6 justify-center items-center")}>
-            <Searchbar style={tailwind("ml-5 w-5/6 border-solid border border-black h-8")}
-                placeholder="Search"
-                onChangeText={text => searchFilterFunction(text)}
-            />
-            <IconButton
-                icon="near-me"
-                color="#fa3c4c"
-                size={30}
-                onPress={() => navigation.navigate("Nearby")} />
+            <View style={tailwind("flex-row justify-center items-center")}>
+                {
+                    !isLoggedIn
+                        ? <Button raised theme={{ colors: { primary: "#fa3c4c" } }} mode="text" icon="plus" style={{ margin: "2%" }}
+                            onPress={() => navigation.navigate("Add Shop")}>
+                            <Text >Add Shop</Text>
+                        </Button>
+                        : <Fragment />
+                }
+            </View>
+            <LandingPageTab itemData={itemData}></LandingPageTab>
         </View>
-        
-        <View style={tailwind("flex-row justify-center items-center")}>
-        {isLoggedIn ? <Button raised theme={{ colors: { primary: "#fa3c4c" } }} mode="text" icon="plus" style={{margin:"2%"}}
-                              onPress={() => navigation.navigate("AddShop")}>
-                <Text >Add Shop</Text>
-            </Button> : <Text></Text>}
-            
-        </View>
-        <LandingPageTab itemData={itemData}></LandingPageTab>
-    </View>);
+    );
 }
 
 export default LandingPageScreen;

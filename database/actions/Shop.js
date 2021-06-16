@@ -18,6 +18,7 @@ export const isShopExist = (shopName) => {
             })
             .catch(error => {
                 console.log("Error in isShopExist");
+                reject(error);
             })
     })
 }
