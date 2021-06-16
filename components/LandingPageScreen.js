@@ -3,19 +3,22 @@ import { IconButton, Colors, Searchbar, List } from 'react-native-paper';
 import { Text, View, FlatList, Image, LogBox, ScrollView } from 'react-native';
 import tailwind from 'tailwind-rn';
 import firebase from "../database/firebaseDB";
+import LandingPageTab from './LandingPageTab';
+import HawkerScreen from './HawkerScreen';
+import ShopScreen from './ShopScreen';
+import AllScreen from './AllScreen';
 
 const LandingPageScreen = ({ navigation }) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [tempData, setTempData] = useState('');
+    const [hawkerData, setHawkerData] = useState('');
     const [itemData, setItemData] = React.useState("");
     useEffect(() => {
-        // LogBox.ignoreLogs(["Setting a timer"])
         const unsubscribe = firebase.firestore().collection("shop").onSnapshot((collection => {
             const shopData = collection.docs.map(doc => doc.data())
             setItemData(shopData);
             setTempData(shopData);
         }))
-
         return () => unsubscribe();
     }, []);
     const searchFilterFunction = text => {
@@ -52,56 +55,28 @@ const LandingPageScreen = ({ navigation }) => {
             const compareData = `${item.type.toUpperCase()}`;
             return compareData.indexOf("HAWKER") > -1;
         });
-        console.log(newData);
         setItemData(newData);
     }
     const allViewFunction = () => {
         setItemData(tempData);
     }
-    return (<ScrollView >
+    return (<View style={tailwind("flex-1")}>
 
         <View style={tailwind("flex-row mt-8 justify-center items-center")}>
             <Searchbar style={tailwind("ml-5 w-4/5 border-solid border-2 border-red-500")}
                 placeholder="Search"
                 onChangeText={text => searchFilterFunction(text)}
             />
-            {/* <View style={tailwind("text-center")}> */}
             <IconButton
                 icon="near-me"
                 color={Colors.red500}
                 size={40}
                 onPress={() => navigation.navigate("Nearby")} />
-            {/* </View> */}
         </View>
 
-        <View style={tailwind("flex flex-row justify-evenly")}>
-            <View style={tailwind("text-center")}>
-                <IconButton
-                    icon="cart"
-                    color={Colors.red500}
-                    size={50}
-                    onPress={allViewFunction} />
-                <Text style={tailwind("text-center")}>All</Text>
-            </View>
-            <View style={tailwind("text-center")}>
-                <IconButton
-                    icon="food-fork-drink"
-                    color={Colors.red500}
-                    size={50}
-                    onPress={hawkerViewFunction} />
-                <Text style={tailwind("text-center")}>Hawker</Text>
-            </View>
-            <View style={tailwind("text-center")}>
-                <IconButton
-                    icon="store"
-                    color={Colors.red500}
-                    size={50}
-                    onPress={shopViewFunction} />
-                <Text style={tailwind("text-center")}>Shops</Text>
-            </View>
+<LandingPageTab itemData={itemData} tempData={tempData} setItemData={setItemData} hawkerData={hawkerData}></LandingPageTab>
 
-        </View>
-        <View>
+        {/* <View>
             <FlatList
                 data={itemData}
                 keyExtractor={item => item.name}
@@ -117,8 +92,8 @@ const LandingPageScreen = ({ navigation }) => {
                     )
                 }}
             />
-        </View>
-    </ScrollView>);
+        </View> */}
+    </View>);
 }
 
 export default LandingPageScreen;
