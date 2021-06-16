@@ -10,7 +10,7 @@ const RootProfileStack = () => {
     const { isLoggedIn } = useContext(AuthContext);
 
     return (
-        <RootProfile.Navigator screenOptions={{ headerShown: false }}>
+        <RootProfile.Navigator screenOptions={{ headerShown: true, headerStyle: { backgroundColor: "#ff8b94" }, headerTintColor: "#ffffff" }}>
             {
                 isLoggedIn
                     ? <RootProfile.Screen name="Profile" component={ProfileStack} />

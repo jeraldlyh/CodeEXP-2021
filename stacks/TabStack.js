@@ -33,11 +33,11 @@ const TabStack = () => {
                     : 'person-outline';
                 }
 
-                return <Ionicons name={iconName} size={size} color='red' />;
+                return <Ionicons name={iconName} size={size} color="#ff8b94" />;
                 },
             })}
             tabBarOptions={{
-                activeTintColor: 'red',
+                activeTintColor: "#ff8b94",
                 inactiveTintColor: 'gray',
             }}
         >

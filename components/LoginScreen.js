@@ -26,16 +26,15 @@ function LoginScreen({ navigation }) {
 
     return (
         <View style={tailwind("flex-1 w-4/5 m-10")}>
-            <Text style={tailwind("text-4xl text-black text-center font-bold mb-20 mt-5")}>LOGIN</Text>
             <Text style={tailwind("text-center mb-5 text-red-500")}>{error}</Text>
 
             <View style={tailwind("flex ")}>
-                <TextInput theme={{ colors: { primary: "red" } }}
+                <TextInput theme={{ colors: { primary: "#ff8b94" } }}
                     label="Email"
                     textContentType="emailAddress"
                     keyboardType="email-address" onChangeText={email => setEmail(email)}
                 />
-                <TextInput theme={{ colors: { primary: "red" } }}
+                <TextInput theme={{ colors: { primary: "#ff8b94" } }}
                     label="Password" onChangeText={password => setPassword(password)}
                     secureTextEntry
                 />
@@ -48,12 +47,12 @@ function LoginScreen({ navigation }) {
                 </TouchableOpacity>
             </View>
             <View style={tailwind("flex flex-row justify-around mt-5")}>
-                <Button labelStyle={tailwind("text-white text-lg")} style={tailwind("border-gray-400 border-b bg-red-500 w-2/5")} mode="contained" onPress={onLoginPressed}>
+                <Button labelStyle={tailwind("text-white text-lg")} style={tailwind("border-gray-400 border-b w-5/12")} mode="contained" raised theme={{ colors: { primary: "#ff8b94" } }} onPress={onLoginPressed}>
                     <Text >Login</Text>
                 </Button>
 
                 {/* Temporary Register button */}
-                <Button labelStyle={tailwind("text-white text-lg")} style={tailwind("border-gray-400 border-b bg-red-500 w-2/5")} mode="contained" onPress={() => navigation.push("Register")}>
+                <Button labelStyle={tailwind("text-white text-lg")} style={tailwind("border-gray-400 border-b w-5/12")} mode="contained" raised theme={{ colors: { primary: "#ff8b94" } }} onPress={() => navigation.push("Register")}>
                     <Text >Register</Text>
                 </Button>
             </View>

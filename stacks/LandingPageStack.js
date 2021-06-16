@@ -9,12 +9,7 @@ const Landing = createStackNavigator();
 
 const LandingPageStack = () => {
     return (
-        <Landing.Navigator 
-            screenOptions={{ 
-                headerShown: true, 
-                headerStyle: { backgroundColor: "red"}, 
-                headerTintColor: "white" ,
-            }} >
+        <Landing.Navigator screenOptions={{ headerShown: true, headerStyle: { backgroundColor: "#ff8b94" }, headerTintColor: "#ffffff" }} >
             <Landing.Screen name="Red Dot Kakis" component={LandingPageScreen} />
             <Landing.Screen name="Nearby" component={NearbyScreen} />
             <Landing.Screen name="StoreInfo" component={StoreInfo} options={({ route }) => ({ title: route.params.name })} />

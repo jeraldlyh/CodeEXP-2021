@@ -10,7 +10,7 @@ const RootChatStack = () => {
     const { isLoggedIn } = useContext(AuthContext);
 
     return (
-        <RootChat.Navigator screenOptions={{ headerShown: false }}>
+        <RootChat.Navigator screenOptions={{ headerShown: true, headerStyle: { backgroundColor: "#ff8b94" }, headerTintColor: "#ffffff" }}>
             {
                 isLoggedIn
                     ? <RootChat.Screen name="Chat" component={ChatStack} />

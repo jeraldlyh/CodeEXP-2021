@@ -7,7 +7,7 @@ const Bookmark = createStackNavigator();
 
 const BookmarkStack = () => {
     return (
-        <Bookmark.Navigator screenOptions={{ headerShown: true, headerStyle: { backgroundColor: "red" }, headerTintColor: "white" }}>
+        <Bookmark.Navigator screenOptions={{ headerShown: true, headerStyle: { backgroundColor: "#ff8b94" }, headerTintColor: "#ffffff" }}>
             <Bookmark.Screen name="Bookmark" component={BookmarkScreen} />
             <Bookmark.Screen name="StoreInfo" component={StoreInfo} options={({ route }) => ({ title: route.params.name })}/>
         </Bookmark.Navigator>

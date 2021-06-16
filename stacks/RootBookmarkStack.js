@@ -10,7 +10,7 @@ const RootBookmarkStack = () => {
     const { isLoggedIn } = useContext(AuthContext);
 
     return (
-        <RootBookmark.Navigator screenOptions={{ headerShown: false }}>
+        <RootBookmark.Navigator screenOptions={{ headerShown: true, headerStyle: { backgroundColor: "#ff8b94" }, headerTintColor: "#ffffff" }}>
             {
                 isLoggedIn
                     ? <RootBookmark.Screen name="Profile" component={BookmarkStack} />
