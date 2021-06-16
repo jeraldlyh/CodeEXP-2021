@@ -98,7 +98,7 @@ const UserReviewScreen = ({ navigation, route }) => {
                         theme={{ colors: { primary: "#fa3c4c" } }}
                         onPress={() => submitRating()}
                     >
-                        Add Shop
+                        Confirm
                     </Button>
                 </ScrollView>
             </SafeAreaView>
