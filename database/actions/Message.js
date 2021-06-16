@@ -50,9 +50,7 @@ export const createConvo = (userOne, userTwo) => {
     return new Promise((resolve, reject) => {
         isConvoExist(userOne, userTwo)
             .then(response => {
-                if (response.length !== 0) {
-                    resolve(response._id)
-                } else {
+                if (!response) {
                     firebase.firestore().collection("threads")
                         .add({
                             userOne: userOne,
@@ -66,6 +64,8 @@ export const createConvo = (userOne, userTwo) => {
                             console.log("Error in isConvoExist called in createConvo");
                             reject(error);
                         });
+                } else {
+                    resolve(response._id)
                 }
             })
     });
