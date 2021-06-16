@@ -5,6 +5,7 @@ import StoreInfo from "../components/StoreInfo";
 import NearbyScreen from "../components/NearbyScreen";
 import RoomScreen from "../components/RoomScreen";
 import AddShopScreen from "../components/AddShopScreen";
+import LoginScreen from "../components/LoginScreen";
 
 const Landing = createStackNavigator();
 
@@ -16,6 +17,7 @@ const LandingPageStack = () => {
             <Landing.Screen name="AddShop" component={AddShopScreen} />
             <Landing.Screen name="StoreInfo" component={StoreInfo} options={({ route }) => ({ title: route.params.name })} />
             <Landing.Screen name="Room" component={RoomScreen} options={({ route }) => ({ title: route.params.username })}/>
+            <Landing.Screen name="Login" component={LoginScreen} />
         </Landing.Navigator>
     );
 };

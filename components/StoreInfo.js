@@ -184,10 +184,10 @@ export default function StoreInfo({ route, navigation }) {
                                     {
                                         isLoggedIn
                                             ? <Fragment />
-                                            : <BlurView intensity={300} style={{  height:"100%", position: 'absolute', top: 0, left: 0, width: '100%', zIndex: 100 }}>
-                                                <View style={tailwind("flex flex-col justify-center items-center")}>
-                                                    <Text style={tailwind("text-center")}>Hello! I am bluring contents underneath</Text>
-                                                    <Button>test</Button>
+                                            : <BlurView intensity={85} style={{  height:"100%", position: 'absolute', top: 0, left: 0, width: '100%', zIndex: 100 }}>
+                                                <View style={tailwind("flex flex-col justify-center items-center mt-10")}>
+                                                    <Text style={tailwind("text-center mb-5")}>The content cannot be seen because you are not logged in.</Text>
+                                                    <Button mode="contained" onPress={() => navigation.navigate("Login")}>Login</Button>
                                                 </View>
                                             </BlurView>
                                     }
