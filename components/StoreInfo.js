@@ -84,7 +84,8 @@ export default function StoreInfo({ route, navigation }) {
     }
 
     const formatListingDescription = (price, user, listAt) => {
-        const formatTime = moment(listAt).format("MMMM Do YYYY, h:mm:ss a");
+        const time = _.isInteger(listAt) ? listAt : parseInt(listAt);     // Fix format pre-inserted data
+        const formatTime = moment(time).format("MMMM Do YYYY, h:mm:ss a");
         return `Placed by: ${user}\nPrice: $${price} \nListed at: ${formatTime}`;
     }
 
