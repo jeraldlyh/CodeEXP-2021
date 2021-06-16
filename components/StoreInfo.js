@@ -76,7 +76,7 @@ export default function StoreInfo({ route, navigation }) {
                     thread: response, 
                     username: username,
                     anotherUser: product.username,
-                    product: product 
+                    product: product,
                 })
             })
     }
