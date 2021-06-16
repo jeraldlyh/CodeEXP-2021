@@ -17,7 +17,7 @@ function LoginScreen({ navigation }) {
             .then(response => {
                 setUsername(response);
                 setIsLoggedIn(true);
-                navigation.navigate("Profile", { screen: "Profile" });
+                navigation.popToTop();
             })
             .catch(error => {
                 console.log(error)
