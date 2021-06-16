@@ -25,7 +25,8 @@ function RegisterScreen({ navigation }) {
     };
 
     return (
-        <View style={tailwind("flex-1 w-4/5 m-10")}>
+        <View style={tailwind("flex-1 w-4/5 m-10 justify-center")}>
+            <Text style={tailwind("text-center mb-5")}>Register for a new account.</Text>
             <Text style={tailwind("text-center mb-5 text-red-500")}>{error}</Text>
             <View>
                 <TextInput theme={{ colors: { primary: "#fa3c4c" } }}

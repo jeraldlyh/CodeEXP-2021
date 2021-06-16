@@ -110,10 +110,10 @@ export default function StoreInfo({ route, navigation }) {
         return `Placed by: ${user}\nPrice: $${price} \nListed at: ${formatTime}`;
     }
 
-    // useEffect(() => {
-    //     LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
-    //     setListings(route.params.listings);
-    // }, [])
+    useEffect(() => {
+        // LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
+        setListings(route.params.listings);
+    }, [])
 
     return (
         <Provider theme={theme}>
@@ -181,16 +181,16 @@ export default function StoreInfo({ route, navigation }) {
                                 title="Orders"
                             >
                                 <View style={tailwind("flex")}>
-                                    {/* {
+                                    {
                                         isLoggedIn
                                             ? <Fragment />
-                                            : <BlurView intensity={300} style={{  height: 300, position: 'absolute', top: 0, left: 0, width: '100%', zIndex: 100 }}>
+                                            : <BlurView intensity={300} style={{  height:"100%", position: 'absolute', top: 0, left: 0, width: '100%', zIndex: 100 }}>
                                                 <View style={tailwind("flex flex-col justify-center items-center")}>
                                                     <Text style={tailwind("text-center")}>Hello! I am bluring contents underneath</Text>
                                                     <Button>test</Button>
                                                 </View>
                                             </BlurView>
-                                    } */}
+                                    }
                                     <FlatList
                                         data={listings}
                                         extraData={refresh}

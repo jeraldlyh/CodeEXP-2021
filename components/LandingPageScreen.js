@@ -42,20 +42,21 @@ const LandingPageScreen = ({ navigation }) => {
     }
     return (<View style={tailwind("flex-1")}>
 
-        <View style={tailwind("flex-row mt-8 justify-center items-center")}>
-            <Searchbar style={tailwind("ml-5 w-4/5 border-solid border-2 border-red-500")}
+        <View style={tailwind("flex-row mt-6 justify-center items-center")}>
+            <Searchbar style={tailwind("ml-5 w-5/6 border-solid border border-black h-8")}
                 placeholder="Search"
                 onChangeText={text => searchFilterFunction(text)}
             />
             <IconButton
                 icon="near-me"
-                color={Colors.red500}
-                size={40}
+                color="#fa3c4c"
+                size={30}
                 onPress={() => navigation.navigate("Nearby")} />
         </View>
         
-        <View style={tailwind("flex-row m-3 justify-center items-center")}>
-        {isLoggedIn ? <Button labelStyle={tailwind("text-white text-lg")} style={tailwind("border-gray-400 border-b bg-red-500 w-2/5")} mode="contained" onPress={() => navigation.navigate("AddShop")}>
+        <View style={tailwind("flex-row justify-center items-center")}>
+        {isLoggedIn ? <Button raised theme={{ colors: { primary: "#fa3c4c" } }} mode="text" icon="plus" style={{margin:"2%"}}
+                              onPress={() => navigation.navigate("AddShop")}>
                 <Text >Add Shop</Text>
             </Button> : <Text></Text>}
             
