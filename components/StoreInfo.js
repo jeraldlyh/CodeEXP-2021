@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, Fragment } from 'react';
-import { Text, View, StyleSheet, Image, FlatList, SafeAreaView, ScrollView, LogBox } from 'react-native';
+import { Text, View, StyleSheet, Image, FlatList, SafeAreaView, ScrollView, LogBox, Dimensions } from 'react-native';
 import { List, Card, Title, Paragraph, Button, IconButton, Modal, Portal, Provider, TextInput, DefaultTheme } from "react-native-paper";
 import { BlurView } from 'expo-blur';
 import tailwind from 'tailwind-rn';
@@ -11,6 +11,8 @@ import SelectPicker from 'react-native-form-select-picker';
 import { createConvo } from '../database/actions/Message';
 import _ from "lodash";
 import moment from "moment";
+import AwesomeAlert from 'react-native-awesome-alerts';
+
 
 export default function StoreInfo({ route, navigation }) {
     // Accordion
@@ -29,6 +31,10 @@ export default function StoreInfo({ route, navigation }) {
 
     const { username, isLoggedIn, avatar, bookmarks, setBookmarks } = useContext(AuthContext);
     const [refresh, setRefresh] = useState(false);              // Force refresh flat list
+
+    //msg
+    const [showAlert, setShowAlert] = useState(false);
+    const [message, setMessage] = useState("");
 
     const bookmarkIcon = (shopName) => {
         if (!isLoggedIn) {
@@ -83,6 +89,8 @@ export default function StoreInfo({ route, navigation }) {
                     setListings([response]);
                 }
                 setRefresh(!refresh);
+                setMessage("Success");
+                setShowAlert(true);
             })
             .catch(error => console.log(error))
     };
@@ -116,10 +124,29 @@ export default function StoreInfo({ route, navigation }) {
     }, [])
 
     return (
+        
         <Provider theme={theme}>
             <SafeAreaView style={styles.container}>
                 <ScrollView>
-
+                <AwesomeAlert
+                contentContainerStyle={{width: Dimensions.get('window').width}}
+          show={showAlert}
+          showProgress={false}
+          title="Add Order"
+          message={message}
+          closeOnTouchOutside={true}
+          closeOnHardwareBackPress={false}
+          showConfirmButton={true}
+          confirmText="OK"
+          confirmButtonColor="#fa3c4c"
+          confirmButtonTextStyle={{paddingLeft:"10%", paddingRight:"10%"}}
+          onCancelPressed={() => {
+            setShowAlert(false)
+          }}
+          onConfirmPressed={() => {
+            setShowAlert(false)
+          }}
+        />
                     <Image source={{ uri: route.params.img }} style={{
                         width: '100%',
                         height: 200
