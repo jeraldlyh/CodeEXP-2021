@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from "react";
 import tailwind from 'tailwind-rn';
 import { Text, View } from 'react-native';
 import { Icon } from "react-native-elements";
-import { Button } from 'react-native-paper';
 import moment from "moment";
 import { AuthContext } from "../provider/AuthContext";
 import TabViewScreen from "./TabViewScreen";
@@ -10,13 +9,16 @@ import { getUserProfile } from "../database/actions/User";
 
 export default function ProfileScreen({ navigation }) {
     const [userProfile, setUserProfile] = useState("");
-    const { username } = useContext(AuthContext);
+    const { username, setAvatar, setBookmarks } = useContext(AuthContext);
 
     useEffect(() => {
-        console.log(username)
         getUserProfile(username).then(response => {
             setUserProfile(response);
+            setAvatar(response.avatar);
+            setBookmarks(response.bookmarks)
         })
+
+        return () => setUserProfile("");
     }, []);
 
     const populateRating = (rating) => {

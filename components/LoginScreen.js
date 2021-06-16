@@ -6,8 +6,8 @@ import { loginUser } from "../database/actions/User";
 import { AuthContext } from "../provider/AuthContext";
 
 function LoginScreen({ navigation }) {
-    const [email, setEmail] = useState({ value: '', error: '' });
-    const [password, setPassword] = useState({ value: '', error: '' });
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
     const { setUsername, setIsLoggedIn } = useContext(AuthContext);
@@ -20,22 +20,23 @@ function LoginScreen({ navigation }) {
                 navigation.navigate("Profile", { screen: "Profile" });
             })
             .catch(error => {
+                console.log(error)
                 setError(error.toString().split(":")[1].substr(1));
             })
     };
 
     return (
-        <View style={tailwind("flex-1 w-4/5 m-10")}>
-            <Text style={tailwind("text-4xl text-black text-center font-bold mb-20 mt-5")}>LOGIN</Text>
+        <View style={tailwind("flex-1 w-4/5 m-10 content-center justify-center")}>
+            <Text style={tailwind("text-center mb-5")}>Please login first.</Text>
             <Text style={tailwind("text-center mb-5 text-red-500")}>{error}</Text>
 
             <View style={tailwind("flex ")}>
-                <TextInput theme={{ colors: { primary: "red" } }}
+                <TextInput theme={{ colors: { primary: "#fa3c4c" } }}
                     label="Email"
                     textContentType="emailAddress"
                     keyboardType="email-address" onChangeText={email => setEmail(email)}
                 />
-                <TextInput theme={{ colors: { primary: "red" } }}
+                <TextInput theme={{ colors: { primary: "#fa3c4c" } }}
                     label="Password" onChangeText={password => setPassword(password)}
                     secureTextEntry
                 />
@@ -48,12 +49,12 @@ function LoginScreen({ navigation }) {
                 </TouchableOpacity>
             </View>
             <View style={tailwind("flex flex-row justify-around mt-5")}>
-                <Button labelStyle={tailwind("text-white text-lg")} style={tailwind("border-gray-400 border-b bg-red-500 w-2/5")} mode="contained" onPress={onLoginPressed}>
+                <Button labelStyle={tailwind("text-white text-lg")} style={tailwind("border-gray-400 border-b w-5/12")} mode="contained" raised theme={{ colors: { primary: "#fa3c4c" } }} onPress={onLoginPressed}>
                     <Text >Login</Text>
                 </Button>
 
                 {/* Temporary Register button */}
-                <Button labelStyle={tailwind("text-white text-lg")} style={tailwind("border-gray-400 border-b bg-red-500 w-2/5")} mode="contained" onPress={() => navigation.push("Register")}>
+                <Button labelStyle={tailwind("text-white text-lg")} style={tailwind("border-gray-400 border-b w-5/12")} mode="contained" raised theme={{ colors: { primary: "#fa3c4c" } }} onPress={() => navigation.push("Register")}>
                     <Text >Register</Text>
                 </Button>
             </View>

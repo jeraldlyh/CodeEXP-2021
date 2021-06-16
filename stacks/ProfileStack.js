@@ -10,7 +10,7 @@ const Profile = createStackNavigator()
 
 const ProfileStack = () => {
     return (
-        <Profile.Navigator screenOptions={{ headerShown: true, headerStyle: { backgroundColor: "red" }, headerTintColor: "white" }}>
+        <Profile.Navigator screenOptions={{ headerShown: true, headerStyle: { backgroundColor: "#fa3c4c" }, headerTintColor: "#ffffff" }}>
             <Profile.Screen name="Profile" component={ProfileScreen} />
             <Profile.Screen name="Login" component={LoginScreen} />
             <Profile.Screen name="Register" component={RegisterScreen} />

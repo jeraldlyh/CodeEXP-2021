@@ -7,7 +7,7 @@ import { AuthContext } from "../provider/AuthContext";
 
 
 const ChatScreen = ({ navigation }) => {
-    const { username } = useContext(AuthContext);
+    const { username, avatar } = useContext(AuthContext);
     const [threads, setThreads] = useState([]);
 
     useEffect(() => {
@@ -41,6 +41,7 @@ const ChatScreen = ({ navigation }) => {
                             onPress={() => navigation.navigate("Room", { 
                                 thread: item._id, 
                                 username: username,
+                                avatar: avatar,
                                 anotherUser: item.userOne === username ? item.userTwo : item.userOne 
                             })}
                         />

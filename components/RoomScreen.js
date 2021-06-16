@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View, ActivityIndicator } from "react-native";
 import { IconButton } from "react-native-paper";
-import { GiftedChat, Bubble, Send } from 'react-native-gifted-chat';
+import { GiftedChat, Bubble, Send, SystemMessage, Time } from 'react-native-gifted-chat';
 import firebase from "../database/firebaseDB";
 import Filter from "bad-words";
 
 
 function RoomScreen({ route }) {
     const [messages, setMessage] = useState([]);
-    const { thread, username, product } = route.params;
+    const { thread, username, product, avatar } = route.params;
     const filter = new Filter();
 
     const formatProductMessage = (product) => {
@@ -42,11 +42,11 @@ function RoomScreen({ route }) {
                         createdAt: new Date().getTime(),
                         ...messageData
                     };
-
-                    if (!firebaseData.system) {
+                    console.log(messageData.user)
+                    if (!messageData.system) {
                         data.user = {
-                            ...firebaseData.user,
-                            name: firebaseData.user.email
+                            ...messageData.user,
+                            avatar: messageData.user.avatar
                         };
                     }
 
@@ -68,7 +68,8 @@ function RoomScreen({ route }) {
                 text: text,
                 createdAt: new Date().getTime(),
                 user: {
-                    _id: username
+                    _id: username,
+                    avatar: avatar,
                 }
             });
     };
@@ -79,10 +80,10 @@ function RoomScreen({ route }) {
                 {...props}
                 wrapperStyle={{
                     left: {
-                        backgroundColor: "#6646ee"
+                        backgroundColor: "#0084ff"
                     },
                     right: {
-                        backgroundColor: "#6646ee"
+                        backgroundColor: "#0084ff"
                     }
                 }}
                 textStyle={{
@@ -97,10 +98,26 @@ function RoomScreen({ route }) {
         );
     };
 
+    function renderTime(props) {
+        return (
+            <Time
+                {...props}
+                timeTextStyle={{
+                    left: {
+                        color: "#fff"
+                    },
+                    right: {
+                        color: "#fff"
+                    },
+                }}
+            />
+        );
+    }
+
     function renderLoading() {
         return (
             <View style={styles.loadingContainer}>
-                <ActivityIndicator size="large" color="#6646ee" />
+                <ActivityIndicator size="large" color="#fa3c4c" />
             </View>
         );
     };
@@ -109,7 +126,7 @@ function RoomScreen({ route }) {
         return (
             <Send {...props}>
                 <View style={styles.sendingContainer}>
-                    <IconButton icon="send-circle" size={32} color="#6646ee" />
+                    <IconButton icon="send-circle" size={32} color="#fa3c4c" />
                 </View>
             </Send>
         );
@@ -118,7 +135,7 @@ function RoomScreen({ route }) {
     function scrollToBottomComponent() {
         return (
             <View style={styles.bottomComponentContainer}>
-                <IconButton icon="chevron-double-down" size={36} color="#6646ee" />
+                <IconButton icon="chevron-double-down" size={36} color="#fa3c4c" />
             </View>
         );
     }
@@ -145,6 +162,7 @@ function RoomScreen({ route }) {
             renderBubble={renderBubble}
             renderLoading={renderLoading}
             renderSend={renderSend}
+            renderTime={renderTime}
             renderSystemMessage={renderSystemMessage}
             scrollToBottomComponent={scrollToBottomComponent}
         />
@@ -166,7 +184,7 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     systemMessageWrapper: {
-        backgroundColor: "#6646ee",
+        backgroundColor: "#fa3c4c",
         borderRadius: 4,
         padding: 5
     },
