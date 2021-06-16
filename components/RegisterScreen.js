@@ -28,16 +28,16 @@ function RegisterScreen({ navigation }) {
         <View style={tailwind("flex-1 w-4/5 m-10")}>
             <Text style={tailwind("text-center mb-5 text-red-500")}>{error}</Text>
             <View>
-                <TextInput theme={{ colors: { primary: "red" } }}
+                <TextInput theme={{ colors: { primary: "#fa3c4c" } }}
                     label="Name"
                     onChangeText={name => setName(name)}
                 />
-                <TextInput theme={{ colors: { primary: "red" } }}
+                <TextInput theme={{ colors: { primary: "#fa3c4c" } }}
                     label="Email"
                     textContentType="emailAddress"
                     keyboardType="email-address" onChangeText={email => setEmail(email)}
                 />
-                <TextInput theme={{ colors: { primary: "red" } }}
+                <TextInput theme={{ colors: { primary: "#fa3c4c" } }}
                     label="Password" onChangeText={password => setPassword(password)}
                     secureTextEntry
                 />
@@ -47,7 +47,7 @@ function RegisterScreen({ navigation }) {
                 <Text>Already have an account? </Text>
             </TouchableOpacity>
 
-            <Button labelStyle={tailwind("text-white text-lg")} style={tailwind("border-gray-400 border-b bg-red-500 m-3")} icon="account-plus" mode="contained" onPress={onSignUpPressed}>
+            <Button labelStyle={tailwind("text-white text-lg")} style={tailwind("border-gray-400 border-b bg-red-500 m-3")} icon="account-plus" mode="contained" raised theme={{ colors: { primary: "#fa3c4c" } }} onPress={onSignUpPressed}>
                 <Text>Create my account</Text>
             </Button>
 

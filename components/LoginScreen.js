@@ -29,12 +29,12 @@ function LoginScreen({ navigation }) {
             <Text style={tailwind("text-center mb-5 text-red-500")}>{error}</Text>
 
             <View style={tailwind("flex ")}>
-                <TextInput theme={{ colors: { primary: "#ff8b94" } }}
+                <TextInput theme={{ colors: { primary: "#fa3c4c" } }}
                     label="Email"
                     textContentType="emailAddress"
                     keyboardType="email-address" onChangeText={email => setEmail(email)}
                 />
-                <TextInput theme={{ colors: { primary: "#ff8b94" } }}
+                <TextInput theme={{ colors: { primary: "#fa3c4c" } }}
                     label="Password" onChangeText={password => setPassword(password)}
                     secureTextEntry
                 />
@@ -47,12 +47,12 @@ function LoginScreen({ navigation }) {
                 </TouchableOpacity>
             </View>
             <View style={tailwind("flex flex-row justify-around mt-5")}>
-                <Button labelStyle={tailwind("text-white text-lg")} style={tailwind("border-gray-400 border-b w-5/12")} mode="contained" raised theme={{ colors: { primary: "#ff8b94" } }} onPress={onLoginPressed}>
+                <Button labelStyle={tailwind("text-white text-lg")} style={tailwind("border-gray-400 border-b w-5/12")} mode="contained" raised theme={{ colors: { primary: "#fa3c4c" } }} onPress={onLoginPressed}>
                     <Text >Login</Text>
                 </Button>
 
                 {/* Temporary Register button */}
-                <Button labelStyle={tailwind("text-white text-lg")} style={tailwind("border-gray-400 border-b w-5/12")} mode="contained" raised theme={{ colors: { primary: "#ff8b94" } }} onPress={() => navigation.push("Register")}>
+                <Button labelStyle={tailwind("text-white text-lg")} style={tailwind("border-gray-400 border-b w-5/12")} mode="contained" raised theme={{ colors: { primary: "#fa3c4c" } }} onPress={() => navigation.push("Register")}>
                     <Text >Register</Text>
                 </Button>
             </View>
