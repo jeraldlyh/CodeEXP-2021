@@ -251,6 +251,7 @@ const styles = StyleSheet.create({
     },
     systemMessageText: {
         fontSize: 14,
+        textAlign: "center",
         color: "#000000",
         fontWeight: "bold",
         backgroundColor: "transparent",
