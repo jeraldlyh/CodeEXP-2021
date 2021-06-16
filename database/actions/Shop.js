@@ -16,6 +16,9 @@ export const isShopExist = (shopName) => {
                 }
                 resolve(false)
             })
+            .catch(error => {
+                console.log("Error in isShopExist");
+            })
     })
 }
 
@@ -52,7 +55,7 @@ export const addShop = (body) => {
                 }
             })
             .catch(error => {
-                console.log(error);
+                console.log("Error in isShopExist called in addShop");
                 reject(error);
             });
     })
@@ -86,7 +89,7 @@ export const getShopByName = (shopName) => {
                 reject("No data found");
             })
             .catch(error => {
-                console.log("An error occured while retrieving shop data");
+                console.log("Error in getShopByName");
                 reject("An error occured while retrieving shop data");
             });
     })
@@ -137,7 +140,7 @@ export const getNearbyShops = async() => {
                             };
                         })
                         .catch(error => {
-                            console.log(error);
+                            console.log("Error in getNearbyShops");
                             reject(error);
                         });
 
@@ -163,7 +166,7 @@ export const isProductExist = (shopName, product) => {
             resolve(false);
         })
         .catch(error => {
-            console.log(error);
+            console.log("Error in isProdExist");
             reject(error);
         });
     })
@@ -181,6 +184,9 @@ export const getProductByName = (shopName, productName) => {
             });
             resolve(productData[0]);
         })
-        .catch(error => reject(error));
+        .catch(error => {
+            console.log("Error in getProdByName");
+            reject(error);
+        });
     })
 }

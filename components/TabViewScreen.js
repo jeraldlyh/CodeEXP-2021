@@ -18,9 +18,9 @@ function TabViewScreen(props) {
     const renderScene = ({ route }) => {
         switch(route.key) {
             case "first":
-                return <ListingScreen listing={props.listing} />;
+                return <ListingScreen listings={props.listings} />;
             case "second":
-                return <ReviewScreen review={props.review} />;
+                return <ReviewScreen reviews={props.reviews} />;
             default:
                 return null;
         }

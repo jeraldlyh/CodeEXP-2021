@@ -10,7 +10,7 @@ export const createUser = (username) => {
             enableNotification: false,
             trips: 0,
             listing: [],
-            review: [],
+            reviews: [],
             bookmarks: []
         });
 }
@@ -27,7 +27,7 @@ export const registerUser = (username, email, password) => {
                 })
             })
             .catch(error => {
-                console.log(error);
+                console.log("Error in registerUser");
                 reject(error);
             });
     })
@@ -40,8 +40,8 @@ export const loginUser = (email, password) => {
                 resolve(userCredential.user.displayName);
             })
             .catch(error => {
-                console.log(error)
-                reject(error)
+                console.log("Error in loginUser");
+                reject(error);
             })
     })
 }

@@ -38,7 +38,10 @@ export const addMessageToConvo = (conversationID, fromUser, text) => {
                 })
             })
             .then(() => resolve("Message successfully sent!"))
-            .catch(error => reject(error));
+            .catch(error => {
+                console.log("Error in addMessageToConv");
+                reject(error)
+            });
     });
 };
 
@@ -60,7 +63,7 @@ export const createConvo = (userOne, userTwo) => {
                             resolve(doc.id);
                         })
                         .catch(error => {
-                            console.log(error);
+                            console.log("Error in isConvoExist called in createConvo");
                             reject(error);
                         });
                 }
@@ -96,7 +99,7 @@ export const isConvoExist = (userOne, userTwo) => {
                 }
             })
             .catch(error => {
-                console.log(error);
+                console.log("Error in isConvoExist");
                 reject(error);
             });
     });

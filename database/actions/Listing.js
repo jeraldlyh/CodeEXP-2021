@@ -35,14 +35,14 @@ export const addListing = (username, shopName, product, quantity, price) => {
                                 resolve(newListing);
                         })
                         .catch(error => {
-                            console.log(error);
+                            console.log("Error in getProductByName called in addListing");
                         });
                 } else {
                     reject("Product does not exist");
                 };
             })
             .catch(error => {
-                console.log(error);
+                console.log("Error in isProdExist called in addListing");
                 reject(error);
             });
     });
@@ -57,6 +57,7 @@ export const removeListing = (username, productListing) => {
             })
             .then(() => resolve("Successfully removed listing"))
             .catch(error => {
+                console.log("Error in removeListing");
                 reject("Error removing listing");
             })
             
