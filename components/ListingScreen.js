@@ -1,7 +1,6 @@
 import React from "react";
-import { Text, View, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
-import { List, Card, Title, Paragraph, Button, IconButton, Modal, Portal, Provider, TextInput, DefaultTheme } from "react-native-paper";
-import tailwind from 'tailwind-rn';
+import { FlatList } from 'react-native';
+import { Card, Title, Paragraph } from "react-native-paper";
 
 
 function ListingScreen({ listings }) {

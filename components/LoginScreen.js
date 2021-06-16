@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, Fragment } from "react";
 import tailwind from 'tailwind-rn';
 import { Text, View, TouchableOpacity, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
@@ -7,7 +7,7 @@ import { getUserProfile } from "../database/actions/User";
 import { AuthContext } from "../provider/AuthContext";
 
 
-function LoginScreen({ navigation }) {
+function LoginScreen({ navigation, route }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -36,7 +36,7 @@ function LoginScreen({ navigation }) {
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
             <View style={tailwind("flex-1 w-4/5 m-10 content-center justify-center")}>
-                <Text style={tailwind("text-center mb-5")}>Please login first.</Text>
+                <Text style={tailwind("text-center mb-5 text-2xl font-bold")}>SIGN IN</Text>
                 <Text style={tailwind("text-center mb-5 text-red-500")}>{error}</Text>
 
                 <View style={tailwind("flex ")}>

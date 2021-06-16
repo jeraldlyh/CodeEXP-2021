@@ -7,10 +7,12 @@ import { AuthContext } from "../provider/AuthContext";
 import TabViewScreen from "./TabViewScreen";
 import { getUserProfile } from "../database/actions/User";
 import { IconButton } from "react-native-paper";
+import { Avatar } from "react-native-paper";
+
 
 export default function ProfileScreen({ navigation }) {
     const [userProfile, setUserProfile] = useState("");
-    const { username, setAvatar, setBookmarks } = useContext(AuthContext);
+    const { username, setAvatar, setBookmarks, setIsLoggedIn } = useContext(AuthContext);
 
     useEffect(() => {
         getUserProfile(username).then(response => {
@@ -38,18 +40,29 @@ export default function ProfileScreen({ navigation }) {
         return "Joined " + moment(date).fromNow();
     };
 
+    const logoutUser = () => {
+        setIsLoggedIn(false);
+        // navigation.navigate("Login", { logoutMessage: "You have successfully logged out! 😀" });
+        navigation.navigate("Login");
+    }
+
     return (
         <View style={tailwind("flex-1")}>
             <View style={tailwind("flex m-5")}>
-                <Text style={tailwind("font-bold text-lg")}>@jerald</Text>
-                <View style={tailwind("mt-2 flex flex-row items-center")}>
-                    <Text style={tailwind("mr-1")}>{userProfile.ratings}.0</Text>
-                    {populateRating(userProfile.ratings)}
-                    <Text style={tailwind("ml-5")}>{formatJoinedDate(userProfile.registeredAt)}</Text>
+                <View style={tailwind("flex flex-row items-center")}>
+                    <Avatar.Image source={{ uri: userProfile.avatar }} style={tailwind("mr-4")} />
+                    <View style={tailwind("flex flex-col")}>
+                        <Text style={tailwind("font-bold text-lg")}>@{username}</Text>
+                        <View style={tailwind("flex flex-row items-center")}>
+                            {populateRating(userProfile.ratings)}
+                            <Text style={tailwind("ml-1")}>({userProfile.ratings}.0)</Text>
+                        </View>
+                        <Text>{formatJoinedDate(userProfile.registeredAt)}</Text>
+                    </View>
+                    <IconButton icon="logout" size={40} onPress={() => logoutUser()} color="#fa3c4c" style={tailwind("ml-16")} />
                 </View>
             </View>
-            <IconButton icon="logout" onPress={() => alert('It works!')} color="#fa3c4c" style={tailwind("flex flex-row")} />
-            <TabViewScreen listings={userProfile.listings} reviews={userProfile.reviews}/>
+            <TabViewScreen listings={userProfile.listings} reviews={userProfile.reviews} />
         </View>
     );
 };

@@ -1,9 +1,7 @@
-import React, { useContext, useState, useEffect } from "react";
-import { Text, View, FlatList } from 'react-native';
-import { Button, Avatar } from "react-native-paper";
+import React, { useState, useEffect } from "react";
+import { View, FlatList } from 'react-native';
+import { Avatar } from "react-native-paper";
 import tailwind from 'tailwind-rn';
-import { addReview } from "../database/actions/User";
-import { AuthContext } from "../provider/AuthContext";
 import Description from "./Description";
 
 
@@ -25,10 +23,10 @@ function ReviewScreen({ reviews }) {
                 keyExtractor={item => item._id}
                 renderItem={({ item }) => {
                     return (
-                        <View style={[{borderBottomWidth: 0.5, borderBottomColor: "#fa3c4c"}, tailwind("flex flex-row w-full p-3 items-center")]}>
-                            <Avatar.Image source={{uri: item.avatar}} style={tailwind("mr-4")}/>
+                        <View style={[{ borderBottomWidth: 0.5, borderBottomColor: "#fa3c4c" }, tailwind("flex flex-row w-full p-3 items-center")]}>
+                            <Avatar.Image source={{ uri: item.avatar }} style={tailwind("mr-4")} />
                             <View style={tailwind("flex flex-col pt-2 pb-2 justify-between")}>
-                                <Description text={item.text} rating={item.rating}/>
+                                <Description text={item.text} rating={item.rating} />
                             </View>
                         </View>
                     )
