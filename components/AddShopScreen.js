@@ -6,7 +6,7 @@ import tailwind from 'tailwind-rn';
 import AwesomeAlert from 'react-native-awesome-alerts';
 
 
-const AddShopScreen = () => {
+const AddShopScreen = ({navigation}) => {
     //modal data
     const [productName, setProductName] = useState('');
     const [productUrlData, setProductUrlData] = useState('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIAIWZZNRd59YjcVrp1LpfYG_FiyXO1ViH7Q&usqp=CAU');
@@ -29,12 +29,15 @@ const AddShopScreen = () => {
     const [showAlert, setShowAlert] = useState(false);
     const [message, setMessage] = useState("");
 
+    //add shop
+    const [checked, setChecked] = React.useState("Hawker");
+
     const theme = {
         ...DefaultTheme,
         roundness: 2,
         colors: {
             ...DefaultTheme.colors,
-            primary: 'red'
+            primary: '#fa3c4c'
         },
     };
     const addProduct = () => {
@@ -83,21 +86,25 @@ const AddShopScreen = () => {
           confirmButtonColor="#fa3c4c"
           confirmButtonTextStyle={{paddingLeft:"10%", paddingRight:"10%"}}
           onCancelPressed={() => {
-            setShowAlert(false)
+            setShowAlert(false);
           }}
           onConfirmPressed={() => {
-            setShowAlert(false)
+            setShowAlert(false);
+            navigation.goBack();
           }}
         />
-                    <TextInput theme={{ colors: { primary: "red" } }}
+                    <TextInput theme={{ colors: { primary: "#fa3c4c" } }}
+                        style={{backgroundColor: "white"}}
                         label="Name"
                         onChangeText={value => setShopNameData(value)}
                     />
-                    <TextInput theme={{ colors: { primary: "red" } }}
+                    <TextInput theme={{ colors: { primary: "#fa3c4c" } }}
+                        style={{backgroundColor: "white"}}
                         label="Description"
                         onChangeText={value => setShopDescriptionData(value)}
                     />
-                    <TextInput theme={{ colors: { primary: "red" } }}
+                    <TextInput theme={{ colors: { primary: "#fa3c4c" } }}
+                        style={{backgroundColor: "white"}}
                         label="Location"
                         onChangeText={value => setShopLocationData(value)}
                     />
@@ -105,23 +112,24 @@ const AddShopScreen = () => {
                         onValueChange={newValue => setShopTypeData(newValue)}
                         value={shopTypeData}
                     >
-                        <View style={tailwind("bg-gray-200")}>
+                        <View style={tailwind("bg-white")}>
                             <View style={tailwind("flex flex-row w-full justify-around mt-3")}>
                                 <View>
                                     <Text style={tailwind("text-center text-gray-700")}>Hawker</Text>
-                                    <RadioButton value="Hawker" />
+                                    <RadioButton color="#fa3c4c" value="Hawker" status={ checked === 'Hawker' ? 'checked' : 'unchecked' } onPress={() => setChecked("Hawker")} />
                                 </View>
                                 <View>
                                     <Text style={tailwind("text-center text-gray-700")}>Shop</Text>
-                                    <RadioButton value="Shop" />
+                                    <RadioButton color="#fa3c4c" value="Shop" status={ checked === 'Shop' ? 'checked' : 'unchecked' } onPress={() => setChecked("Shop")} />
                                 </View>
                             </View>
                         </View>
                     </RadioButton.Group>
                     <Button
                         mode="text"
+                        icon="plus"
                         raised
-                        theme={{ colors: { primary: "red" } }}
+                        theme={{ colors: { primary: "#fa3c4c" } }}
                         onPress={showModal}
                     >
                         Add Product
@@ -133,23 +141,23 @@ const AddShopScreen = () => {
                             contentContainerStyle={containerStyle}
                         >
                             <Title style={{ textAlign: "center", color: "black" }}>Add Product</Title>
-                            <TextInput theme={{ colors: { primary: "red" } }}
+                            <TextInput theme={{ colors: { primary: "#fa3c4c" } }}
+                                style={{backgroundColor: "white"}}
                                 label="Product Name"
                                 onChangeText={value => setProductName(value)}
                             />
-                            <TextInput theme={{ colors: { primary: "red" } }}
-                                label="Product Image" value="https://static.vecteezy.com/system/resources/previews/001/979/281/non_2x/rice-porridge-on-a-wood-table-free-photo.jpg"
-                                onChangeText={value => setProductUrlData(value)}
-                            />
-                            <TextInput theme={{ colors: { primary: "red" } }}
+                            
+                            <TextInput theme={{ colors: { primary: "#fa3c4c" } }}
+                                style={{backgroundColor: "white"}}
                                 label="Price"
+                                keyboardType='numeric'
                                 onChangeText={value => setProductPriceData(value)}
                             />
                             <Button
-                                style={{ height: 40, margin: "2%", padding: "1%", marginTop: "2%" }}
-                                mode="contained"
                                 raised
-                                theme={{ colors: { primary: "red" } }}
+                                theme={{ colors: { primary: "#fa3c4c" } }}
+                                style={{ height: 40, margin: "2%", padding: "1%", marginTop: "10%" }}
+                                mode="contained"
                                 onPress={() => addProduct()}
                             >
                                 Add Product
@@ -173,7 +181,7 @@ const AddShopScreen = () => {
                         }}
                     />
                     <Button
-                        style={{ height: 40, margin: "2%", padding: "1%", marginTop: "5%" }}
+                        style={{ height: 40, margin: "2%", padding: "1%", marginTop: "10%" }}
                         mode="contained"
                         raised
                         theme={{ colors: { primary: "#fa3c4c" } }}

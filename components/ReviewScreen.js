@@ -5,7 +5,7 @@ import tailwind from 'tailwind-rn';
 import { addReview } from "../database/actions/User";
 import { AuthContext } from "../provider/AuthContext";
 import Description from "./Description";
-import { v4 as uuidv4 } from "uuid";
+
 
 
 function ReviewScreen({ reviews }) {
@@ -18,20 +18,7 @@ function ReviewScreen({ reviews }) {
         }
     }, [reviews]);
 
-    const onSubmit = () => {
-        const data = {
-            review: {
-                text: "very good user",
-                rating: 5,
-                user: "haha",
-                avatar: avatar,
-                ratedAt: new Date().getTime(),
-                _id: uuidv4()
-            },
-            ratedUser: "haha",
-        }
-        addReview(data);
-    }
+
 
     return (
         <View>

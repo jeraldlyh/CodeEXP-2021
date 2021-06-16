@@ -79,7 +79,14 @@ export const updateShop = (body, shopName) => {
     return new Promise((resolve, reject) => {
         firebase.firestore().collection("shop")
             .doc(shopName)
-            .update(body);
+            .update(body)
+            .then(() => {
+                resolve(true);
+            })
+            .catch(error => {
+                console.log("Error in updateShop");
+                reject(error);
+            })
         });
 }
 

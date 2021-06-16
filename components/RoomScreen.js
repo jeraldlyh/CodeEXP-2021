@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { StyleSheet, View, ActivityIndicator, Text } from "react-native";
+import React, { useEffect, useState, Fragment } from "react";
+import { StyleSheet, View, ActivityIndicator, Text, Alert } from "react-native";
 import { GiftedChat, Bubble, Send, SystemMessage, Time } from 'react-native-gifted-chat';
 import firebase from "../database/firebaseDB";
 import Filter from "bad-words";
 import { List, Card, Title, Paragraph, Button, IconButton, Modal, Portal, Provider, TextInput, DefaultTheme } from "react-native-paper";
 import tailwind from "tailwind-rn";
+import { removeListing } from "../database/actions/Listing";
 
 
 
@@ -18,15 +19,20 @@ function RoomScreen({ route }) {
     }
 
     useEffect(() => {
-        console.log(route)
+        // console.log(route)
         if (product) {
+            console.log(product)
             firebase.firestore().collection("threads")
                 .doc(thread)
                 .collection("messages")
                 .add({
                     text: formatProductMessage(product),
                     createdAt: new Date().getTime(),
-                    system: true
+                    system: true,
+                    quantity: product.quantity,
+                    product: product.order,
+                    buyer: product.username,
+                    productId: product._id
                 })
         }
 
@@ -59,8 +65,37 @@ function RoomScreen({ route }) {
         return () => unsubscribe();
     }, [])
 
-    const completeOrder = () => {
-        
+    const completeOrder = (buyer, productId, product, quantity) => {
+        Alert.alert(
+            "Complete Order",
+            "Ensure that you've communicated with the user",
+            [
+                {
+                    text: "Cancel",
+                    onPress: () => { console.log("Cancel") },
+                    style: "cancel"
+                },
+                {
+                    text: "Confirm",
+                    onPress: () => {
+                        removeListing(buyer, productId)
+                            .then(response => {
+                                if (response) {
+                                    firebase.firestore().collection("threads")
+                                        .doc(thread)
+                                        .collection("messages")
+                                        .add({
+                                            text: `The order for ${product} (${quantity}) has been completed`,
+                                            createdAt: new Date().getTime(),
+                                            system: true,
+                                            complete: true,
+                                        })
+                                }
+                            })
+                    },
+                }
+            ]
+        )
     }
 
 
@@ -153,13 +188,24 @@ function RoomScreen({ route }) {
                 <View style={styles.systemMessageWrapper}>
                     <Text style={styles.systemMessageText}>{props.currentMessage.text}</Text>
                     <View style={tailwind("flex flex-row justify-around")}>
-                        <Button onPress={() => console.log("a")} color="#fa3c4c">Complete</Button>
-                        <Button onPress={() => console.log("a")} color="#fa3c4c">Cancel</Button>
+                        {
+                            props.currentMessage.complete
+                                ? <Fragment />
+                                : (
+                                    <Button onPress={() => completeOrder(
+                                        props.currentMessage.buyer,
+                                        props.currentMessage.productId,
+                                        props.currentMessage.product,
+                                        props.currentMessage.quantity
+                                    )} color="#fa3c4c">Complete</Button>
+                                )
+                        }
                     </View>
                 </View>
             </View>
         );
     }
+
 
     return (
         <GiftedChat
