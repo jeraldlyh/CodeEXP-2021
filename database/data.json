@@ -30,14 +30,18 @@
         ],
         "listings": [
             {
-                "user": "username",
-                "order": "Chicken Porridge x1",
-                "price": "4"
+                "username": "username",
+                "order": "Chicken Porridge",
+                "quantity": "1",
+                "price": "4",
+                "listAt": "1623820361812"
             },
             {
-                "user": "username",
-                "order": "Century Egg Porridge x1",
-                "price": "4"
+                "username": "username",
+                "order": "Century Egg Porridge",
+                "quantity": "1",
+                "price": "4",
+                "listAt": "1623820361802"
             }
         ],
         "reviews": [
@@ -59,9 +63,11 @@
         ],
         "listings": [
             {
-                "user": "username",
-                "order": "Satay Beehoone x1",
-                "price": "4.50"
+                "username": "username",
+                "order": "Satay Beehoon",
+                "quantity": "1",
+                "price": "4.50",
+                "listAt": "1623820360812"
             }
         ],
         "reviews": [
@@ -94,19 +100,25 @@
         ],
         "listings": [
             {
-                "user": "username",
-                "order": "Rojak - Small x1",
-                "price": "4"
+                "username": "username",
+                "order": "Rojak - Small",
+                "quantity": "1",
+                "price": "4",
+                "listAt": "1623820351812"
             },
             {
-                "user": "username",
-                "order": "Rojak - Small x1",
-                "price": "4"
+                "username": "username",
+                "order": "Rojak - Small",
+                "quantity": "1",
+                "price": "4",
+                "listAt": "1623820360812"
             },
             {
-                "user": "username",
+                "username": "username",
                 "order": "Rojak - Large",
-                "price": "6.50"
+                "quantity": "1",
+                "price": "6.50",
+                "listAt": "1623820361012"
             }
         ]
     },
@@ -117,7 +129,7 @@
         "location": "166 Jln Besar #01-25 208877",
         "rating": "-",
         "reviews" : [],
-        "type": "Shop",
+        "type": "Hawker",
         "products": [
             {
                 "url": "https://media.istockphoto.com/photos/pineapple-fried-rice-picture-id137330511?k=6&m=137330511&s=612x612&w=0&h=ejgYmGmKXfcNnhD44eAnr1PLbn7s_qavSHMau6M2_qU=",
@@ -147,9 +159,11 @@
         ],
         "listings": [
             {
-                "user": "username",
-                "order": "Pad Thai x1",
-                "price": "4.50"
+                "username": "username",
+                "order": "Pad Thai",
+                "quantity": "1",
+                "price": "4.50",
+                "listAt": "1623820341812"
             }
         ]
     },
@@ -159,7 +173,7 @@
         "description": "Bedok Snack Stall Barely Gets Customers, Auntie Still Wakes Up Early To Make & Sell Vadais. I was walking around and observing that many stalks are doing brisk business (probably due to a wet and rainy Saturday) until I spotted this lone stall - there was no one in queue. I observed that maybe one or 2 folks would walk up to the stall, take a look and walk off. I do not know why. I decided to go up to the Aunty and strike up a conversation with her. Aunty is very soft spoken. She manage this stall on her own most times and sometimes with ad hoc help. She gets up early to prepare the ingredients. She / her stall is not on any delivery platform / FB. She told me her business is so bad that she hardly makes any money. If not for the one month rental rebate from G, she hardly makes any money after deducting all the ingredients and supplies etc.",
         "location": "16 Bedok South Road, #01-18 Singapore 460016",
         "rating": "-",
-        "type": "Shop",
+        "type": "Hawker",
         "reviews" : [],
         "products": [
             {
@@ -170,14 +184,18 @@
         ],
         "listings": [
             {
-                "user": "username",
-                "order": "Vadai x2",
-                "price": "1.50"
+                "username": "username",
+                "order": "Vadai",
+                "quantity": "2",
+                "price": "1.50",
+                "listAt": "1623820361312"
             },
             {
-                "user": "username",
-                "order": "Vadai x5",
-                "price": "5"
+                "username": "username",
+                "order": "Vadai",
+                "quantity": "5",
+                "price": "5",
+                "listAt": "1623820361812"
             }
         ]
     },
@@ -223,14 +241,18 @@
         ],
         "listings": [
             {
-                "user": "username",
-                "order": "Carbonara x1",
-                "price": "13"
+                "username": "username",
+                "order": "Carbonara",
+                "quantity": "1",
+                "price": "13",
+                "listAt": "1623820360312"
             },
             {
-                "user": "username",
-                "order": "Chicken Cutlet x1",
-                "price": "10"
+                "username": "username",
+                "order": "Chicken Cutlet",
+                "quantity": "1",
+                "price": "10",
+                "listAt": "1623820361234"
             }
         ]
     },
@@ -256,19 +278,25 @@
         ],
         "listings": [
             {
-                "user": "username",
+                "username": "username",
                 "order": "Prawn Mee (Dry) x2",
-                "price": "8"
+                "quantity": "2",
+                "price": "8",
+                "listAt": "1623820210812"
             },
             {
-                "user": "username",
-                "order": "Prawn Mee (Dry) x2",
-                "price": "8.50"
+                "username": "username",
+                "order": "Prawn Mee (Dry)",
+                "quantity": "2",
+                "price": "8.50",
+                "listAt": "1623800361812"
             },
             {
-                "user": "username",
-                "order": "Prawn Mee (Soup) x1",
-                "price": "4"
+                "username": "username",
+                "order": "Prawn Mee (Soup)",
+                "quantity": "1",
+                "price": "4",
+                "listAt": "1623820322812"
             }
         ]
     },
@@ -329,29 +357,39 @@
         ],
         "listings": [
             {
-                "user": "username",
-                "order": "Breakfast Set A x1",
-                "price": "3"
+                "username": "h",
+                "order": "Breakfast Set A",
+                "quantity": "1",
+                "price": "3",
+                "listAt": "1623820300812"
             },
             {
-                "user": "username",
-                "order": "Kopi x1",
-                "price": "1"
+                "username": "h",
+                "order": "Kopi",
+                "quantity": "1",
+                "price": "1",
+                "listAt": "1623820321012"
             },
             {
-                "user": "username",
-                "order": "Breakfast Set B x1",
-                "price": "4"
+                "username": "h",
+                "order": "Breakfast Set B",
+                "quantity": "1",
+                "price": "4",
+                "listAt": "1623801361812"
             },
             {
-                "user": "username",
-                "order": "Kopi O x1",
-                "price": "1.50"
+                "username": "h",
+                "order": "Kopi O",
+                "quantity": "1",
+                "price": "1.50",
+                "listAt": "1623820300012"
             },
             {
-                "user": "username",
-                "order": "Teh x1",
-                "price": "1.50"
+                "username": "h",
+                "order": "Teh",
+                "quantity": "1",
+                "price": "1.50",
+                "listAt": "1623820361812"
             }
         ]
     },
@@ -387,14 +425,18 @@
         ],
         "listings": [
             {
-                "user": "username",
-                "order": "Bak Chor Mee x1, Wanton Mee x2",
-                "price": "12"
+                "username": "username",
+                "order": "Wanton Mee",
+                "quantity": "2",
+                "price": "8",
+                "listAt": "1623820367612"
             },
             {
-                "user": "username",
-                "order": "Bak Chor Mee x1",
-                "price": "3.50"
+                "username": "username",
+                "order": "Bak Chor Mee",
+                "quantity": "1",
+                "price": "3.50",
+                "listAt": "1623820300000"
             }
         ]
     },
@@ -420,19 +462,25 @@
         ],
         "listings": [
             {
-                "user": "username",
-                "order": "Fishball Noodle x2",
-                "price": "8"
+                "username": "username",
+                "order": "Fishball Noodle",
+                "quantity": "2",
+                "price": "8",
+                "listAt": "1623821061812"
             },
             {
-                "user": "username",
-                "order": "Fishball Noodle x1",
-                "price": "4"
+                "username": "username",
+                "order": "Fishball Noodle",
+                "quantity": "1",
+                "price": "4",
+                "listAt": "1623820313812"
             },
             {
-                "user": "username",
-                "order": "Fishball Soup x1",
-                "price": "4"
+                "username": "username",
+                "order": "Fishball Soup",
+                "quantity": "1",
+                "price": "4",
+                "listAt": "1623820333812"
             }
         ]
     },
@@ -478,14 +526,18 @@
         ],
         "listings": [
             {
-                "user": "username",
-                "order": "Potato Chips x2",
-                "price": "5"
+                "username": "abc",
+                "order": "Snacks",
+                "quantity": "2",
+                "price": "5",
+                "listAt": "1623820361812"
             },
             {
-                "user": "username",
-                "order": "Rainbow Pop Ice Cream",
-                "price": "1.50"
+                "username": "abc",
+                "order": "Ice Cream",
+                "quantity": "1",
+                "price": "1.50",
+                "listAt": "1623820000812"
             }
         ]
     },
@@ -516,14 +568,18 @@
         ],
         "listings": [
             {
-                "user": "username",
-                "order": "Gem Icing Biscuits x2",
-                "price": "5"
+                "username": "username",
+                "order": "Old School Biscuits",
+                "quantity": "2",
+                "price": "5",
+                "listAt": "1623811111812"
             },
             {
-                "user": "username",
-                "order": "Chocolate Wafer Sticks x1",
-                "price": "2.50"
+                "username": "username",
+                "order": "Chocolate",
+                "quantity": "1",
+                "price": "2.50",
+                "listAt": "1623333361812"
             }
         ]
     },
@@ -599,9 +655,11 @@
         ],
         "listings": [
             {
-                "user": "username",
+                "username": "username",
                 "order": "Mutton Soup",
-                "price": "4.50"
+                "quantity": "1",
+                "price": "4.50",
+                "listAt": "1623820361812"
             }
         ],
         "reviews": [
@@ -628,14 +686,18 @@
         ],
         "listings": [
             {
-                "user": "username",
+                "username": "username",
                 "order": "Pig Organ Soup",
-                "price": "4.50"
+                "quantity": "1",
+                "price": "4.50",
+                "listAt": "1623811161812"
             },
             {
-                "user": "username",
+                "username": "username",
                 "order": "Pig Organ Soup",
-                "price": "5"
+                "quantity": "1",
+                "price": "5",
+                "listAt": "1623820001812"
             }
         ],
         "reviews": [
@@ -657,14 +719,18 @@
         ],
         "listings": [
             {
-                "user": "username",
+                "username": "username",
                 "order": "Laksa",
-                "price": "3.50"
+                "quantity": "1",
+                "price": "3.50",
+                "listAt": "1623820333812"
             },
             {
-                "user": "username",
+                "username": "username",
                 "order": "Laksa",
-                "price": "3.50"
+                "quantity": "1",
+                "price": "3.50",
+                "listAt": "1623822201812"
             }
         ],
         "reviews": [
@@ -691,19 +757,25 @@
         ],
         "listings": [
             {
-                "user": "username",
+                "username": "username",
                 "order": "Wanton Mee",
-                "price": "3.50"
+                "quantity": "1",
+                "price": "3.50",
+                "listAt": "1623800361812"
             },
             {
-                "user": "username",
+                "username": "username",
                 "order": "Wanton Mee",
-                "price": "3.50"
+                "quantity": "1",
+                "price": "3.50",
+                "listAt": "1623820111812"
             },
             {
-                "user": "username",
+                "username": "username",
                 "order": "Chicken Feet Noodle",
-                "price": "4"
+                "quantity": "1",
+                "price": "4",
+                "listAt": "1623820161812"
             }
         ],
         "reviews": [
@@ -725,9 +797,11 @@
         ],
         "listings": [
             {
-                "user": "username",
+                "username": "username",
                 "order": "Oyster Cake",
-                "price": "2.50"
+                "quantity": "1",
+                "price": "2.50",
+                "listAt": "1623810361812"
             }
         ],
         "reviews": [
@@ -759,14 +833,18 @@
         ],
         "listings": [
             {
-                "user": "username",
+                "username": "username",
                 "order": "Oyster Omelette (Medium)",
-                "price": "9"
+                "quantity": "1",
+                "price": "9",
+                "listAt": "1623820321012"
             },
             {
-                "user": "username",
+                "username": "username",
                 "order": "Oyster Omelette (Small)",
-                "price": "5.50"
+                "quantity": "1",
+                "price": "5.50",
+                "listAt": "1623820300812"
             }
         ],
         "reviews": [
@@ -798,9 +876,11 @@
         ],
         "listings": [
             {
-                "user": "username",
+                "username": "username",
                 "order": "Fishball Minced Meat Noodles",
-                "price": "4"
+                "quantity": "1",
+                "price": "4",
+                "listAt": "1623820112233"
             }
         ],
         "reviews": [
@@ -832,19 +912,25 @@
         ],
         "listings": [
             {
-                "user": "username",
+                "username": "username",
                 "order": "Fried Kway Teow (Small)",
-                "price": "4"
+                "quantity": "1",
+                "price": "4",
+                "listAt": "1623820361012"
             },
             {
-                "user": "username",
+                "username": "username",
                 "order": "Fried Kway Teow (Small)",
-                "price": "4"
+                "quantity": "1",
+                "price": "4",
+                "listAt": "1623820361812"
             },
             {
-                "user": "username",
+                "username": "username",
                 "order": "Fried Kway Teow (Medium)",
-                "price": "4"
+                "quantity": "1",
+                "price": "4",
+                "listAt": "1623820301812"
             }
         ],
         "reviews": [
@@ -876,9 +962,11 @@
         ],
         "listings": [
             {
-                "user": "username",
+                "username": "username",
                 "order": "Beef Kway Teow",
-                "price": "5"
+                "quantity": "1",
+                "price": "5",
+                "listAt": "1623820361812"
             }
         ],
         "reviews": [
@@ -910,29 +998,39 @@
         ],
         "listings": [
             {
-                "user": "username",
+                "username": "username",
                 "order": "Dim Sum",
-                "price": "3"
+                "quantity": "1",
+                "price": "3",
+                "listAt": "1623820331812"
             },
             {
-                "user": "username",
+                "username": "username",
                 "order": "Dim Sum",
-                "price": "2.50"
+                "quantity": "1",
+                "price": "2.50",
+                "listAt": "1623820321812"
             },
             {
-                "user": "username",
+                "username": "username",
                 "order": "Dim Sum",
-                "price": "2.50"
+                "quantity": "1",
+                "price": "2.50",
+                "listAt": "1623820361312"
             },
             {
-                "user": "username",
+                "username": "username",
                 "order": "Bao",
-                "price": "1.50"
+                "quantity": "1",
+                "price": "4",
+                "listAt": "1623820347812"
             },
             {
-                "user": "username",
+                "username": "username",
                 "order": "Bao",
-                "price": "1"
+                "quantity": "1",
+                "price": "1.50",
+                "listAt": "1623820360012"
             }
         ],
         "reviews": [
@@ -959,14 +1057,18 @@
         ],
         "listings": [
             {
-                "user": "username",
+                "username": "h",
                 "order": "Char Siew Rice",
-                "price": "4.50"
+                "quantity": "1",
+                "price": "4.50",
+                "listAt": "1623820311111"
             },
             {
-                "user": "username",
+                "username": "abc",
                 "order": "Char Siew Rice",
-                "price": "4.50"
+                "quantity": "1",
+                "price": "4.50",
+                "listAt": "1623820311812"
             }
         ],
         "reviews": [
