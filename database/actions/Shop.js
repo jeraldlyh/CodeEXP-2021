@@ -162,7 +162,10 @@ export const isProductExist = (shopName, product) => {
             }
             resolve(false);
         })
-        .catch(error => reject(error));
+        .catch(error => {
+            console.log(error);
+            reject(error);
+        });
     })
 }
 

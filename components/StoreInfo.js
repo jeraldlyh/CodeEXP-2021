@@ -8,6 +8,9 @@ import { addBookmark } from '../database/actions/Bookmark';
 import NumericInput from 'react-native-numeric-input';
 import { addListing } from '../database/actions/Listing';
 import SelectPicker from 'react-native-form-select-picker';
+import { createConvo } from '../database/actions/Message';
+import _ from "lodash";
+import moment from "moment";
 
 export default function StoreInfo({ route, navigation }) {
     // Accordion
@@ -22,8 +25,10 @@ export default function StoreInfo({ route, navigation }) {
     const [price, setPrice] = useState("");
     const [quantity, setQuantity] = useState(0);
     const [product, setProduct] = useState("");
+    const [listings, setListings] = useState([])
 
     const { username, isLoggedIn } = useContext(AuthContext);
+    const [refresh, setRefresh] = useState(false);              // Force refresh flat list
 
     const onBookmark = () => {
         if (!isLoggedIn) {
@@ -43,16 +48,49 @@ export default function StoreInfo({ route, navigation }) {
     };
 
     const submitOrder = () => {
-        addListing(username, route.params.name, product, quantity)
+        addListing(username, route.params.name, product, quantity, price)
             .then(response => {         // Reset form fields
                 setQuantity(0);
-                setPrice("")
+                setPrice("");
                 hideModal();
-            });
+
+                if (listings) {
+                    setListings(prevListing => {
+                        return [
+                            ...prevListing,
+                            response
+                        ]
+                    });
+                } else {
+                    setListings([response]);
+                }
+                setRefresh(!refresh);
+            })
+            .catch(error => console.log(error))
     };
+
+    const openChat = (anotherUser) => {
+        createConvo(username, anotherUser)
+            .then(response => {
+                navigation.navigate("Room", { 
+                    thread: response, 
+                    username: username 
+                })
+            })
+    }
+
+    const formatListingTitle = (title, quantity) => {
+        return `${title} (${quantity})`;
+    }
+
+    const formatListingDescription = (price, user, listAt) => {
+        const formatTime = moment(listAt).format("MMMM Do YYYY, h:mm:ss a");
+        return `Placed by: ${user}\nPrice: $${price} \nListed at: ${formatTime}`;
+    }
 
     useEffect(() => {
         LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
+        setListings(route.params.listings);
     }, [])
 
     return (
@@ -67,7 +105,7 @@ export default function StoreInfo({ route, navigation }) {
                     <View style={tailwind("flex-row items-center")}>
                         <Title style={tailwind("pl-5")}>{route.params.name}</Title>
                         <IconButton
-                            icon="star"
+                            icon={isLoggedIn ? "star" : "star-outline"}
                             color="red"
                             size={25}
                             onPress={() => onBookmark()}
@@ -116,7 +154,7 @@ export default function StoreInfo({ route, navigation }) {
                                 title="Orders"
                             >
                                 <View style={tailwind("flex")}>
-                                    {
+                                    {/* {
                                         isLoggedIn
                                             ? <Fragment />
                                             : <BlurView intensity={300} style={{  height: 300, position: 'absolute', top: 0, left: 0, width: '100%', zIndex: 100 }}>
@@ -125,21 +163,27 @@ export default function StoreInfo({ route, navigation }) {
                                                     <Button>test</Button>
                                                 </View>
                                             </BlurView>
-                                    }
+                                    } */}
                                     <FlatList
-                                        data={route.params.listings}
+                                        data={listings}
+                                        extraData={refresh}
                                         keyExtractor={item => item._id}
                                         renderItem={({ item }) => {
                                             return (
                                                 <List.Item
-                                                    title={item.order}
-                                                    description={item.price}
-                                                    onPress right={() => <IconButton
-                                                        icon="chat"
-                                                        color={"red"}
-                                                        size={20}
-                                                        onPress={() => navigation.navigate("Room", { ...item })}
-                                                    />}
+                                                    title={formatListingTitle(item.order, item.quantity)}
+                                                    description={
+                                                        formatListingDescription(item.price, item.username, item.listAt)
+                                                    }
+                                                    descriptionNumberOfLines={3}
+                                                    right={() => 
+                                                        <IconButton
+                                                            icon="chat"
+                                                            color={"red"}
+                                                            size={20}
+                                                            onPress={() => openChat(item.username)}
+                                                        />
+                                                    }
                                                 />
                                             )
                                         }}
@@ -162,13 +206,12 @@ export default function StoreInfo({ route, navigation }) {
                                             >
                                                 {
                                                     route.params.products.map((item, index) => {
-                                                        return (<SelectPicker.Item key={index} label={item.name} value={item.name} />)
+                                                        return (
+                                                            <SelectPicker.Item key={item.name} label={item.name} value={item.name} />
+                                                        )
                                                     })
                                                 }
                                             </SelectPicker>
-                                            
-                                            
-
 
                                             <View style={tailwind("flex-row justify-between items-center")}>
                                                 <NumericInput
@@ -187,6 +230,7 @@ export default function StoreInfo({ route, navigation }) {
                                                     theme={{ colors: { primary: "red", text: "black", label: "black", accent: "black" } }}
                                                     style={tailwind("bg-white w-3/5")}
                                                     placeholderTextColor="black"
+                                                    keyboardType="numeric"
                                                     label="Price"
                                                     placeholder="State the price you are willing to pay"
                                                     value={price}
