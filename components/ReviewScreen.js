@@ -1,28 +1,60 @@
-import React from "react";
-import { Text, View, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
-import { List, Card, Title, Paragraph, Button, IconButton, Modal, Portal, Provider, TextInput, DefaultTheme } from "react-native-paper";
+import React, { useContext, useState, useEffect } from "react";
+import { Text, View, FlatList } from 'react-native';
+import { Button, Avatar } from "react-native-paper";
 import tailwind from 'tailwind-rn';
+import { addReview } from "../database/actions/User";
+import { AuthContext } from "../provider/AuthContext";
+import Description from "./Description";
+import { v4 as uuidv4 } from "uuid";
 
 
 function ReviewScreen({ reviews }) {
+    const { avatar } = useContext(AuthContext);
+    const [reviewList, setReviewList] = useState([]);
+
+    useEffect(() => {
+        if (reviews) {
+            setReviewList(reviews)
+        }
+    }, [reviews]);
+
+
+    
+
+    const onSubmit = () => {
+        const data = {
+            review: {
+                text: "very good user",
+                rating: 5,
+                user: "haha",
+                avatar: avatar,
+                ratedAt: new Date().getTime(),
+                _id: uuidv4()
+            },
+            ratedUser: "haha",
+        }
+        addReview(data);
+    }
+
     return (
         <View>
             <FlatList
-                data={reviews}
+                data={reviewList}
                 numColumns={2}
                 keyExtractor={item => item._id}
                 renderItem={({ item }) => {
+                    console.log(item.text)
                     return (
-                        <Card style={tailwind("w-auto m-2")}>
-                            <Card.Cover source={{ uri: item.url }} />
-                            <Card.Content>
-                                <Title>{item.order}</Title>
-                                <Paragraph>${item.price}</Paragraph>
-                            </Card.Content>
-                        </Card>
+                        <View style={tailwind("flex flex-row w-full p-3 items-center")}>
+                            <Avatar.Image source={{uri: item.avatar}} style={tailwind("mr-4")}/>
+                            <View style={tailwind("flex flex-col pt-2 pb-2 justify-between")}>
+                                <Description text={item.text} rating={item.rating}/>
+                            </View>
+                        </View>
                     )
                 }}
             />
+            <Button onPress={() => onSubmit()}>test</Button>
         </View>
     )
 }

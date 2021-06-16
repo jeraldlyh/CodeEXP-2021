@@ -17,8 +17,6 @@ export default function ProfileScreen({ navigation }) {
             setAvatar(response.avatar);
             setBookmarks(response.bookmarks)
         })
-
-        return () => setUserProfile("");
     }, []);
 
     const populateRating = (rating) => {

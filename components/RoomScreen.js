@@ -42,7 +42,7 @@ function RoomScreen({ route }) {
                         createdAt: new Date().getTime(),
                         ...messageData
                     };
-                    console.log(messageData.user)
+
                     if (!messageData.system) {
                         data.user = {
                             ...messageData.user,

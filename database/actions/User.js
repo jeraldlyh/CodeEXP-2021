@@ -66,3 +66,20 @@ export const getUserProfile = (username) => {
             })
     })
 }
+
+export const addReview = (data) => {
+    return new Promise((resolve, reject) => {
+        console.log("here,", data);
+
+        firebase.firestore().collection("user")
+            .doc(data.ratedUser)
+            .update({
+                reviews: firebase.firestore.FieldValue.arrayUnion(data.review)
+            })
+            .then(() => resolve(true))
+            .catch(error => {
+                console.log("Error in addReview");
+                reject();
+            })
+    })
+}
