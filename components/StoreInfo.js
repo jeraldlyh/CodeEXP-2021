@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext, Fragment } from 'react';
-import { Picker } from "@react-native-picker/picker";
 import { Text, View, StyleSheet, Image, FlatList, SafeAreaView, ScrollView, LogBox } from 'react-native';
 import { List, Card, Title, Paragraph, Button, IconButton, Modal, Portal, Provider, TextInput, DefaultTheme } from "react-native-paper";
 import { BlurView } from 'expo-blur';
@@ -8,6 +7,7 @@ import { AuthContext } from '../provider/AuthContext';
 import { addBookmark } from '../database/actions/Bookmark';
 import NumericInput from 'react-native-numeric-input';
 import { addListing } from '../database/actions/Listing';
+import SelectPicker from 'react-native-form-select-picker';
 
 export default function StoreInfo({ route, navigation }) {
     // Accordion
@@ -153,19 +153,24 @@ export default function StoreInfo({ route, navigation }) {
                                             contentContainerStyle={containerStyle}
                                         >
                                             <Title style={{ textAlign: "center", color: "black" }}>Add Order</Title>
-                                            <Picker
-                                                style={{ height: 50, margin: "2%" }}
-                                                mode="dropdown"
+                                            
+                                            <SelectPicker
+                                                style={{ borderBottomWidth: 1}}
                                                 selectedValue={product}
                                                 onValueChange={(itemValue, itemIndex) => setProduct(itemValue)}
+                                                placeholder="Click to select item"
                                             >
                                                 {
                                                     route.params.products.map((item, index) => {
-                                                        return (<Picker.Item key={index} label={item.name} value={item.name} />)
+                                                        return (<SelectPicker.Item key={index} label={item.name} value={item.name} />)
                                                     })
                                                 }
-                                            </Picker>
-                                            <View style={tailwind("flex flex-row justify-between items-center")}>
+                                            </SelectPicker>
+                                            
+                                            
+
+
+                                            <View style={tailwind("flex-row justify-between items-center")}>
                                                 <NumericInput
                                                     initValue={quantity}
                                                     value={quantity}
@@ -190,7 +195,7 @@ export default function StoreInfo({ route, navigation }) {
                                                 />
                                             </View>
                                             <Button
-                                                style={{ height: 30, margin: "2%" }}
+                                                style={{ height: 40, margin: "2%", padding:"1%", marginTop: "2%" }}
                                                 mode="contained"
                                                 raised
                                                 theme={{ colors: { primary: "red" } }}

@@ -31,6 +31,7 @@ function TabViewScreen(props) {
                 navigationState={{ index, routes }}
                 renderScene={renderScene}
                 onIndexChange={setIndex}
+                
             />
     );
 };
