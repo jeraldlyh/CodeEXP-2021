@@ -4,23 +4,19 @@ import { Text, View, FlatList, Image, LogBox, ScrollView } from 'react-native';
 import tailwind from 'tailwind-rn';
 import firebase from "../database/firebaseDB";
 import LandingPageTab from './LandingPageTab';
-import HawkerScreen from './HawkerScreen';
-import ShopScreen from './ShopScreen';
-import AllScreen from './AllScreen';
 
 const LandingPageScreen = ({ navigation }) => {
     const [searchQuery, setSearchQuery] = useState('');
-    const [tempData, setTempData] = useState('');
-    const [hawkerData, setHawkerData] = useState('');
     const [itemData, setItemData] = React.useState("");
+
     useEffect(() => {
         const unsubscribe = firebase.firestore().collection("shop").onSnapshot((collection => {
             const shopData = collection.docs.map(doc => doc.data())
             setItemData(shopData);
-            setTempData(shopData);
         }))
         return () => unsubscribe();
     }, []);
+
     const searchFilterFunction = text => {
         setSearchQuery(text);
         if (text != '') {
@@ -42,24 +38,6 @@ const LandingPageScreen = ({ navigation }) => {
             return () => unsubscribe();
         };
     }
-    const shopViewFunction = () => {
-        var newData = tempData.filter(item => {
-            const compareData = `${item.type.toUpperCase()}`;
-            const textData = "Shop".toUpperCase();
-            return compareData.indexOf("SHOP") > -1;
-        });
-        setItemData(newData);
-    }
-    const hawkerViewFunction = () => {
-        var newData = tempData.filter(item => {
-            const compareData = `${item.type.toUpperCase()}`;
-            return compareData.indexOf("HAWKER") > -1;
-        });
-        setItemData(newData);
-    }
-    const allViewFunction = () => {
-        setItemData(tempData);
-    }
     return (<View style={tailwind("flex-1")}>
 
         <View style={tailwind("flex-row mt-8 justify-center items-center")}>
@@ -73,8 +51,7 @@ const LandingPageScreen = ({ navigation }) => {
                 size={40}
                 onPress={() => navigation.navigate("Nearby")} />
         </View>
-
-<LandingPageTab itemData={itemData} tempData={tempData} setItemData={setItemData} hawkerData={hawkerData}></LandingPageTab>
+        <LandingPageTab itemData={itemData}></LandingPageTab>
 
         {/* <View>
             <FlatList

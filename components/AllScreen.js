@@ -1,10 +1,8 @@
-import React, { useEffect } from 'react';
-import firebase from "../database/firebaseDB";
-import { IconButton, Colors, List } from 'react-native-paper';
-import { Text, View, FlatList, Image, ScrollView } from 'react-native';
-import tailwind from 'tailwind-rn';
-const AllScreen = ({itemData}) => {
-    
+import React from 'react';
+import { List } from 'react-native-paper';
+import { View, FlatList, Image } from 'react-native';
+
+const AllScreen = ({ navigation, itemData }) => {
     return ( 
         <View>
         <FlatList
@@ -24,5 +22,5 @@ const AllScreen = ({itemData}) => {
         />
     </View> );
 }
- 
+
 export default AllScreen;
