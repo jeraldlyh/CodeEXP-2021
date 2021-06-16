@@ -8,6 +8,7 @@ import TabViewScreen from "./TabViewScreen";
 import { getUserProfile } from "../database/actions/User";
 import { IconButton } from "react-native-paper";
 import { Avatar } from "react-native-paper";
+import _ from "lodash";
 
 
 export default function ProfileScreen({ navigation }) {
@@ -22,14 +23,24 @@ export default function ProfileScreen({ navigation }) {
         })
     }, []);
 
-    const populateRating = (rating) => {
+    const getTotalRating = (reviews) => {
+        if (reviews) {
+            var totalRating = _.sumBy(reviews, function(r) { return r.rating });
+            totalRating = Math.ceil(totalRating / reviews.length);
+    
+            return totalRating;
+        }
+        return 0;
+    }
+
+    const populateRating = (totalRating) => {
         const stars = [];
 
-        for (var i = 0; i < rating; i++) {
+        for (var i = 0; i < totalRating; i++) {
             stars.push(<Icon key={i} name="star" size={20} />);
         };
 
-        for (var i = 0; i < 5 - rating; i++) {
+        for (var i = 0; i < 5 - totalRating; i++) {
             stars.push(<Icon key={5 * i} name="star-border" />);
         };
 
@@ -54,8 +65,8 @@ export default function ProfileScreen({ navigation }) {
                     <View style={tailwind("flex flex-col")}>
                         <Text style={tailwind("font-bold text-lg")}>@{username}</Text>
                         <View style={tailwind("flex flex-row items-center")}>
-                            {populateRating(userProfile.ratings)}
-                            <Text style={tailwind("ml-1")}>({userProfile.ratings}.0)</Text>
+                            {populateRating(getTotalRating(userProfile.reviews))}
+                            <Text style={tailwind("ml-1")}>({getTotalRating(userProfile.reviews)}.0)</Text>
                         </View>
                         <Text>{formatJoinedDate(userProfile.registeredAt)}</Text>
                     </View>

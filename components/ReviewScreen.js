@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { View, FlatList } from 'react-native';
+import { View, FlatList, Text } from 'react-native';
 import { Avatar } from "react-native-paper";
 import tailwind from 'tailwind-rn';
 import Description from "./Description";
-
 
 
 function ReviewScreen({ reviews }) {
@@ -16,7 +15,7 @@ function ReviewScreen({ reviews }) {
     }, [reviews]);
 
     return (
-        <View>
+        reviewList ?
             <FlatList
                 data={reviewList}
                 numColumns={2}
@@ -32,7 +31,7 @@ function ReviewScreen({ reviews }) {
                     )
                 }}
             />
-        </View>
+            : <Text style={tailwind("w-full flex text-center")}>You currently have no reviews. Go earn some! </Text>
     )
 }
 
