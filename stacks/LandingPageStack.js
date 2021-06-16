@@ -23,14 +23,19 @@ const LandingPageStack = () => {
             <Landing.Screen name="StoreInfo" component={StoreInfo} options={({ route, navigation }) => ({
                 title: route.params.name,
                 headerRight: () => {
-                    return (
-                        <IconButton
-                                icon="pencil-outline"
-                                onPress={() => navigation.navigate("Edit Shop", { item: route.params })}
-                                color="#ffffff"
-                                style={{ paddingRight: 10 }}
-                            />
-                        )
+                    if (isLoggedIn){
+                        return (
+                            <IconButton
+                                    icon="pencil-outline"
+                                    onPress={() => navigation.navigate("Edit Shop", { item: route.params })}
+                                    color="#ffffff"
+                                    style={{ paddingRight: 10 }}
+                                />
+                            )
+                    } else {
+                        return (<Fragment></Fragment>)
+                    }
+                    
                         
                     
 
