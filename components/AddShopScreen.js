@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { StyleSheet, SafeAreaView, ScrollView, FlatList, View, Text } from 'react-native';
+import { StyleSheet, SafeAreaView, ScrollView, FlatList, View, Text, Dimensions } from 'react-native';
 import { Card, Title, Button, TextInput, Provider, DefaultTheme, Modal, Portal, Paragraph, RadioButton } from 'react-native-paper';
 import { addShop } from '../database/actions/Shop';
 import tailwind from 'tailwind-rn';
+import AwesomeAlert from 'react-native-awesome-alerts';
 
 
 const AddShopScreen = () => {
@@ -23,6 +24,11 @@ const AddShopScreen = () => {
     const showModal = () => setVisible(true);
     const hideModal = () => setVisible(false);
     const containerStyle = { backgroundColor: "white", padding: 20 };
+
+    //msg
+    const [showAlert, setShowAlert] = useState(false);
+    const [message, setMessage] = useState("");
+
     const theme = {
         ...DefaultTheme,
         roundness: 2,
@@ -49,13 +55,40 @@ const AddShopScreen = () => {
             "listings": [],
             "reviews": []
         }
-        addShop(newShop).catch(error => console.log(error));
+        addShop(newShop).then(response => {
+            setMessage("Success");
+            setShowAlert(true);
+        }).catch(error => {
+            console.log(error);
+            setMessage("Fail" + error);
+            setShowAlert(true);
+        });
+            
     };
 
     return (
         <Provider theme={theme}>
             <SafeAreaView style={styles.container}>
                 <ScrollView>
+                <AwesomeAlert
+                contentContainerStyle={{width: Dimensions.get('window').width}}
+          show={showAlert}
+          showProgress={false}
+          title="Add Shop"
+          message={message}
+          closeOnTouchOutside={true}
+          closeOnHardwareBackPress={false}
+          showConfirmButton={true}
+          confirmText="OK"
+          confirmButtonColor="#fa3c4c"
+          confirmButtonTextStyle={{paddingLeft:"10%", paddingRight:"10%"}}
+          onCancelPressed={() => {
+            setShowAlert(false)
+          }}
+          onConfirmPressed={() => {
+            setShowAlert(false)
+          }}
+        />
                     <TextInput theme={{ colors: { primary: "red" } }}
                         label="Name"
                         onChangeText={value => setShopNameData(value)}
