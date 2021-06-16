@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TabView } from "react-native-tab-view";
+import { TabView, TabBar } from "react-native-tab-view";
 import AllScreen from "./AllScreen";
 import HawkerScreen from "./HawkerScreen";
 import ShopScreen from "./ShopScreen";
@@ -32,6 +32,7 @@ const LandingPageTab = ({ itemData }) => {
             navigationState={{ index, routes }}
             renderScene={renderScene}
             onIndexChange={setIndex}
+            renderTabBar={props => <TabBar {...props} style={{backgroundColor: "#ff6976"}} indicatorStyle={{ backgroundColor: "grey" }}/>}
         />
     );
 }
