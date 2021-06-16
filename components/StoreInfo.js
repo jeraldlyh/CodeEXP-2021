@@ -69,12 +69,14 @@ export default function StoreInfo({ route, navigation }) {
             .catch(error => console.log(error))
     };
 
-    const openChat = (anotherUser) => {
+    const openChat = (product) => {
         createConvo(username, anotherUser)
             .then(response => {
                 navigation.navigate("Room", { 
                     thread: response, 
-                    username: username 
+                    username: username,
+                    anotherUser: product.username,
+                    product: product 
                 })
             })
     }
@@ -84,7 +86,8 @@ export default function StoreInfo({ route, navigation }) {
     }
 
     const formatListingDescription = (price, user, listAt) => {
-        const formatTime = moment(listAt).format("MMMM Do YYYY, h:mm:ss a");
+        const time = _.isInteger(listAt) ? listAt : parseInt(listAt);     // Fix format pre-inserted data
+        const formatTime = moment(time).format("MMMM Do YYYY, h:mm:ss a");
         return `Placed by: ${user}\nPrice: $${price} \nListed at: ${formatTime}`;
     }
 
@@ -181,7 +184,7 @@ export default function StoreInfo({ route, navigation }) {
                                                             icon="chat"
                                                             color={"red"}
                                                             size={20}
-                                                            onPress={() => openChat(item.username)}
+                                                            onPress={() => openChat(item)}
                                                         />
                                                     }
                                                 />

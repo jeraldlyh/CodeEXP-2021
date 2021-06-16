@@ -8,11 +8,26 @@ import Filter from "bad-words";
 
 function RoomScreen({ route }) {
     const [messages, setMessage] = useState([]);
-    const { thread, username } = route.params;
+    const { thread, username, product } = route.params;
     const filter = new Filter();
+
+    const formatProductMessage = (product) => {
+        return `${username} has offered to purchase ${product.order} (${product.quantity}) for $${product.price}!`;
+    }
 
     useEffect(() => {
         console.log(route)
+        if (product) {
+            firebase.firestore().collection("threads")
+                .doc(thread)
+                .collection("messages")
+                .add({
+                    text: formatProductMessage(product),
+                    createdAt: new Date().getTime(),
+                    system: true
+                })
+        }
+
         const unsubscribe = firebase.firestore().collection("threads")
             .doc(thread)
             .collection("messages")
@@ -27,6 +42,14 @@ function RoomScreen({ route }) {
                         createdAt: new Date().getTime(),
                         ...messageData
                     };
+
+                    if (!firebaseData.system) {
+                        data.user = {
+                            ...firebaseData.user,
+                            name: firebaseData.user.email
+                        };
+                    }
+
                     return data;
                 });
                 setMessage(messages);
@@ -55,13 +78,19 @@ function RoomScreen({ route }) {
             <Bubble
                 {...props}
                 wrapperStyle={{
+                    left: {
+                        backgroundColor: "#6646ee"
+                    },
                     right: {
-                        backgroundColor: '#6646ee'
+                        backgroundColor: "#6646ee"
                     }
                 }}
                 textStyle={{
+                    left: {
+                        color: "#fff"
+                    },
                     right: {
-                        color: '#fff'
+                        color: "#fff"
                     }
                 }}
             />
@@ -71,7 +100,7 @@ function RoomScreen({ route }) {
     function renderLoading() {
         return (
             <View style={styles.loadingContainer}>
-                <ActivityIndicator size='large' color='#6646ee' />
+                <ActivityIndicator size="large" color="#6646ee" />
             </View>
         );
     };
@@ -80,7 +109,7 @@ function RoomScreen({ route }) {
         return (
             <Send {...props}>
                 <View style={styles.sendingContainer}>
-                    <IconButton icon='send-circle' size={32} color='#6646ee' />
+                    <IconButton icon="send-circle" size={32} color="#6646ee" />
                 </View>
             </Send>
         );
@@ -89,8 +118,18 @@ function RoomScreen({ route }) {
     function scrollToBottomComponent() {
         return (
             <View style={styles.bottomComponentContainer}>
-                <IconButton icon='chevron-double-down' size={36} color='#6646ee' />
+                <IconButton icon="chevron-double-down" size={36} color="#6646ee" />
             </View>
+        );
+    }
+
+    function renderSystemMessage(props) {
+        return (
+            <SystemMessage
+                {...props}
+                wrapperStyle={styles.systemMessageWrapper}
+                textStyle={styles.systemMessageText}
+            />
         );
     }
 
@@ -99,13 +138,14 @@ function RoomScreen({ route }) {
             messages={messages}
             onSend={handleSend}
             user={{ _id: username }}
-            placeholder='Type your message here...'
+            placeholder="Type your message here..."
             alwaysShowSend
             showUserAvatar
             scrollToBottom
             renderBubble={renderBubble}
             renderLoading={renderLoading}
             renderSend={renderSend}
+            renderSystemMessage={renderSystemMessage}
             scrollToBottomComponent={scrollToBottomComponent}
         />
     );
@@ -114,22 +154,27 @@ function RoomScreen({ route }) {
 const styles = StyleSheet.create({
     loadingContainer: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
+        alignItems: "center",
+        justifyContent: "center"
     },
     sendingContainer: {
-        justifyContent: 'center',
-        alignItems: 'center'
+        justifyContent: "center",
+        alignItems: "center"
     },
     bottomComponentContainer: {
-        justifyContent: 'center',
-        alignItems: 'center'
+        justifyContent: "center",
+        alignItems: "center"
     },
     systemMessageWrapper: {
-        backgroundColor: '#6646ee',
+        backgroundColor: "#6646ee",
         borderRadius: 4,
         padding: 5
     },
+    systemMessageText: {
+        fontSize: 14,
+        color: "#fff",
+        fontWeight: "bold"
+    }
 });
 
 export default RoomScreen

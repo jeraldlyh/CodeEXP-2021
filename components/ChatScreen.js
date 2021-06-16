@@ -38,7 +38,11 @@ const ChatScreen = ({ navigation }) => {
                             title={item.userOne !== username ? item.userOne : item.userTwo}
                             left={() => <Image source={{ uri: 'https://picsum.photos/700' }} style={{ width: 60, height: 60, borderRadius: 100 }} />}
                             right={() => <List.Icon icon="chevron-right" />}
-                            onPress={() => navigation.navigate("Room", { thread: item._id, username: username })}
+                            onPress={() => navigation.navigate("Room", { 
+                                thread: item._id, 
+                                username: username,
+                                anotherUser: item.userOne === username ? item.userTwo : item.userOne 
+                            })}
                         />
                     )
                 }}
