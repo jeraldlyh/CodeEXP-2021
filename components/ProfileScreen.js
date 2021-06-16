@@ -6,6 +6,7 @@ import moment from "moment";
 import { AuthContext } from "../provider/AuthContext";
 import TabViewScreen from "./TabViewScreen";
 import { getUserProfile } from "../database/actions/User";
+import { IconButton } from "react-native-paper";
 
 export default function ProfileScreen({ navigation }) {
     const [userProfile, setUserProfile] = useState("");
@@ -47,6 +48,7 @@ export default function ProfileScreen({ navigation }) {
                     <Text style={tailwind("ml-5")}>{formatJoinedDate(userProfile.registeredAt)}</Text>
                 </View>
             </View>
+            <IconButton icon="logout" onPress={() => alert('It works!')} color="#fa3c4c" style={tailwind("flex flex-row")} />
             <TabViewScreen listings={userProfile.listings} reviews={userProfile.reviews}/>
         </View>
     );
