@@ -4,7 +4,7 @@ import { List, Card, Title, Paragraph, Button, IconButton, Modal, Portal, Provid
 import { BlurView } from 'expo-blur';
 import tailwind from 'tailwind-rn';
 import { AuthContext } from '../provider/AuthContext';
-import { addBookmark } from '../database/actions/Bookmark';
+import { addBookmark, removeBookmark } from '../database/actions/Bookmark';
 import NumericInput from 'react-native-numeric-input';
 import { addListing } from '../database/actions/Listing';
 import SelectPicker from 'react-native-form-select-picker';
@@ -27,14 +27,35 @@ export default function StoreInfo({ route, navigation }) {
     const [product, setProduct] = useState("");
     const [listings, setListings] = useState([])
 
-    const { username, isLoggedIn, avatar } = useContext(AuthContext);
+    const { username, isLoggedIn, avatar, bookmarks, setBookmarks } = useContext(AuthContext);
     const [refresh, setRefresh] = useState(false);              // Force refresh flat list
 
-    const onBookmark = () => {
+    const bookmarkIcon = (shopName) => {
+        if (!isLoggedIn) {
+            return "star-outline";
+        } else if (bookmarks && bookmarks.includes(shopName)) {
+            return "star";
+        }
+        return "star-outline";
+    }
+
+    const onBookmark = (icon) => {
         if (!isLoggedIn) {
             navigation.navigate("Profile");
         } else {
-            addBookmark(username, route.params.name);
+            if (icon === "star") {
+                removeBookmark(username, route.params.name);
+
+                const updatedBookmarks = bookmarks.filter(function(bookmark) {
+                    return bookmark !== route.params.name;
+                });
+                setBookmarks(updatedBookmarks);
+            } else {
+                addBookmark(username, route.params.name);
+                setBookmarks(prevBookmarks => {
+                    return [...prevBookmarks, route.params.name];
+                })
+            }
         }
     }
 
@@ -56,10 +77,7 @@ export default function StoreInfo({ route, navigation }) {
 
                 if (listings) {
                     setListings(prevListing => {
-                        return [
-                            ...prevListing,
-                            response
-                        ]
+                        return [...prevListing, response]
                     });
                 } else {
                     setListings([response]);
@@ -109,10 +127,10 @@ export default function StoreInfo({ route, navigation }) {
                     <View style={tailwind("flex-row items-center")}>
                         <Title style={tailwind("pl-5")}>{route.params.name}</Title>
                         <IconButton
-                            icon={isLoggedIn ? "star" : "star-outline"}
+                            icon={bookmarkIcon(route.params.name)}
                             color="#fa3c4c"
                             size={25}
-                            onPress={() => onBookmark()}
+                            onPress={() => onBookmark(bookmarkIcon(route.params.name))}
                         />
                     </View>
 

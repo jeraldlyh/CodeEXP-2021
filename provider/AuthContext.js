@@ -7,13 +7,15 @@ function AuthContextProvider(props) {
     const [isLoggedIn, setIsLoggedIn] = useState("");
     const [username, setUsername] = useState("");
     const [avatar, setAvatar] = useState("");
+    const [bookmarks, setBookmarks] = useState([]);
 
     return (
         <AuthContext.Provider value={{
             isLoading, setIsLoggedIn, 
             isLoggedIn,
             username, setUsername,
-            avatar, setAvatar
+            avatar, setAvatar,
+            bookmarks, setBookmarks
         }}>
             {props.children}
         </AuthContext.Provider>

@@ -9,12 +9,13 @@ import { getUserProfile } from "../database/actions/User";
 
 export default function ProfileScreen({ navigation }) {
     const [userProfile, setUserProfile] = useState("");
-    const { username, setAvatar } = useContext(AuthContext);
+    const { username, setAvatar, setBookmarks } = useContext(AuthContext);
 
     useEffect(() => {
         getUserProfile(username).then(response => {
             setUserProfile(response);
             setAvatar(response.avatar);
+            setBookmarks(response.bookmarks)
         })
 
         return () => setUserProfile("");
