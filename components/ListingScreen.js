@@ -5,33 +5,29 @@ import tailwind from 'tailwind-rn';
 
 
 function ListingScreen({ listings }) {
+    const formatListingTitle = (title, quantity) => {
+        return `${title} (${quantity})`;
+    }
+    
     return (
-        <View style={tailwind("flex bg-gray-200")}>
             <FlatList
                 data={listings}
                 numColumns={2}
+                columnWrapperStyle={{justifyContent: 'space-between'}}
                 keyExtractor={item => item._id}
                 renderItem={({ item }) => {
                     return (
-                        <Card style={tailwind("w-auto m-2")}>
+                        <Card style={{width:"46%", margin: "2%"}}>
                             <Card.Cover source={{ uri: item.url }} />
                             <Card.Content>
-                                <Title>{item.order}</Title>
+                                <Title>{formatListingTitle(item.order, item.quantity)}</Title>
                                 <Paragraph>${item.price}</Paragraph>
                             </Card.Content>
                         </Card>
                     )
                 }}
             />
-        </View>
     )
 }
-
-const styles = StyleSheet.create({
-    item: {
-        width: '45%',
-        margin: '2%',
-    }
-});
 
 export default ListingScreen;
