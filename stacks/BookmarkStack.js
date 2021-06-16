@@ -9,7 +9,17 @@ const BookmarkStack = () => {
     return (
         <Bookmark.Navigator screenOptions={{ headerShown: true, headerStyle: { backgroundColor: "#fa3c4c" }, headerTintColor: "#ffffff" }}>
             <Bookmark.Screen name="Bookmark" component={BookmarkScreen} />
-            <Bookmark.Screen name="StoreInfo" component={StoreInfo} options={({ route }) => ({ title: route.params.name })}/>
+            <Bookmark.Screen name="StoreInfo" component={StoreInfo} options={({ route, navigation }) => ({
+                title: route.params.name,
+                headerRight: () => (
+                    <IconButton
+                        icon="pencil-outline"
+                        onPress={() => navigation.navigate("Edit Shop", { item: route.params })}
+                        color="#ffffff"
+                        style={{ paddingRight: 10 }}
+                    />
+                )
+            })} />
         </Bookmark.Navigator>
     );
 };
