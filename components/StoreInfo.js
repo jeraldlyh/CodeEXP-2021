@@ -70,7 +70,7 @@ export default function StoreInfo({ route, navigation }) {
     };
 
     const openChat = (product) => {
-        createConvo(username, anotherUser)
+        createConvo(username, product.username)
             .then(response => {
                 navigation.navigate("Room", { 
                     thread: response, 
