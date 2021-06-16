@@ -79,7 +79,7 @@ export const addReview = (data) => {
             .then(() => resolve(true))
             .catch(error => {
                 console.log("Error in addReview");
-                reject();
+                reject(error);
             })
     })
 }
