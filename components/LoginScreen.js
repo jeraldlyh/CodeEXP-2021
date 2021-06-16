@@ -9,7 +9,6 @@ function LoginScreen({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-
     const { setUsername, setIsLoggedIn } = useContext(AuthContext);
 
     const onLoginPressed = () => {
@@ -17,7 +16,7 @@ function LoginScreen({ navigation }) {
             .then(response => {
                 setUsername(response);
                 setIsLoggedIn(true);
-                navigation.popToTop();
+                navigation.goBack();
             })
             .catch(error => {
                 console.log(error)
