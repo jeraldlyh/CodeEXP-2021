@@ -6,7 +6,7 @@ import tailwind from 'tailwind-rn';
 
 function ListingScreen({ listing }) {
     return (
-        <View style={tailwind("bg-black")}>
+        <View>
             <Text>Listing</Text>
         </View>
     )

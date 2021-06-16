@@ -187,7 +187,6 @@ export default function StoreInfo({ route, navigation }) {
                                                     theme={{ colors: { primary: "red", text: "black", label: "black", accent: "black" } }}
                                                     style={tailwind("bg-white w-3/5")}
                                                     placeholderTextColor="black"
-
                                                     label="Price"
                                                     placeholder="State the price you are willing to pay"
                                                     value={price}
