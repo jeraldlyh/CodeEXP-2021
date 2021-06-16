@@ -10,11 +10,13 @@ const LandingPageScreen = ({ navigation }) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [itemData, setItemData] = React.useState("");
     const { username, isLoggedIn } = useContext(AuthContext);
+    const [tempData, setTempData] = React.useState("");
 
     useEffect(() => {
         const unsubscribe = firebase.firestore().collection("shop").onSnapshot((collection => {
             const shopData = collection.docs.map(doc => doc.data())
             setItemData(shopData);
+            setTempData(shopData);
         }))
         return () => unsubscribe();
     }, []);
@@ -56,7 +58,7 @@ const LandingPageScreen = ({ navigation }) => {
 
             <View style={tailwind("flex-row justify-center items-center")}>
                 {
-                    !isLoggedIn
+                    isLoggedIn
                         ? <Button raised theme={{ colors: { primary: "#fa3c4c" } }} mode="text" icon="plus" style={{ margin: "2%" }}
                             onPress={() => navigation.navigate("Add Shop")}>
                             <Text >Add Shop</Text>
