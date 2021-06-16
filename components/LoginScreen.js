@@ -6,8 +6,8 @@ import { loginUser } from "../database/actions/User";
 import { AuthContext } from "../provider/AuthContext";
 
 function LoginScreen({ navigation }) {
-    const [email, setEmail] = useState({ value: '', error: '' });
-    const [password, setPassword] = useState({ value: '', error: '' });
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
     const { setUsername, setIsLoggedIn } = useContext(AuthContext);
@@ -20,6 +20,7 @@ function LoginScreen({ navigation }) {
                 navigation.navigate("Profile", { screen: "Profile" });
             })
             .catch(error => {
+                console.log(error)
                 setError(error.toString().split(":")[1].substr(1));
             })
     };

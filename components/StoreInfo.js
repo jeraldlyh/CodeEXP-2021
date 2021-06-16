@@ -27,7 +27,7 @@ export default function StoreInfo({ route, navigation }) {
     const [product, setProduct] = useState("");
     const [listings, setListings] = useState([])
 
-    const { username, isLoggedIn } = useContext(AuthContext);
+    const { username, isLoggedIn, avatar } = useContext(AuthContext);
     const [refresh, setRefresh] = useState(false);              // Force refresh flat list
 
     const onBookmark = () => {
@@ -75,6 +75,7 @@ export default function StoreInfo({ route, navigation }) {
                 navigation.navigate("Room", { 
                     thread: response, 
                     username: username,
+                    avatar: avatar,
                     anotherUser: product.username,
                     product: product 
                 })
