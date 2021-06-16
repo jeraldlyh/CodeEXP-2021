@@ -24,6 +24,7 @@ const ShopScreen = ({ navigation, itemData }) => {
                     return (
                         <List.Item
                             title={item.name}
+                            style={{ borderBottomWidth: 0.5, borderBottomColor: "#fa3c4c" }}
                             description={item.location}
                             left={() => <Image source={{ uri: item.img }}
                                 style={{ width: 60, height: 60 }} />}
