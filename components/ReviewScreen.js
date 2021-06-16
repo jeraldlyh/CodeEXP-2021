@@ -43,7 +43,6 @@ function ReviewScreen({ reviews }) {
                 numColumns={2}
                 keyExtractor={item => item._id}
                 renderItem={({ item }) => {
-                    console.log(item.text)
                     return (
                         <View style={tailwind("flex flex-row w-full p-3 items-center")}>
                             <Avatar.Image source={{uri: item.avatar}} style={tailwind("mr-4")}/>
