@@ -110,10 +110,10 @@ export default function StoreInfo({ route, navigation }) {
         return `Placed by: ${user}\nPrice: $${price} \nListed at: ${formatTime}`;
     }
 
-    useEffect(() => {
-        LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
-        setListings(route.params.listings);
-    }, [])
+    // useEffect(() => {
+    //     LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
+    //     setListings(route.params.listings);
+    // }, [])
 
     return (
         <Provider theme={theme}>
@@ -158,6 +158,7 @@ export default function StoreInfo({ route, navigation }) {
                                 <FlatList
                                     data={route.params.products}
                                     numColumns={2}
+                                    columnWrapperStyle={{justifyContent: 'space-between'}}
                                     keyExtractor={item => item._id}
                                     renderItem={({ item }) => {
                                         return (

@@ -26,7 +26,8 @@ function LoginScreen({ navigation }) {
     };
 
     return (
-        <View style={tailwind("flex-1 w-4/5 m-10")}>
+        <View style={tailwind("flex-1 w-4/5 m-10 content-center justify-center")}>
+            <Text style={tailwind("text-center mb-5")}>Please login first.</Text>
             <Text style={tailwind("text-center mb-5 text-red-500")}>{error}</Text>
 
             <View style={tailwind("flex ")}>
