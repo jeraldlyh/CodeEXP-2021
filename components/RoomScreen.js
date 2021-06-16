@@ -87,10 +87,10 @@ function RoomScreen({ route }) {
                 {...props}
                 wrapperStyle={{
                     left: {
-                        backgroundColor: "#0084ff"
+                        backgroundColor: "grey"
                     },
                     right: {
-                        backgroundColor: "#0084ff"
+                        backgroundColor: "#fa3c4c"
                     }
                 }}
                 textStyle={{
@@ -153,8 +153,8 @@ function RoomScreen({ route }) {
                 <View style={styles.systemMessageWrapper}>
                     <Text style={styles.systemMessageText}>{props.currentMessage.text}</Text>
                     <View style={tailwind("flex flex-row justify-around")}>
-                        <Button onPress={() => console.log("a")}>Complete</Button>
-                        <Button onPress={() => console.log("a")}>Cancel</Button>
+                        <Button onPress={() => console.log("a")} color="#fa3c4c">Complete</Button>
+                        <Button onPress={() => console.log("a")} color="#fa3c4c">Cancel</Button>
                     </View>
                 </View>
             </View>
@@ -195,18 +195,22 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     systemMessageWrapper: {
-        backgroundColor: "#fa3c4c",
-        opacity: 0.9,
+        backgroundColor: "#d1d1d1",
+        opacity: 0.8,
         borderRadius: 4,
-        padding: 5
+        padding: 5,
+        width: "80%",
+        alignItems: 'center',
+        justifyContent: "center"
     },
     systemMessageText: {
         fontSize: 14,
-        color: "#fff",
+        color: "#000000",
         fontWeight: "bold",
         backgroundColor: "transparent",
         fontSize: 12,
         fontWeight: '300',
+        paddingTop: 10
     },
     systemContainer: {
         alignItems: 'center',
