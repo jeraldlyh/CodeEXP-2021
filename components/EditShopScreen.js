@@ -57,7 +57,7 @@ const EditShopScreen = ({ route, navigation }) => {
         var newData = productData.filter(leftitem => leftitem._id != item._id);
         newData.push({ "url": productUrlData, "name": prodName, "price": prodPrice })
         setProductData(newData);
-        hideModal();
+        hideModal2();
     };
     
     const editNewShop = () => {
@@ -101,8 +101,35 @@ const EditShopScreen = ({ route, navigation }) => {
                         onCancelPressed={() => {
                             setShowAlert(false)
                         }}
-                        onConfirmPressed={() => {
+                        onDismiss={() => {
+                            const newShop = {
+                                "name": shopNameData,
+                                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIAIWZZNRd59YjcVrp1LpfYG_FiyXO1ViH7Q&usqp=CAU",
+                                "description": shopDescriptionData,
+                                "location": shopLocationData,
+                                "rating": 0,
+                                "type": shopTypeData,
+                                "products": productData,
+                                "listings": [],
+                                "reviews": []
+                            }
                             setShowAlert(false)
+                            navigation.navigate("StoreInfo", { ...newShop })
+                        }}
+                        onConfirmPressed={() => {
+                            const newShop = {
+                                "name": shopNameData,
+                                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIAIWZZNRd59YjcVrp1LpfYG_FiyXO1ViH7Q&usqp=CAU",
+                                "description": shopDescriptionData,
+                                "location": shopLocationData,
+                                "rating": 0,
+                                "type": shopTypeData,
+                                "products": productData,
+                                "listings": [],
+                                "reviews": []
+                            }
+                            setShowAlert(false)
+                            navigation.navigate("StoreInfo", { ...newShop })
                         }}
                     />
                     <TextInput theme={{ colors: { primary: "red" } }}
@@ -110,7 +137,7 @@ const EditShopScreen = ({ route, navigation }) => {
                         onChangeText={value => setShopDescriptionData(value)}
                     />
                     <TextInput theme={{ colors: { primary: "red" } }}
-                        label="Location" value={route.params.item.name} defaultValue={route.params.item.location}
+                        label="Location" defaultValue={route.params.item.location}
                         onChangeText={value => setShopLocationData(value)}
                     />
                     <RadioButton.Group
