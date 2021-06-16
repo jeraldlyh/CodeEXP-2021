@@ -21,7 +21,7 @@ export default function StoreInfo({ route, navigation }) {
     const [visible, setVisible] = useState(false);
     const showModal = () => setVisible(true);
     const hideModal = () => setVisible(false);
-    const containerStyle = { backgroundColor: "white", padding: 20 };
+    const containerStyle = { backgroundColor: "#ffffff", padding: 20 };
     const [price, setPrice] = useState("");
     const [quantity, setQuantity] = useState(0);
     const [product, setProduct] = useState("");
@@ -43,7 +43,7 @@ export default function StoreInfo({ route, navigation }) {
         roundness: 2,
         colors: {
             ...DefaultTheme.colors,
-            primary: 'red'
+            primary: "#fa3c4c"
         },
     };
 
@@ -109,19 +109,21 @@ export default function StoreInfo({ route, navigation }) {
                         <Title style={tailwind("pl-5")}>{route.params.name}</Title>
                         <IconButton
                             icon={isLoggedIn ? "star" : "star-outline"}
-                            color="red"
+                            color="#fa3c4c"
                             size={25}
                             onPress={() => onBookmark()}
                         />
                     </View>
 
-                    <Text style={tailwind("p-5")}>{route.params.location}</Text>
-                    <Text style={tailwind("px-5")}>Opening Hours??</Text>
+                    <Text style={tailwind("pl-5 pb-5")}>{route.params.location}</Text>
+                    {/* <Text style={tailwind("px-5")}>Opening Hours??</Text> */}
                     <View>
 
                         <List.Section>
                             {/* DESCRIPTION */}
-                            <List.Accordion style={tailwind("pl-5 border-b-2 border-red-500")} raised theme={{ colors: { primary: 'red' } }}
+                            <List.Accordion
+                                style={ {borderBottomWidth: 0.5, borderBottomColor: "#fa3c4c"}}
+                                raised theme={{ colors: { primary: "#fa3c4c" }} }
                                 title="Description"
                                 onPress={handlePress}
                             >
@@ -129,8 +131,9 @@ export default function StoreInfo({ route, navigation }) {
                             </List.Accordion>
 
                             {/* PRODUCTS */}
-                            <List.Accordion style={tailwind("pl-5 border-b-2 border-red-500")}
-                                raised theme={{ colors: { primary: 'red' } }}
+                            <List.Accordion
+                                style={ {borderBottomWidth: 0.5, borderBottomColor: "#fa3c4c"}}
+                                raised theme={{ colors: { primary: "#fa3c4c" }} }
                                 title="Menu"
                             >
                                 <FlatList
@@ -152,8 +155,9 @@ export default function StoreInfo({ route, navigation }) {
                             </List.Accordion>
 
                             {/* LISTINGS */}
-                            <List.Accordion style={tailwind("pl-5 border-b-2 border-red-500")}
-                                raised theme={{ colors: { primary: 'red' } }}
+                            <List.Accordion
+                                style={ {borderBottomWidth: 0.5, borderBottomColor: "#fa3c4c"}}
+                                raised theme={{ colors: { primary: "#fa3c4c" }} }
                                 title="Orders"
                             >
                                 <View style={tailwind("flex")}>
@@ -174,6 +178,7 @@ export default function StoreInfo({ route, navigation }) {
                                         renderItem={({ item }) => {
                                             return (
                                                 <List.Item
+                                                    style={ {borderBottomWidth: 0.5, borderBottomColor: "#fa3c4c"}}
                                                     title={formatListingTitle(item.order, item.quantity)}
                                                     description={
                                                         formatListingDescription(item.price, item.username, item.listAt)
@@ -182,8 +187,9 @@ export default function StoreInfo({ route, navigation }) {
                                                     right={() => 
                                                         <IconButton
                                                             icon="chat"
-                                                            color={"red"}
+                                                            color={"#fa3c4c"}
                                                             size={20}
+                                                            style={{alignSelf: "center"}}
                                                             onPress={() => openChat(item)}
                                                         />
                                                     }
@@ -199,10 +205,10 @@ export default function StoreInfo({ route, navigation }) {
                                             onDismiss={hideModal}
                                             contentContainerStyle={containerStyle}
                                         >
-                                            <Title style={{ textAlign: "center", color: "black" }}>Add Order</Title>
+                                            <Title style={{ textAlign: "center", color: "#000000", marginBottom: "5%" }}>Add Order</Title>
                                             
                                             <SelectPicker
-                                                style={{ borderBottomWidth: 1}}
+                                                style={{ borderBottomWidth: 1, borderBottomColor: "#bababa", marginBottom: "2%" }}
                                                 selectedValue={product}
                                                 onValueChange={(itemValue, itemIndex) => setProduct(itemValue)}
                                                 placeholder="Click to select item"
@@ -223,16 +229,16 @@ export default function StoreInfo({ route, navigation }) {
                                                     onChange={quantity => setQuantity(quantity)}
                                                     rounded
                                                     totalHeight={40}
-                                                    textColor='#103900'
-                                                    iconStyle={{ color: 'white' }}
-                                                    rightButtonBackgroundColor='#EA3788'
-                                                    leftButtonBackgroundColor='#E56B70'
+                                                    textColor='grey'
+                                                    iconStyle={{ color: "#ffffff" }}
+                                                    rightButtonBackgroundColor="#fa3c4c"
+                                                    leftButtonBackgroundColor="#fc7782"
                                                 />
                                                 <TextInput
                                                     raised
-                                                    theme={{ colors: { primary: "red", text: "black", label: "black", accent: "black" } }}
+                                                    theme={{ colors: { primary: "#fa3c4c", text: "#000000", label: "#000000", accent: "#000000" } }}
                                                     style={tailwind("bg-white w-3/5")}
-                                                    placeholderTextColor="black"
+                                                    placeholderTextColor="#000000"
                                                     keyboardType="numeric"
                                                     label="Price"
                                                     placeholder="State the price you are willing to pay"
@@ -241,10 +247,10 @@ export default function StoreInfo({ route, navigation }) {
                                                 />
                                             </View>
                                             <Button
-                                                style={{ height: 40, margin: "2%", padding:"1%", marginTop: "2%" }}
+                                                style={{ height: 40, margin: "2%", padding:"1%", marginTop: "8%" }}
                                                 mode="contained"
                                                 raised
-                                                theme={{ colors: { primary: "red" } }}
+                                                theme={{ colors: { primary: "#fa3c4c" } }}
                                                 onPress={() => submitOrder()}
                                             >
                                                 Submit Order
@@ -254,7 +260,7 @@ export default function StoreInfo({ route, navigation }) {
                                     <Button
                                         mode="text"
                                         raised
-                                        theme={{ colors: { primary: "red" } }}
+                                        theme={{ colors: { primary: "#fa3c4c" } }}
                                         onPress={showModal}
                                     >
                                         Add Order
@@ -272,7 +278,7 @@ export default function StoreInfo({ route, navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#ffffff',
     },
     item: {
         width: '45%',
