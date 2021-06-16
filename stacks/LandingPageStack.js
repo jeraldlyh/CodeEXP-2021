@@ -9,6 +9,8 @@ import AddShopScreen from "../components/AddShopScreen";
 import LoginScreen from "../components/LoginScreen";
 import EditShopScreen from "../components/EditShopScreen";
 import { AuthContext } from '../provider/AuthContext';
+import { HeaderBackButton } from '@react-navigation/stack';
+
 
 const Landing = createStackNavigator();
 
@@ -19,25 +21,33 @@ const LandingPageStack = () => {
         <Landing.Navigator screenOptions={{ headerShown: true, headerStyle: { backgroundColor: "#fa3c4c" }, headerTintColor: "#ffffff" }} >
             <Landing.Screen name="Red Dot Kakis" component={LandingPageScreen} />
             <Landing.Screen name="Nearby" component={NearbyScreen} />
-            <Landing.Screen name="Add Shop" component={AddShopScreen} />
+            <Landing.Screen name="Add Shop" component={AddShopScreen} options={{
+                    headerLeft: (props) => (
+                        <HeaderBackButton
+                            {...props}
+                            label={"Back"}
+                        />
+                    ),
+                }}
+            />
             <Landing.Screen name="StoreInfo" component={StoreInfo} options={({ route, navigation }) => ({
                 title: route.params.name,
                 headerRight: () => {
-                    if (isLoggedIn){
+                    if (isLoggedIn) {
                         return (
                             <IconButton
-                                    icon="pencil-outline"
-                                    onPress={() => navigation.navigate("Edit Shop", { item: route.params })}
-                                    color="#ffffff"
-                                    style={{ paddingRight: 10 }}
-                                />
-                            )
+                                icon="pencil-outline"
+                                onPress={() => navigation.navigate("Edit Shop", { item: route.params })}
+                                color="#ffffff"
+                                style={{ paddingRight: 10 }}
+                            />
+                        )
                     } else {
                         return (<Fragment></Fragment>)
                     }
-                    
-                        
-                    
+
+
+
 
                 }
 
