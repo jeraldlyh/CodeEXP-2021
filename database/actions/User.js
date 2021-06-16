@@ -9,6 +9,7 @@ export const createUser = (username) => {
             ratings: 0,
             enableNotification: false,
             trips: 0,
+            avatar: "https://placeimg.com/140/140/any",
             listing: [],
             reviews: [],
             bookmarks: []
