@@ -47,7 +47,7 @@ export default function ProfileScreen({ navigation }) {
                     <Text style={tailwind("ml-5")}>{formatJoinedDate(userProfile.registeredAt)}</Text>
                 </View>
             </View>
-            <TabViewScreen listing={userProfile.listing} review={userProfile.review}/>
+            <TabViewScreen listings={userProfile.listings} reviews={userProfile.reviews}/>
         </View>
     );
 };

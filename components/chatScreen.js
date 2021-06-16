@@ -11,7 +11,6 @@ const ChatScreen = ({ navigation }) => {
     const [threads, setThreads] = useState([]);
 
     useEffect(() => {
-        console.log("")
         const unsubscribe = firebase.firestore().collection("threads")
             .onSnapshot(collection => {
                 const userConvo = [];
@@ -24,7 +23,6 @@ const ChatScreen = ({ navigation }) => {
                     }
                 })
                 setThreads(userConvo)
-                console.log(userConvo)
             })
         return () => unsubscribe();
     }, []);

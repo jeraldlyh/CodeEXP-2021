@@ -13,7 +13,7 @@ const RootChatStack = () => {
         <RootChat.Navigator screenOptions={{ headerShown: false }}>
             {
                 isLoggedIn
-                    ? <RootChat.Screen name="Profile" component={ChatStack} />
+                    ? <RootChat.Screen name="Chat" component={ChatStack} />
                     : <RootChat.Screen name="Auth" component={AuthStack} />
             }
         </RootChat.Navigator>

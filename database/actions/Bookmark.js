@@ -14,6 +14,7 @@ export const addBookmark = (username, shopName) => {
                 resolve();
             })
             .catch(error => {
+                console.log("Error in addBookmark");
                 if (error === "No data found") {
                     reject("Shop does not exist");
                 }
@@ -33,6 +34,7 @@ export const removeBookmark = (username, shopName) => {
                 resolve();
             })
             .catch(error => {
+                console.log("Error in removeBookmarks");
                 if (error === "No data found") {
                     reject("Shop does not exist");
                 }
@@ -49,6 +51,7 @@ export const getAllBookmarks = (username) => {
                 resolve(doc.data().bookmarks);
             })
             .catch(error => {
+                console.log("Error in getAllBookmarks");
                 reject(error);
             })
     })

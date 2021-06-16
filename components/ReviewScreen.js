@@ -5,7 +5,7 @@ import tailwind from 'tailwind-rn';
 
 function ReviewScreen() {
     return (
-        <View style={tailwind("bg-red-500")}>
+        <View>
             <Text>ReviewScreen</Text>
         </View>
     )

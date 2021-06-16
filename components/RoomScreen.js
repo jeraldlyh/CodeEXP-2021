@@ -12,6 +12,7 @@ function RoomScreen({ route }) {
     const filter = new Filter();
 
     useEffect(() => {
+        console.log(route)
         const unsubscribe = firebase.firestore().collection("threads")
             .doc(thread)
             .collection("messages")

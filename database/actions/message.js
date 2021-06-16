@@ -38,34 +38,69 @@ export const addMessageToConvo = (conversationID, fromUser, text) => {
                 })
             })
             .then(() => resolve("Message successfully sent!"))
-            .catch(error => reject(error));
+            .catch(error => {
+                console.log("Error in addMessageToConv");
+                reject(error)
+            });
     });
 };
 
 
 export const createConvo = (userOne, userTwo) => {
     return new Promise((resolve, reject) => {
-        firebase.firestore().collection("threads")
-            .add({
-                userOne: userOne,
-                userTwo: userTwo,
-                // messages: []
+        isConvoExist(userOne, userTwo)
+            .then(response => {
+                if (response.length !== 0) {
+                    resolve(response._id)
+                } else {
+                    firebase.firestore().collection("threads")
+                        .add({
+                            userOne: userOne,
+                            userTwo: userTwo,
+                        })
+                        .then(doc => {
+                            updateConvoUUID(doc.id)
+                            resolve(doc.id);
+                        })
+                        .catch(error => {
+                            console.log("Error in isConvoExist called in createConvo");
+                            reject(error);
+                        });
+                }
             })
-            .then(doc => {
-                updateConvoUUID(doc.id)
-                resolve("Conversation has been created");
-            })
-            .catch(error => {
-                console.log(error);
-                reject(error);
-            });
     });
 };
 
 export const updateConvoUUID = (conversationID) => {
-    firebase.firestore().collection("message")
+    firebase.firestore().collection("threads")
         .doc(conversationID)
         .update({
-            uuid: conversationID
+            _id: conversationID
         });
-}
+};
+
+export const isConvoExist = (userOne, userTwo) => {
+    return new Promise((resolve, reject) => {
+        firebase.firestore().collection("threads")
+            .get()
+            .then(querySnapshot => {
+                const convoData = querySnapshot.docs.map(doc => doc.data());
+                const parsedData = convoData.filter(function(data) {
+                        if (
+                            (data.userOne === userOne && data.userTwo === userTwo) || 
+                            (data.userOne === userTwo && data.userTwo === userOne)
+                        ) {
+                            return true;
+                        }
+                        return false;
+                })
+                if (parsedData || parsedData.length !== 0) {
+                    resolve(parsedData[0]);
+                }
+            })
+            .catch(error => {
+                console.log("Error in isConvoExist");
+                reject(error);
+            });
+    });
+};
