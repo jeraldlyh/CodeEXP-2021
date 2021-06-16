@@ -18,9 +18,6 @@ function ReviewScreen({ reviews }) {
         }
     }, [reviews]);
 
-
-    
-
     const onSubmit = () => {
         const data = {
             review: {
@@ -44,7 +41,7 @@ function ReviewScreen({ reviews }) {
                 keyExtractor={item => item._id}
                 renderItem={({ item }) => {
                     return (
-                        <View style={tailwind("flex flex-row w-full p-3 items-center")}>
+                        <View style={[{borderBottomWidth: 0.5, borderBottomColor: "#fa3c4c"}, tailwind("flex flex-row w-full p-3 items-center")]}>
                             <Avatar.Image source={{uri: item.avatar}} style={tailwind("mr-4")}/>
                             <View style={tailwind("flex flex-col pt-2 pb-2 justify-between")}>
                                 <Description text={item.text} rating={item.rating}/>
@@ -53,7 +50,6 @@ function ReviewScreen({ reviews }) {
                     )
                 }}
             />
-            <Button onPress={() => onSubmit()}>test</Button>
         </View>
     )
 }

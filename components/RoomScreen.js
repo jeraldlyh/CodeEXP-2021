@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, ActivityIndicator } from "react-native";
-import { IconButton } from "react-native-paper";
+import { StyleSheet, View, ActivityIndicator, Text } from "react-native";
 import { GiftedChat, Bubble, Send, SystemMessage, Time } from 'react-native-gifted-chat';
 import firebase from "../database/firebaseDB";
 import Filter from "bad-words";
+import { List, Card, Title, Paragraph, Button, IconButton, Modal, Portal, Provider, TextInput, DefaultTheme } from "react-native-paper";
+import tailwind from "tailwind-rn";
+
 
 
 function RoomScreen({ route }) {
@@ -56,6 +58,11 @@ function RoomScreen({ route }) {
             })
         return () => unsubscribe();
     }, [])
+
+    const completeOrder = () => {
+        
+    }
+
 
     async function handleSend(messages) {
         var text = messages[0].text;
@@ -142,11 +149,15 @@ function RoomScreen({ route }) {
 
     function renderSystemMessage(props) {
         return (
-            <SystemMessage
-                {...props}
-                wrapperStyle={styles.systemMessageWrapper}
-                textStyle={styles.systemMessageText}
-            />
+            <View style={styles.systemContainer}>
+                <View style={styles.systemMessageWrapper}>
+                    <Text style={styles.systemMessageText}>{props.currentMessage.text}</Text>
+                    <View style={tailwind("flex flex-row justify-around")}>
+                        <Button onPress={() => console.log("a")}>Complete</Button>
+                        <Button onPress={() => console.log("a")}>Cancel</Button>
+                    </View>
+                </View>
+            </View>
         );
     }
 
@@ -185,13 +196,24 @@ const styles = StyleSheet.create({
     },
     systemMessageWrapper: {
         backgroundColor: "#fa3c4c",
+        opacity: 0.9,
         borderRadius: 4,
         padding: 5
     },
     systemMessageText: {
         fontSize: 14,
         color: "#fff",
-        fontWeight: "bold"
+        fontWeight: "bold",
+        backgroundColor: "transparent",
+        fontSize: 12,
+        fontWeight: '300',
+    },
+    systemContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        flex: 1,
+        marginTop: 5,
+        marginBottom: 10,
     }
 });
 
