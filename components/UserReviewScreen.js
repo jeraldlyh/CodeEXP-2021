@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, SafeAreaView, ScrollView } from 'react-native';
-import {Button, TextInput, Provider, DefaultTheme } from 'react-native-paper';
+import { StyleSheet, SafeAreaView, ScrollView, Dimensions } from 'react-native';
+import { Button, TextInput, Provider, DefaultTheme } from 'react-native-paper';
 import AwesomeAlert from 'react-native-awesome-alerts';
 import { Rating } from 'react-native-elements';
 import { addReview } from '../database/actions/User';
@@ -10,8 +10,9 @@ import { v4 as uuidv4 } from "uuid";
 const UserReviewScreen = ({ navigation, route }) => {
     const [reviewText, setReviewText] = useState("");
     const [ratings, setRatings] = useState(0);
+    const [showAlert, setShowAlert] = useState(false);
     const { ratedUser, voteUser, voteAvatar } = route.params;
-    console.log(ratedUser, voteUser, voteAvatar)
+
     const theme = {
         ...DefaultTheme,
         roundness: 2,
@@ -22,7 +23,6 @@ const UserReviewScreen = ({ navigation, route }) => {
     };
 
     const ratingCompleted = (rating) => {
-        console.log("Rating is: " + rating)
         setRatings(rating);
     }
 
@@ -38,7 +38,13 @@ const UserReviewScreen = ({ navigation, route }) => {
             },
             ratedUser: ratedUser
         }
-        addReview(data);
+        console.log(data)
+        addReview(data)
+            .then(response => {
+                if (response) {
+                    setShowAlert(true);
+                }
+            })
     }
 
 
@@ -46,12 +52,12 @@ const UserReviewScreen = ({ navigation, route }) => {
         <Provider theme={theme}>
             <SafeAreaView style={styles.container}>
                 <ScrollView>
-                    {/* <AwesomeAlert
+                    <AwesomeAlert
                         contentContainerStyle={{ width: Dimensions.get('window').width }}
                         show={showAlert}
                         showProgress={false}
-                        title="Add Shop"
-                        message={message}
+                        title="Reviews"
+                        message={`You have just rated ${ratedUser} ${ratings} stars! 😊`}
                         closeOnTouchOutside={true}
                         closeOnHardwareBackPress={false}
                         showConfirmButton={true}
@@ -65,7 +71,7 @@ const UserReviewScreen = ({ navigation, route }) => {
                             setShowAlert(false);
                             navigation.goBack();
                         }}
-                    /> */}
+                    />
                     <TextInput theme={{ colors: { primary: "#fa3c4c" } }}
                         style={{ backgroundColor: "white" }}
                         label={ratedUser}

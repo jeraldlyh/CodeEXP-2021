@@ -32,7 +32,7 @@ const ChatStack = () => {
                 )
             })} />
             <Chat.Screen name="Review" component={UserReviewScreen} options={({ route }) => ({
-                title: route.params.anotherUser,
+                title: "Review for " + route.params.ratedUser,
             })} />
         </Chat.Navigator>
     );

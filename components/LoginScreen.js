@@ -3,6 +3,7 @@ import tailwind from 'tailwind-rn';
 import { Text, View, TouchableOpacity, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 import { loginUser } from "../database/actions/User";
+import { getUserProfile } from "../database/actions/User";
 import { AuthContext } from "../provider/AuthContext";
 
 
@@ -10,14 +11,21 @@ function LoginScreen({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-    const { setUsername, setIsLoggedIn } = useContext(AuthContext);
+    const { setUsername, setIsLoggedIn, setAvatar, setBookmarks } = useContext(AuthContext);
 
     const onLoginPressed = () => {
         loginUser(email, password)
             .then(response => {
                 setUsername(response);
                 setIsLoggedIn(true);
-                navigation.goBack();
+
+                getUserProfile(response)            // Load data into provider
+                    .then(data => {
+                        setAvatar(data.avatar)
+                        setBookmarks(data.bookmarks)
+                        navigation.goBack();
+                    })
+
             })
             .catch(error => {
                 console.log(error)

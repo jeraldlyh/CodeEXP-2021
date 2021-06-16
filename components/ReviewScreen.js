@@ -9,7 +9,6 @@ import Description from "./Description";
 
 
 function ReviewScreen({ reviews }) {
-    const { avatar } = useContext(AuthContext);
     const [reviewList, setReviewList] = useState([]);
 
     useEffect(() => {
@@ -17,8 +16,6 @@ function ReviewScreen({ reviews }) {
             setReviewList(reviews)
         }
     }, [reviews]);
-
-
 
     return (
         <View>
