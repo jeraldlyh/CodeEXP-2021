@@ -69,12 +69,14 @@ export default function StoreInfo({ route, navigation }) {
             .catch(error => console.log(error))
     };
 
-    const openChat = (anotherUser) => {
+    const openChat = (product) => {
         createConvo(username, anotherUser)
             .then(response => {
                 navigation.navigate("Room", { 
                     thread: response, 
-                    username: username 
+                    username: username,
+                    anotherUser: product.username,
+                    product: product 
                 })
             })
     }
@@ -182,7 +184,7 @@ export default function StoreInfo({ route, navigation }) {
                                                             icon="chat"
                                                             color={"red"}
                                                             size={20}
-                                                            onPress={() => openChat(item.username)}
+                                                            onPress={() => openChat(item)}
                                                         />
                                                     }
                                                 />
