@@ -20,15 +20,22 @@ const LandingPageStack = () => {
     return (
         <Landing.Navigator screenOptions={{ headerShown: true, headerStyle: { backgroundColor: "#fa3c4c" }, headerTintColor: "#ffffff" }} >
             <Landing.Screen name="Red Dot Kakis" component={LandingPageScreen} />
-            <Landing.Screen name="Nearby" component={NearbyScreen} />
+            <Landing.Screen name="Nearby" component={NearbyScreen} options={{
+                headerLeft: (props) => (
+                    <HeaderBackButton
+                        {...props}
+                        label={"Back"}
+                    />
+                ),
+            }} />
             <Landing.Screen name="Add Shop" component={AddShopScreen} options={{
-                    headerLeft: (props) => (
-                        <HeaderBackButton
-                            {...props}
-                            label={"Back"}
-                        />
-                    ),
-                }}
+                headerLeft: (props) => (
+                    <HeaderBackButton
+                        {...props}
+                        label={"Back"}
+                    />
+                ),
+            }}
             />
             <Landing.Screen name="StoreInfo" component={StoreInfo} options={({ route, navigation }) => ({
                 title: route.params.name,
