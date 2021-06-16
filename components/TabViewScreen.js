@@ -33,7 +33,7 @@ function TabViewScreen(props) {
                 navigationState={{ index, routes }}
                 renderScene={renderScene}
                 onIndexChange={setIndex}
-                renderTabBar={props => <TabBar {...props} style={{backgroundColor: "#ff6976"}} indicatorStyle={{ backgroundColor: "grey" }}/>}
+                renderTabBar={props => <TabBar {...props} style={{backgroundColor: "tomato"}} indicatorStyle={{ backgroundColor: "grey" }}/>}
         />
     );
 };
