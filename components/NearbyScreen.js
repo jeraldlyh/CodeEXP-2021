@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { View, FlatList, Text, Image } from "react-native";
+import { View, FlatList, ActivityIndicator, Image } from "react-native";
 import { List } from "react-native-paper";
+import tailwind from "tailwind-rn";
 import { getNearbyShops } from "../database/actions/Shop";
 
 function NearbyScreen() {
@@ -31,7 +32,7 @@ function NearbyScreen() {
                             }}
                         />
                     ) : (
-                        <View><Text>no data</Text></View>
+                        <View style={tailwind("flex items-center justify-center w-full h-full")}><ActivityIndicator size="large" color="#fa3c4c" /></View>
                     )
             }
         </View>

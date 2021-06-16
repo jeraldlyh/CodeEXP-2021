@@ -6,6 +6,7 @@ import StoreInfo from "../components/StoreInfo";
 import NearbyScreen from "../components/NearbyScreen";
 import RoomScreen from "../components/RoomScreen";
 import AddShopScreen from "../components/AddShopScreen";
+import RegisterScreen from "../components/RegisterScreen";
 import LoginScreen from "../components/LoginScreen";
 import EditShopScreen from "../components/EditShopScreen";
 import { AuthContext } from '../provider/AuthContext';
@@ -52,14 +53,7 @@ const LandingPageStack = () => {
                     } else {
                         return (<Fragment></Fragment>)
                     }
-
-
-
-
                 }
-
-
-
             })} />
             <Landing.Screen name="Edit Shop" component={EditShopScreen} />
             <Landing.Screen name="Room" component={RoomScreen} options={({ route }) => ({
@@ -74,6 +68,7 @@ const LandingPageStack = () => {
                 )
             })} />
             <Landing.Screen name="Login" component={LoginScreen} />
+            <Landing.Screen name="Register" component={RegisterScreen} />
         </Landing.Navigator>
     );
 };
