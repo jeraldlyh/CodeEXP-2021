@@ -5,6 +5,8 @@
 > - [Shirlyn](https://github.com/shirlynuz/)
 > - [Jerald](http://github.com/jeraldlyh/)
 
+[Application demo on Youtube](https://www.youtube.com/watch?v=UmUkx9XOWO4&ab_channel=xDevolution_)
+
 Code submission for [BrainHack CodeEXP Hackathon 2021](http://codeexp.tk.sg)
 
 ## Problem Statement
