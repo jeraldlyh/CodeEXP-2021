@@ -4,13 +4,13 @@ import "firebase/auth"
 // import firestore from "firebase/firestore"
 
 var firebaseConfig = {
-    apiKey: "AIzaSyBIyZ_0jJu2anJLKg6pE8KBg7SSYkui3CQ",
-    authDomain: "codeexp-2021.firebaseapp.com",
-    projectId: "codeexp-2021",
-    storageBucket: "codeexp-2021.appspot.com",
-    messagingSenderId: "648673159373",
-    appId: "1:648673159373:web:76719a23dfed170adfa184",
-    measurementId: "G-FFFF4BXD18"
+    apiKey: "INSERT API KEY HERE",
+    authDomain: "INSERT AUTH DOMAIN HERE",
+    projectId: "INSERT PROJECT ID HERE",
+    storageBucket: "INSERT STORAGE BUCKET HERE",
+    messagingSenderId: "INSERT MESSAGING SENDER ID HERE",
+    appId: "INSERT APPLICATION ID HERE",
+    measurementId: "INSERT MEASUREMENT ID HERE"
 }
 
 if (!firebase.apps.length) {
